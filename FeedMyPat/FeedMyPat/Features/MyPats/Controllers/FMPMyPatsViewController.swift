@@ -6,24 +6,31 @@
 //
 
 import UIKit
+import SnapKit
 
 class FMPMyPatsViewController: UIViewController {
 
+    let patView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = CGSize(width: 12, height: 12)
+        view.layer.shadowRadius = 12
+        view.layer.shadowOpacity = 12
+        view.layer.cornerRadius = 3
+//        view.isUserInteractionEnabled = true
+        return view
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.view.backgroundColor = .red
+        self.view.addSubview(patView)
 
-        // Do any additional setup after loading the view.
-    }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
+
     }
-    */
 
 }

@@ -28,7 +28,7 @@ class FMPHomeViewController: UIViewController {
     let petViewLeftButton: UIButton = {
         let button = UIButton()
 
-        button.setImage(UIImage(named: "arrow.backward"), for: UIControl.State())
+        button.setImage(UIImage(named: "tabBarHomeIcon"), for: UIControl.State())
         button.backgroundColor = .white
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(medicatButtonTapped), for: .touchUpInside)
@@ -38,7 +38,7 @@ class FMPHomeViewController: UIViewController {
 
     let petViewRightButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "arrow.forward"), for: UIControl.State())
+        button.setImage(UIImage(named: "tabBarHomeIcon"), for: UIControl.State())
         button.backgroundColor = .white
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(medicatButtonTapped), for: .touchUpInside)
@@ -133,29 +133,23 @@ class FMPHomeViewController: UIViewController {
         self.view.addSubview(vaccineButton)
         self.view.addSubview(DocumentsButton)
         self.view.addSubview(CertificateButton)
-        self.view.addSubview(petViewLeftButton)
-        self.view.addSubview(petViewRightButton)
+        self.patView.addSubview(petViewLeftButton)
+        self.patView.addSubview(petViewRightButton)
 
         self.patView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
+            make.top.left.right.equalToSuperview()
             make.height.equalTo(self.view.bounds.height / 3)
         }
 
         self.petViewLeftButton.snp.makeConstraints { (make) in
-            make.left.top.equalToSuperview()
-            make.right.equalTo(self.patView.snp.left)
+            make.left.top.bottom.equalToSuperview()
             make.width.equalTo(self.view.bounds.width / 6)
-            make.height.equalTo(self.view.bounds.height / 3)
-//            make.height.equalTo(self.patView.bounds.height)
+
         }
 
         self.petViewRightButton.snp.makeConstraints { (make) in
-            make.left.equalTo(self.patView.snp.right)
-            make.top.equalToSuperview()
-            make.right.equalToSuperview()
+            make.top.right.bottom.equalToSuperview()
             make.width.equalTo(self.view.bounds.width / 6)
-            make.height.equalTo(self.view.bounds.height / 3)
-//            make.height.equalTo(self.patView.bounds.height)
         }
 
         self.medicatButton.snp.makeConstraints { (make) in
@@ -200,8 +194,10 @@ class FMPHomeViewController: UIViewController {
     }
 
     @objc func medicatButtonTapped1() {
-        if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
-            sceneDelegate.changeRootViewController(FMPMedicatViewController())
-        }
+        self.navigationController?.pushViewController(FMPMedicatViewController(), animated: true)
+
+//        if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+//            sceneDelegate.changeRootViewController(FMPMedicatViewController())
+//        }
     }
 }
