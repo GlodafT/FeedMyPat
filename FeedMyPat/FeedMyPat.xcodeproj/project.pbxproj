@@ -3,10 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1021EEBF2615DBDF00EB6E9D /* FMPHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1021EEBE2615DBDF00EB6E9D /* FMPHomeViewController.swift */; };
+		1021EEC3261601AC00EB6E9D /* FMPMyPatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1021EEC2261601AC00EB6E9D /* FMPMyPatsViewController.swift */; };
+		1021EEC7261601DA00EB6E9D /* FMPInDevelopingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1021EEC6261601DA00EB6E9D /* FMPInDevelopingViewController.swift */; };
+		1021EECC261601FF00EB6E9D /* FMPMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1021EECB261601FF00EB6E9D /* FMPMapViewController.swift */; };
+		1021EED52616027600EB6E9D /* FMPSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1021EED42616027600EB6E9D /* FMPSettingsViewController.swift */; };
+		1021EED9261617BC00EB6E9D /* FMPTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1021EED8261617BC00EB6E9D /* FMPTabBarViewController.swift */; };
+		1021EEFB261A150500EB6E9D /* FMPMedicatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1021EEFA261A150500EB6E9D /* FMPMedicatViewController.swift */; };
 		10E2E9A72614C773003BBE77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E2E9A62614C773003BBE77 /* AppDelegate.swift */; };
 		10E2E9A92614C773003BBE77 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E2E9A82614C773003BBE77 /* SceneDelegate.swift */; };
 		10E2E9AB2614C773003BBE77 /* FMPMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E2E9AA2614C773003BBE77 /* FMPMainViewController.swift */; };
@@ -16,6 +23,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1021EEBE2615DBDF00EB6E9D /* FMPHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPHomeViewController.swift; sourceTree = "<group>"; };
+		1021EEC2261601AC00EB6E9D /* FMPMyPatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPMyPatsViewController.swift; sourceTree = "<group>"; };
+		1021EEC6261601DA00EB6E9D /* FMPInDevelopingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPInDevelopingViewController.swift; sourceTree = "<group>"; };
+		1021EECB261601FF00EB6E9D /* FMPMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPMapViewController.swift; sourceTree = "<group>"; };
+		1021EED42616027600EB6E9D /* FMPSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPSettingsViewController.swift; sourceTree = "<group>"; };
+		1021EED8261617BC00EB6E9D /* FMPTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPTabBarViewController.swift; sourceTree = "<group>"; };
+		1021EEFA261A150500EB6E9D /* FMPMedicatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPMedicatViewController.swift; sourceTree = "<group>"; };
 		10E2E9A32614C773003BBE77 /* FeedMyPat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedMyPat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10E2E9A62614C773003BBE77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10E2E9A82614C773003BBE77 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,6 +54,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1021EEC12616018600EB6E9D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1021EEC2261601AC00EB6E9D /* FMPMyPatsViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1021EEC5261601B600EB6E9D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1021EEC6261601DA00EB6E9D /* FMPInDevelopingViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1021EECA261601E000EB6E9D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1021EECB261601FF00EB6E9D /* FMPMapViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1021EED32616026000EB6E9D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1021EED42616027600EB6E9D /* FMPSettingsViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		10E2E99A2614C773003BBE77 = {
 			isa = PBXGroup;
 			children = (
@@ -63,12 +109,123 @@
 			children = (
 				10E2E9A62614C773003BBE77 /* AppDelegate.swift */,
 				10E2E9A82614C773003BBE77 /* SceneDelegate.swift */,
-				10E2E9AA2614C773003BBE77 /* FMPMainViewController.swift */,
-				10E2E9AF2614C775003BBE77 /* Assets.xcassets */,
-				10E2E9B12614C775003BBE77 /* LaunchScreen.storyboard */,
+				10E2E9D42615019A003BBE77 /* Features */,
+				10E2E9D326150177003BBE77 /* Common */,
+				10E2E9D22615012E003BBE77 /* Resources */,
 				10E2E9B42614C775003BBE77 /* Info.plist */,
 			);
 			path = FeedMyPat;
+			sourceTree = "<group>";
+		};
+		10E2E9CC26150001003BBE77 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				10E2E9D8261502DE003BBE77 /* Models */,
+				10E2E9D7261502D2003BBE77 /* Views */,
+				10E2E9D9261502EE003BBE77 /* Controllers */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		10E2E9CE26150023003BBE77 /* MyPats */ = {
+			isa = PBXGroup;
+			children = (
+				1021EEC12616018600EB6E9D /* Controllers */,
+			);
+			path = MyPats;
+			sourceTree = "<group>";
+		};
+		10E2E9CF2615004F003BBE77 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				1021EECA261601E000EB6E9D /* Controllers */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		10E2E9D026150061003BBE77 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				1021EED32616026000EB6E9D /* Controllers */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		10E2E9D126150073003BBE77 /* InDeveloping */ = {
+			isa = PBXGroup;
+			children = (
+				1021EEC5261601B600EB6E9D /* Controllers */,
+			);
+			path = InDeveloping;
+			sourceTree = "<group>";
+		};
+		10E2E9D22615012E003BBE77 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				10E2E9AF2614C775003BBE77 /* Assets.xcassets */,
+				10E2E9B12614C775003BBE77 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		10E2E9D326150177003BBE77 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		10E2E9D42615019A003BBE77 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				10E2E9D526150234003BBE77 /* Initialization */,
+				10E2E9CC26150001003BBE77 /* Home */,
+				10E2E9CE26150023003BBE77 /* MyPats */,
+				10E2E9D126150073003BBE77 /* InDeveloping */,
+				10E2E9CF2615004F003BBE77 /* Map */,
+				10E2E9D026150061003BBE77 /* Settings */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		10E2E9D526150234003BBE77 /* Initialization */ = {
+			isa = PBXGroup;
+			children = (
+				10E2E9D626150258003BBE77 /* Controllers */,
+			);
+			path = Initialization;
+			sourceTree = "<group>";
+		};
+		10E2E9D626150258003BBE77 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				10E2E9AA2614C773003BBE77 /* FMPMainViewController.swift */,
+				1021EED8261617BC00EB6E9D /* FMPTabBarViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		10E2E9D7261502D2003BBE77 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		10E2E9D8261502DE003BBE77 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		10E2E9D9261502EE003BBE77 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1021EEBE2615DBDF00EB6E9D /* FMPHomeViewController.swift */,
+				1021EEFA261A150500EB6E9D /* FMPMedicatViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		97FB71B6A222BEFEA661690B /* Pods */ = {
@@ -77,7 +234,6 @@
 				6BFCC467DF6230B1E8757E19 /* Pods-FeedMyPat.debug.xcconfig */,
 				90F090938816EE33B07F411C /* Pods-FeedMyPat.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -221,9 +377,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1021EEC3261601AC00EB6E9D /* FMPMyPatsViewController.swift in Sources */,
 				10E2E9AB2614C773003BBE77 /* FMPMainViewController.swift in Sources */,
 				10E2E9A72614C773003BBE77 /* AppDelegate.swift in Sources */,
 				10E2E9A92614C773003BBE77 /* SceneDelegate.swift in Sources */,
+				1021EEC7261601DA00EB6E9D /* FMPInDevelopingViewController.swift in Sources */,
+				1021EED52616027600EB6E9D /* FMPSettingsViewController.swift in Sources */,
+				1021EEBF2615DBDF00EB6E9D /* FMPHomeViewController.swift in Sources */,
+				1021EED9261617BC00EB6E9D /* FMPTabBarViewController.swift in Sources */,
+				1021EEFB261A150500EB6E9D /* FMPMedicatViewController.swift in Sources */,
+				1021EECC261601FF00EB6E9D /* FMPMapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
