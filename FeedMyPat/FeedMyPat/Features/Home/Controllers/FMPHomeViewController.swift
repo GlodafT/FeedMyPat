@@ -31,7 +31,7 @@ class FMPHomeViewController: UIViewController {
         button.setImage(UIImage(named: "tabBarHomeIcon"), for: UIControl.State())
         button.backgroundColor = .white
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(medicatButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(leftRightButtonTapped), for: .touchUpInside)
 
         return button
     }()
@@ -41,7 +41,7 @@ class FMPHomeViewController: UIViewController {
         button.setImage(UIImage(named: "tabBarHomeIcon"), for: UIControl.State())
         button.backgroundColor = .white
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(medicatButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(leftRightButtonTapped), for: .touchUpInside)
 
         return button
     }()
@@ -55,7 +55,7 @@ class FMPHomeViewController: UIViewController {
         button.backgroundColor = .white
         button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(medicatButtonTapped1), for: .touchUpInside)
+        button.addTarget(self, action: #selector(medicatButtonTapped), for: .touchUpInside)
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOffset = CGSize(width: 12, height: 12)
         button.layer.shadowRadius = 12
@@ -74,7 +74,7 @@ class FMPHomeViewController: UIViewController {
         button.backgroundColor = .white
         button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(medicatButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(vaccineButtonTapped), for: .touchUpInside)
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOffset = CGSize(width: 12, height: 12)
         button.layer.shadowRadius = 12
@@ -93,7 +93,7 @@ class FMPHomeViewController: UIViewController {
         button.backgroundColor = .white
         button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(medicatButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(documentsButtonTapped), for: .touchUpInside)
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOffset = CGSize(width: 12, height: 12)
         button.layer.shadowRadius = 12
@@ -112,7 +112,7 @@ class FMPHomeViewController: UIViewController {
         button.backgroundColor = .white
         button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(medicatButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(certificateButtonTapped), for: .touchUpInside)
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOffset = CGSize(width: 12, height: 12)
         button.layer.shadowRadius = 12
@@ -183,7 +183,7 @@ class FMPHomeViewController: UIViewController {
         updateViewConstraints()
     }
 
-    @objc func medicatButtonTapped() {
+    @objc private func leftRightButtonTapped() {
         if flag {
             self.view.backgroundColor = .blue
             flag.toggle()
@@ -193,11 +193,20 @@ class FMPHomeViewController: UIViewController {
         }
     }
 
-    @objc func medicatButtonTapped1() {
+    @objc private func medicatButtonTapped() {
         self.navigationController?.pushViewController(FMPMedicatViewController(), animated: true)
-
-//        if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
-//            sceneDelegate.changeRootViewController(FMPMedicatViewController())
-//        }
     }
+
+    @objc private func vaccineButtonTapped() {
+        self.navigationController?.pushViewController(FMPVaccineViewController(), animated: true)
+    }
+
+    @objc private func documentsButtonTapped() {
+        self.navigationController?.pushViewController(FMPDocumentsViewController(), animated: true)
+    }
+
+    @objc private func certificateButtonTapped() {
+        self.navigationController?.pushViewController(FMPCertificateViewController(), animated: true)
+    }
+
 }

@@ -9,9 +9,9 @@ import UIKit
 
 class FMPMedicatViewController: UIViewController {
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .blue
         self.navigationController?.navigationBar.isHidden = false
     }
 

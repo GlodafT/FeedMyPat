@@ -19,6 +19,9 @@
 		10E2E9AB2614C773003BBE77 /* FMPMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E2E9AA2614C773003BBE77 /* FMPMainViewController.swift */; };
 		10E2E9B02614C775003BBE77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10E2E9AF2614C775003BBE77 /* Assets.xcassets */; };
 		10E2E9B32614C775003BBE77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10E2E9B12614C775003BBE77 /* LaunchScreen.storyboard */; };
+		10E60FE1261B4201008BF60F /* FMPVaccineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E60FE0261B4201008BF60F /* FMPVaccineViewController.swift */; };
+		10E60FE4261B4217008BF60F /* FMPDocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E60FE3261B4217008BF60F /* FMPDocumentsViewController.swift */; };
+		10E60FE7261B422E008BF60F /* FMPCertificateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E60FE6261B422E008BF60F /* FMPCertificateViewController.swift */; };
 		D3BAE7A383F4274AE709CF81 /* Pods_FeedMyPat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 239B607550B8056376122A5D /* Pods_FeedMyPat.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +40,9 @@
 		10E2E9AF2614C775003BBE77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10E2E9B22614C775003BBE77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		10E2E9B42614C775003BBE77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10E60FE0261B4201008BF60F /* FMPVaccineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPVaccineViewController.swift; sourceTree = "<group>"; };
+		10E60FE3261B4217008BF60F /* FMPDocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPDocumentsViewController.swift; sourceTree = "<group>"; };
+		10E60FE6261B422E008BF60F /* FMPCertificateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPCertificateViewController.swift; sourceTree = "<group>"; };
 		239B607550B8056376122A5D /* Pods_FeedMyPat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedMyPat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BFCC467DF6230B1E8757E19 /* Pods-FeedMyPat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedMyPat.debug.xcconfig"; path = "Target Support Files/Pods-FeedMyPat/Pods-FeedMyPat.debug.xcconfig"; sourceTree = "<group>"; };
 		90F090938816EE33B07F411C /* Pods-FeedMyPat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedMyPat.release.xcconfig"; path = "Target Support Files/Pods-FeedMyPat/Pods-FeedMyPat.release.xcconfig"; sourceTree = "<group>"; };
@@ -224,6 +230,9 @@
 			children = (
 				1021EEBE2615DBDF00EB6E9D /* FMPHomeViewController.swift */,
 				1021EEFA261A150500EB6E9D /* FMPMedicatViewController.swift */,
+				10E60FE0261B4201008BF60F /* FMPVaccineViewController.swift */,
+				10E60FE3261B4217008BF60F /* FMPDocumentsViewController.swift */,
+				10E60FE6261B422E008BF60F /* FMPCertificateViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -383,7 +392,10 @@
 				10E2E9A92614C773003BBE77 /* SceneDelegate.swift in Sources */,
 				1021EEC7261601DA00EB6E9D /* FMPInDevelopingViewController.swift in Sources */,
 				1021EED52616027600EB6E9D /* FMPSettingsViewController.swift in Sources */,
+				10E60FE4261B4217008BF60F /* FMPDocumentsViewController.swift in Sources */,
 				1021EEBF2615DBDF00EB6E9D /* FMPHomeViewController.swift in Sources */,
+				10E60FE7261B422E008BF60F /* FMPCertificateViewController.swift in Sources */,
+				10E60FE1261B4201008BF60F /* FMPVaccineViewController.swift in Sources */,
 				1021EED9261617BC00EB6E9D /* FMPTabBarViewController.swift in Sources */,
 				1021EEFB261A150500EB6E9D /* FMPMedicatViewController.swift in Sources */,
 				1021EECC261601FF00EB6E9D /* FMPMapViewController.swift in Sources */,

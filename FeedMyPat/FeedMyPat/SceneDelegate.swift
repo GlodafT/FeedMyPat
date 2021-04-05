@@ -32,12 +32,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         UINavigationBar.appearance().standardAppearance = navBarAppearance
 
+        let buttonStyle = UIBarButtonItemAppearance(style: .plain)
+        buttonStyle.normal.titleTextAttributes = [.foregroundColor: UIColor.darkGray]
+        navBarAppearance.buttonAppearance = buttonStyle
+
     }
 
     func changeRootViewController(_ vc: UIViewController, animated: Bool = true) {
         guard let window = self.window else { return }
         window.rootViewController = vc
-
         //anim change tabBar controllers
 
         if animated {
@@ -46,6 +49,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                               options: .transitionFlipFromLeft,
                               animations: nil)
         }
+    }
+
+    func presentViewController(vc: UIViewController) {
+        self.window?.rootViewController?.present(vc, animated: true, completion: nil)
     }
 
 }
