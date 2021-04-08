@@ -46,7 +46,6 @@ class FMPMyPatsViewController: UIViewController {
         return button
     }()
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .red
@@ -55,8 +54,8 @@ class FMPMyPatsViewController: UIViewController {
         self.patView.addSubview(petViewRightButton)
 
         self.patView.snp.makeConstraints { (make) in
-            make.top.left.right.equalToSuperview()
-            make.height.equalTo(self.view.bounds.height / 3)
+            make.top.left.right.equalTo(self.view.safeAreaLayoutGuide)
+            make.height.equalTo(self.view.bounds.height / 4)
         }
 
         self.petViewLeftButton.snp.makeConstraints { (make) in

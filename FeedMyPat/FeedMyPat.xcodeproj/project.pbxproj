@@ -22,6 +22,11 @@
 		10E60FE1261B4201008BF60F /* FMPVaccineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E60FE0261B4201008BF60F /* FMPVaccineViewController.swift */; };
 		10E60FE4261B4217008BF60F /* FMPDocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E60FE3261B4217008BF60F /* FMPDocumentsViewController.swift */; };
 		10E60FE7261B422E008BF60F /* FMPCertificateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E60FE6261B422E008BF60F /* FMPCertificateViewController.swift */; };
+		10E6100A261DF19D008BF60F /* FMPMedicatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E61009261DF19D008BF60F /* FMPMedicatModel.swift */; };
+		10E6100E261DF3BD008BF60F /* FMPMedicatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E6100D261DF3BD008BF60F /* FMPMedicatCell.swift */; };
+		10E61013261DFCB8008BF60F /* UiView+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E61012261DFCB8008BF60F /* UiView+Ex.swift */; };
+		10E61017261E0A2F008BF60F /* Date+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E61016261E0A2F008BF60F /* Date+Ex.swift */; };
+		10E6101B261F14EC008BF60F /* FMPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E6101A261F14EC008BF60F /* FMPViewController.swift */; };
 		D3BAE7A383F4274AE709CF81 /* Pods_FeedMyPat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 239B607550B8056376122A5D /* Pods_FeedMyPat.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +48,11 @@
 		10E60FE0261B4201008BF60F /* FMPVaccineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPVaccineViewController.swift; sourceTree = "<group>"; };
 		10E60FE3261B4217008BF60F /* FMPDocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPDocumentsViewController.swift; sourceTree = "<group>"; };
 		10E60FE6261B422E008BF60F /* FMPCertificateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPCertificateViewController.swift; sourceTree = "<group>"; };
+		10E61009261DF19D008BF60F /* FMPMedicatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPMedicatModel.swift; sourceTree = "<group>"; };
+		10E6100D261DF3BD008BF60F /* FMPMedicatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPMedicatCell.swift; sourceTree = "<group>"; };
+		10E61012261DFCB8008BF60F /* UiView+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UiView+Ex.swift"; sourceTree = "<group>"; };
+		10E61016261E0A2F008BF60F /* Date+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ex.swift"; sourceTree = "<group>"; };
+		10E6101A261F14EC008BF60F /* FMPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPViewController.swift; sourceTree = "<group>"; };
 		239B607550B8056376122A5D /* Pods_FeedMyPat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedMyPat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BFCC467DF6230B1E8757E19 /* Pods-FeedMyPat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedMyPat.debug.xcconfig"; path = "Target Support Files/Pods-FeedMyPat/Pods-FeedMyPat.debug.xcconfig"; sourceTree = "<group>"; };
 		90F090938816EE33B07F411C /* Pods-FeedMyPat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedMyPat.release.xcconfig"; path = "Target Support Files/Pods-FeedMyPat/Pods-FeedMyPat.release.xcconfig"; sourceTree = "<group>"; };
@@ -115,9 +125,10 @@
 			children = (
 				10E2E9A62614C773003BBE77 /* AppDelegate.swift */,
 				10E2E9A82614C773003BBE77 /* SceneDelegate.swift */,
-				10E2E9D42615019A003BBE77 /* Features */,
 				10E2E9D326150177003BBE77 /* Common */,
+				10E2E9D42615019A003BBE77 /* Features */,
 				10E2E9D22615012E003BBE77 /* Resources */,
+				10E61011261DFC32008BF60F /* Extensions */,
 				10E2E9B42614C775003BBE77 /* Info.plist */,
 			);
 			path = FeedMyPat;
@@ -177,6 +188,7 @@
 		10E2E9D326150177003BBE77 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				10E61019261F14BF008BF60F /* Controllers */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -214,6 +226,7 @@
 		10E2E9D7261502D2003BBE77 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				10E6100C261DF388008BF60F /* Cell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -221,6 +234,7 @@
 		10E2E9D8261502DE003BBE77 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				10E61009261DF19D008BF60F /* FMPMedicatModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -233,6 +247,31 @@
 				10E60FE0261B4201008BF60F /* FMPVaccineViewController.swift */,
 				10E60FE3261B4217008BF60F /* FMPDocumentsViewController.swift */,
 				10E60FE6261B422E008BF60F /* FMPCertificateViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		10E6100C261DF388008BF60F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				10E6100D261DF3BD008BF60F /* FMPMedicatCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		10E61011261DFC32008BF60F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				10E61012261DFCB8008BF60F /* UiView+Ex.swift */,
+				10E61016261E0A2F008BF60F /* Date+Ex.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		10E61019261F14BF008BF60F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				10E6101A261F14EC008BF60F /* FMPViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -386,15 +425,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10E6100E261DF3BD008BF60F /* FMPMedicatCell.swift in Sources */,
 				1021EEC3261601AC00EB6E9D /* FMPMyPatsViewController.swift in Sources */,
+				10E61017261E0A2F008BF60F /* Date+Ex.swift in Sources */,
 				10E2E9AB2614C773003BBE77 /* FMPMainViewController.swift in Sources */,
 				10E2E9A72614C773003BBE77 /* AppDelegate.swift in Sources */,
 				10E2E9A92614C773003BBE77 /* SceneDelegate.swift in Sources */,
+				10E6101B261F14EC008BF60F /* FMPViewController.swift in Sources */,
 				1021EEC7261601DA00EB6E9D /* FMPInDevelopingViewController.swift in Sources */,
 				1021EED52616027600EB6E9D /* FMPSettingsViewController.swift in Sources */,
 				10E60FE4261B4217008BF60F /* FMPDocumentsViewController.swift in Sources */,
+				10E6100A261DF19D008BF60F /* FMPMedicatModel.swift in Sources */,
 				1021EEBF2615DBDF00EB6E9D /* FMPHomeViewController.swift in Sources */,
 				10E60FE7261B422E008BF60F /* FMPCertificateViewController.swift in Sources */,
+				10E61013261DFCB8008BF60F /* UiView+Ex.swift in Sources */,
 				10E60FE1261B4201008BF60F /* FMPVaccineViewController.swift in Sources */,
 				1021EED9261617BC00EB6E9D /* FMPTabBarViewController.swift in Sources */,
 				1021EEFB261A150500EB6E9D /* FMPMedicatViewController.swift in Sources */,
