@@ -8,7 +8,6 @@
 import UIKit
 import SnapKit
 
-
 class FMPViewController: UIViewController {
 
     var controllerTitle: String? {
@@ -56,6 +55,7 @@ class FMPViewController: UIViewController {
     private func _initController() {
         self.view.backgroundColor = .white
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.navigationController?.navigationBar.tintColor = .systemGreen
 
         self.view.addSubview(self.mainScrollView)
         self.mainScrollView.addSubview(self.mainView)
@@ -75,4 +75,3 @@ class FMPViewController: UIViewController {
 
     func initController() {}
 }
-

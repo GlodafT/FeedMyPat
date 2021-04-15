@@ -85,7 +85,7 @@ class FMPHomeViewController: UIViewController {
         return button
     }()
 
-    let DocumentsButton: UIButton = {
+    let documentsButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "tabBarHomeIcon"), for: UIControl.State())
         button.setTitle("Documents", for: UIControl.State())
@@ -104,7 +104,7 @@ class FMPHomeViewController: UIViewController {
         return button
     }()
 
-    let CertificateButton: UIButton = {
+    let certificateButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "tabBarHomeIcon"), for: UIControl.State())
         button.setTitle("Certificate", for: UIControl.State())
@@ -128,13 +128,25 @@ class FMPHomeViewController: UIViewController {
 
         self.view.backgroundColor = .init(white: 15, alpha: 1)
 
+//        self.navigationController?.navigationBar.isHidden = true
+
         self.view.addSubview(patView)
         self.view.addSubview(medicatButton)
         self.view.addSubview(vaccineButton)
-        self.view.addSubview(DocumentsButton)
-        self.view.addSubview(CertificateButton)
+        self.view.addSubview(documentsButton)
+        self.view.addSubview(certificateButton)
         self.patView.addSubview(petViewLeftButton)
         self.patView.addSubview(petViewRightButton)
+
+    }
+
+//    override func viewDidDisappear(_ animated: Bool) {
+//        super.viewDidDisappear(animated)
+//        self.navigationController?.navigationBar.isHidden = false
+//    }
+
+    override func updateViewConstraints() {
+        let boundsOfButtons = self.view.bounds.width / 5
 
         self.patView.snp.makeConstraints { (make) in
             make.top.left.right.equalTo(self.view.safeAreaLayoutGuide)
@@ -152,35 +164,61 @@ class FMPHomeViewController: UIViewController {
             make.width.equalTo(self.view.bounds.width / 6)
         }
 
+//        self.medicatButton.snp.makeConstraints { (make) in
+//            make.height.width.equalTo(boundsOfButtons)
+//            make.left.equalToSuperview().inset(35)
+//            make.top.equalTo(self.patView.snp.bottom).offset(50)
+//
+//        }
+//
+//        self.vaccineButton.snp.makeConstraints { (make) in
+//            make.height.width.equalTo(boundsOfButtons)
+//            make.left.equalTo(medicatButton.snp.right).inset(-25)
+//            make.top.equalTo(self.patView.snp.bottom).offset(50)
+//            make.right.equalToSuperview().inset(35)
+//
+//        }
+//
+//        self.DocumentsButton.snp.makeConstraints { (make) in
+//            make.height.width.equalTo(boundsOfButtons)
+//            make.left.equalToSuperview().inset(35)
+//            make.top.equalTo(medicatButton.snp.bottom).inset(-25)
+//        }
+//
+//        self.CertificateButton.snp.makeConstraints { (make) in
+//            make.height.width.equalTo(boundsOfButtons)
+//            make.left.equalTo(DocumentsButton.snp.right).inset(-25)
+//            make.top.equalTo(vaccineButton.snp.bottom).inset(-25)
+//            make.right.equalToSuperview().inset(35)
+//        }
+
         self.medicatButton.snp.makeConstraints { (make) in
-            make.height.width.equalTo(150)
-            make.left.equalToSuperview().inset(35)
+            make.height.width.equalTo(boundsOfButtons)
+            make.left.right.equalToSuperview().inset(35)
             make.top.equalTo(self.patView.snp.bottom).offset(50)
 
         }
 
         self.vaccineButton.snp.makeConstraints { (make) in
-            make.height.width.equalTo(150)
-            make.left.equalTo(medicatButton.snp.right).inset(-25)
-            make.top.equalTo(self.patView.snp.bottom).offset(50)
-            make.right.equalToSuperview().inset(35)
+            make.height.width.equalTo(boundsOfButtons)
+            make.left.right.equalToSuperview().inset(35)
+            make.top.equalTo(self.medicatButton.snp.bottom).offset(15)
 
         }
 
-        self.DocumentsButton.snp.makeConstraints { (make) in
-            make.height.width.equalTo(150)
-            make.left.equalToSuperview().inset(35)
-            make.top.equalTo(medicatButton.snp.bottom).inset(-25)
+        self.documentsButton.snp.makeConstraints { (make) in
+            make.height.width.equalTo(boundsOfButtons)
+            make.left.right.equalToSuperview().inset(35)
+            make.top.equalTo(self.vaccineButton.snp.bottom).offset(15)
         }
 
-        self.CertificateButton.snp.makeConstraints { (make) in
-            make.height.width.equalTo(150)
-            make.left.equalTo(DocumentsButton.snp.right).inset(-25)
-            make.top.equalTo(vaccineButton.snp.bottom).inset(-25)
-            make.right.equalToSuperview().inset(35)
+        self.certificateButton.snp.makeConstraints { (make) in
+            make.height.width.equalTo(boundsOfButtons)
+            make.left.right.equalToSuperview().inset(35)
+            make.top.equalTo(self.documentsButton.snp.bottom).offset(15)
         }
 
-        updateViewConstraints()
+        super.updateViewConstraints()
     }
 
     @objc private func leftRightButtonTapped() {
@@ -206,7 +244,8 @@ class FMPHomeViewController: UIViewController {
     }
 
     @objc private func certificateButtonTapped() {
-        self.navigationController?.pushViewController(FMPCertificateViewController(), animated: true)
+        // поменять на сертификат
+        self.navigationController?.pushViewController(FMPMedicatAddViewController(), animated: true)
     }
 
 }

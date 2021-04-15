@@ -11,7 +11,13 @@ class FMPMedicatViewController: FMPViewController {
 
     // MARK: - gui variables
 
-    private lazy var models: [FMPMedicatModel] = [FMPMedicatModel.init(flag: true), FMPMedicatModel.init(flag: false)]
+    private lazy var models: [FMPMedicatModel] = [
+        FMPMedicatModel.init(flag: true, imageView: nil, typeDescriptionLabel: "123", dateDescriptionLabel: Date()),
+        FMPMedicatModel.init(flag: true, imageView: nil, typeDescriptionLabel: "123", dateDescriptionLabel: Date()),
+        FMPMedicatModel.init(flag: true, imageView: nil, typeDescriptionLabel: "123", dateDescriptionLabel: Date()),
+        FMPMedicatModel.init(flag: true, imageView: nil, typeDescriptionLabel: "123", dateDescriptionLabel: Date()),
+        FMPMedicatModel.init(flag: true, imageView: nil, typeDescriptionLabel: "123", dateDescriptionLabel: Date()),
+        FMPMedicatModel.init(flag: true, imageView: nil, typeDescriptionLabel: "123", dateDescriptionLabel: Date())]
 
     private lazy var collectionLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -33,6 +39,8 @@ class FMPMedicatViewController: FMPViewController {
         return view
     }()
 
+    let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: nil, action: #selector(editButtonTapped))
+
     // MARK: - initialization
 
     override func initController() {
@@ -49,6 +57,9 @@ class FMPMedicatViewController: FMPViewController {
         self.collectionView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+
+        self.navigationItem.setRightBarButton(self.editButton, animated: false)
+
     }
 
 //    override func viewDidLoad() {
@@ -62,6 +73,13 @@ class FMPMedicatViewController: FMPViewController {
 //        self.navigationController?.navigationBar.isHidden = true
 //
 //    }
+
+    @objc private func editButtonTapped() {
+        // написать логику
+
+        // временно
+        self.navigationController?.pushViewController(FMPMedicatAddViewController(), animated: true)
+    }
 
 }
 
@@ -89,7 +107,7 @@ extension FMPMedicatViewController: UICollectionViewDelegate, UICollectionViewDa
 
 extension FMPMedicatViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.bounds.width - 40, height: self.view.bounds.height / 5)
+        return CGSize(width: self.view.bounds.width - 40, height: self.view.bounds.height / 6)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
