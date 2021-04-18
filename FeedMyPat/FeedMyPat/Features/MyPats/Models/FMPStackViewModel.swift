@@ -13,6 +13,7 @@ class FMPStackViewModel: UIStackView {
         stack.axis = .vertical
         stack.distribution = .fillEqually
         stack.spacing = 15
+        stack.translatesAutoresizingMaskIntoConstraints = false
 
         return stack
     }()

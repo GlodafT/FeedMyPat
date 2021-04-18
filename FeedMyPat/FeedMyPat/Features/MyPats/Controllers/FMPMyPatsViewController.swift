@@ -237,7 +237,7 @@ class FMPMyPatsViewController: FMPViewController {
             chipLabelDescription
         ])
 
-        setDescriptionToLabelDescription()
+//        setDescriptionToLabelDescription()
 
         self.view.backgroundColor = .systemRed
         self.view.addSubview(patView)
@@ -269,15 +269,15 @@ class FMPMyPatsViewController: FMPViewController {
         self.leftStackView.snp.makeConstraints { (make) in
             make.top.equalTo(self.mainView.snp.top).offset(20)
             make.left.equalToSuperview().inset(30)
-            make.bottom.equalToSuperview()
+//            make.bottom.equalToSuperview()
 //            make.height.equalTo(500)
         }
 
         self.rightStackView.snp.makeConstraints { (make) in
             make.top.equalTo(self.mainView.snp.top).offset(20)
-            make.left.equalTo(self.leftStackView.snp.right).offset(70)
+            make.left.greaterThanOrEqualTo(self.leftStackView.snp.right).offset(10)
             make.right.equalToSuperview().inset(30)
-            make.bottom.equalToSuperview()
+//            make.bottom.equalToSuperview()
 
 //            make.height.equalTo(500)
 

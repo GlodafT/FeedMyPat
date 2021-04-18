@@ -118,6 +118,7 @@ class FMPMedicatAddViewController: FMPViewController {
         super.initController()
 
         self.mainView.backgroundColor = .systemPink
+        self.setContentScrolling(isEnabled: false)
 
         self.mainView.addSubviews([
 //            self.imageViewButton,
@@ -128,6 +129,18 @@ class FMPMedicatAddViewController: FMPViewController {
             self.dateTextFieldDescription
         ])
     }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+    }
+
+//    private func saveData() {
+//        guard let typeDescription = typeTextFieldDescription.text, let dateDescription = dateTextFieldDescription.text else { return }
+//        if !typeDescription.isEmpty && !dateDescription.isEmpty {
+//            FMPMedicatViewController.models
+//        }
+//    }
 
     override func updateViewConstraints() {
         self.nameLabel.snp.updateConstraints { (make) in
@@ -172,7 +185,6 @@ class FMPMedicatAddViewController: FMPViewController {
 
         super.updateViewConstraints()
     }
-
 
     @objc private func imageViewButtonTapped() {
         // выбор фото из галллереи

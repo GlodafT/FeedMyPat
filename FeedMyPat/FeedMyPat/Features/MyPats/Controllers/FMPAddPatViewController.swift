@@ -42,13 +42,16 @@ class FMPAddPatViewController: FMPViewController {
         return label
     }()
 
-    var dateOfBirthTextFieldDescription: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemGreen
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.translatesAutoresizingMaskIntoConstraints = false
+    var dateOfBirthTextFieldDescription: UITextField = {
+        let text = UITextField()
+        text.backgroundColor = .systemGray4
+        text.textColor = .systemGreen
+        text.tintColor = .systemGreen
+        text.font = UIFont.systemFont(ofSize: 18)
+        text.borderStyle = .roundedRect
+        text.translatesAutoresizingMaskIntoConstraints = false
 
-        return label
+        return text
     }()
 
     var typeLabel: UILabel = {
@@ -111,8 +114,6 @@ class FMPAddPatViewController: FMPViewController {
     var genderSegmentedControlDescription: UISegmentedControl = {
         var segments = ["Male:", "Female:"]
         let control = UISegmentedControl(items: segments )
-//        control.setTitle("Male", forSegmentAt: 1)
-//        control.setTitle("Female", forSegmentAt: 2)
         control.selectedSegmentTintColor = .systemGreen
         control.translatesAutoresizingMaskIntoConstraints = false
 
@@ -153,7 +154,7 @@ class FMPAddPatViewController: FMPViewController {
 
     var sterilizationSwitchDescription: UISwitch = {
         let swich = UISwitch()
-
+        swich.onTintColor = .systemGreen
         swich.translatesAutoresizingMaskIntoConstraints = false
 
         return swich
@@ -183,7 +184,7 @@ class FMPAddPatViewController: FMPViewController {
 
     override func initController() {
         super.initController()
-        self.setContentScrolling(isEnabled: true)
+        self.setContentScrolling(isEnabled: false)
 
         self.mainView.addSubviews([
             self.nameLabel,
@@ -203,8 +204,6 @@ class FMPAddPatViewController: FMPViewController {
             self.chipLabel,
             self.chipTextFieldDescription
         ])
-
-//        setDescriptionToLabel()
 
     }
 
@@ -230,7 +229,7 @@ class FMPAddPatViewController: FMPViewController {
 
         self.dateOfBirthTextFieldDescription.snp.makeConstraints { (make) in
             make.top.equalTo(self.nameTextFieldDescription.snp.bottom).offset(5)
-            make.left.greaterThanOrEqualTo(self.dateOfBirthLabel.snp.right)
+            make.left.greaterThanOrEqualTo(self.dateOfBirthLabel.snp.right).inset(5)
             make.right.equalToSuperview().inset(30)
         }
 
