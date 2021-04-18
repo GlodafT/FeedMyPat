@@ -11,13 +11,14 @@ class FMPMedicatViewController: FMPViewController {
 
     // MARK: - gui variables
 
-    private lazy var models: [FMPMedicatModel] = [
-        FMPMedicatModel.init(flag: true, imageView: nil, typeDescriptionLabel: "123", dateDescriptionLabel: Date()),
-        FMPMedicatModel.init(flag: true, imageView: nil, typeDescriptionLabel: "123", dateDescriptionLabel: Date()),
-        FMPMedicatModel.init(flag: true, imageView: nil, typeDescriptionLabel: "123", dateDescriptionLabel: Date()),
-        FMPMedicatModel.init(flag: true, imageView: nil, typeDescriptionLabel: "123", dateDescriptionLabel: Date()),
-        FMPMedicatModel.init(flag: true, imageView: nil, typeDescriptionLabel: "123", dateDescriptionLabel: Date()),
-        FMPMedicatModel.init(flag: true, imageView: nil, typeDescriptionLabel: "123", dateDescriptionLabel: Date())]
+    private lazy var isEditButtonTapped: Bool = false
+
+    lazy var models: [FMPMedicatModel] = [] {
+        didSet {
+            self.collectionView.reloadData()
+//            self.setNeedsUpdateConstraints()
+        }
+    }
 
     private lazy var collectionLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -39,7 +40,8 @@ class FMPMedicatViewController: FMPViewController {
         return view
     }()
 
-    let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: nil, action: #selector(editButtonTapped))
+    private lazy var editBarButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(self.editButtonTapped))
+    private lazy var addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addButtonTapped))
 
     // MARK: - initialization
 
@@ -58,7 +60,7 @@ class FMPMedicatViewController: FMPViewController {
             make.edges.equalToSuperview()
         }
 
-        self.navigationItem.setRightBarButton(self.editButton, animated: false)
+        self.navigationItem.setRightBarButtonItems([self.addBarButton, self.editBarButton], animated: true)
 
     }
 
@@ -75,10 +77,17 @@ class FMPMedicatViewController: FMPViewController {
 //    }
 
     @objc private func editButtonTapped() {
-        // написать логику
+        self.isEditButtonTapped.toggle()
+        if self.isEditButtonTapped {
+            self.collectionView.backgroundColor = .systemRed
+        } else {
+            self.collectionView.backgroundColor = .systemBlue
+        }
 
-        // временно
-        self.navigationController?.pushViewController(FMPMedicatAddViewController(), animated: true)
+    }
+
+    @objc private func addButtonTapped() {
+        self.navigationController?.present(FMPMedicatAddViewController(), animated: true)
     }
 
 }
@@ -93,7 +102,9 @@ extension FMPMedicatViewController: UICollectionViewDelegate, UICollectionViewDa
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FMPMedicatCell.reuseIdentifier, for: indexPath)
 
         if let cell = cell as? FMPMedicatCell {
-            cell.set(typeVaccination: "asd", date: Date())
+//            let array = Array(self.models)[indexPath.section]
+
+            cell.set(medicatModel: models[indexPath.row])
         }
 
         return cell
@@ -101,13 +112,16 @@ extension FMPMedicatViewController: UICollectionViewDelegate, UICollectionViewDa
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.view.backgroundColor = .systemTeal
+        guard isEditButtonTapped else { return }
+        self.models.remove(at: indexPath.row)
+        self.collectionView.deleteItems(at: [indexPath])
     }
-
 }
 
 extension FMPMedicatViewController: UICollectionViewDelegateFlowLayout {
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.bounds.width - 40, height: self.view.bounds.height / 6)
+        return CGSize(width: self.view.bounds.width - 40, height: self.view.bounds.height / 5)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

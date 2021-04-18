@@ -55,6 +55,9 @@ class FMPMedicatCell: UICollectionViewCell {
         label.textAlignment = .left
         label.tintColor = .black
         label.font = UIFont.systemFont(ofSize: 16)
+        label.preferredMaxLayoutWidth = 100
+        label.lineBreakMode = .byCharWrapping
+        label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
     return label
     }()
@@ -106,21 +109,22 @@ class FMPMedicatCell: UICollectionViewCell {
     override func updateConstraints() {
         self.cellView.snp.updateConstraints { (make) in
             make.top.left.right.bottom.equalToSuperview()
+//            make.height.equalTo(self.contentView.snp.height)
         }
 
         self.imageView.snp.updateConstraints { (make) in
             make.top.left.equalToSuperview().offset(8)
             make.bottom.equalToSuperview().inset(8)
-//            make.width.equalTo(self.cellView.bounds.width / 4)
+            make.width.height.equalTo(100)
         }
 
         self.nameLabel.snp.updateConstraints { (make) in
-            make.top.equalToSuperview().offset(8)
+            make.top.equalToSuperview().offset(5)
             make.left.equalTo(self.imageView.snp.right).offset(5)
         }
 
         self.typeLabel.snp.updateConstraints { (make) in
-            make.top.equalTo(self.nameLabel.snp.bottom).offset(20)
+            make.top.equalTo(self.nameLabel.snp.bottom).offset(15)
             make.left.equalTo(self.imageView.snp.right).offset(5)
         }
 
@@ -130,24 +134,27 @@ class FMPMedicatCell: UICollectionViewCell {
         }
 
         self.dateLabel.snp.updateConstraints { (make) in
-            make.top.equalTo(self.nameLabel.snp.bottom).offset(20)
+            make.top.equalTo(self.nameLabel.snp.bottom).offset(15)
             make.right.equalToSuperview().inset(15)
+//            make.bottom.equalToSuperview().inset(3)
         }
 
         self.dateDescriptionLabel.snp.updateConstraints { (make) in
             make.top.equalTo(self.dateLabel.snp.bottom).offset(10)
-            make.right.equalToSuperview().inset(15)                     //решить проблему с отступом
+            make.right.equalToSuperview().inset(15)
+            make.left.greaterThanOrEqualTo(self.typeDescriptionLabel.snp.right).offset(1)
+//            make.bottom.equalToSuperview().inset(3)
         }
 
         super.updateConstraints()
     }
 
-    func set(typeVaccination: String, date: Date) {
-        self.nameLabel.text = "Vaccination"
-        self.typeLabel.text = "Type"
-        self.dateLabel.text = "Date"
-        self.typeDescriptionLabel.text = typeVaccination
-        self.dateDescriptionLabel.text = date.toString()
+    func set(medicatModel: FMPMedicatModel) {
+        self.nameLabel.text = medicatModel.nameLabel
+        self.typeLabel.text = medicatModel.typeLabel
+        self.dateLabel.text = medicatModel.dateLabel
+        self.typeDescriptionLabel.text = medicatModel.typeDescriptionLabel
+        self.dateDescriptionLabel.text = medicatModel.dateDescriptionLabel.toString()
 
         self.setNeedsUpdateConstraints()
     }

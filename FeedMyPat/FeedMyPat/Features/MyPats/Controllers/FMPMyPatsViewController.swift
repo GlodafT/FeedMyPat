@@ -193,7 +193,7 @@ class FMPMyPatsViewController: FMPViewController {
     var rightStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
-        stack.distribution = .equalSpacing
+        stack.distribution = .fillEqually
         stack.spacing = 20
         stack.translatesAutoresizingMaskIntoConstraints = false
 
@@ -203,17 +203,19 @@ class FMPMyPatsViewController: FMPViewController {
     var leftStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
-        stack.distribution = .equalSpacing
+        stack.distribution = .fillEqually
         stack.spacing = 20
         stack.translatesAutoresizingMaskIntoConstraints = false
 
         return stack
     }()
 
+    private lazy var addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addButtonTapped))
+
     override func initController() {
         super.initController()
 
-        self.rightStackView.addSubviews([
+        self.leftStackView.addArrangedSubviews([
             nameLabel,
             dateOfBirthLabel,
             typeLabel,
@@ -224,7 +226,7 @@ class FMPMyPatsViewController: FMPViewController {
             chipLabel
         ])
 
-        self.leftStackView.addSubviews([
+        self.rightStackView.addArrangedSubviews([
             nameLabelDescription,
             dateOfBirthLabelDescription,
             typeLabelDescription,
@@ -238,8 +240,11 @@ class FMPMyPatsViewController: FMPViewController {
         setDescriptionToLabelDescription()
 
         self.view.backgroundColor = .systemRed
-        self.mainView.addSubviews([patView, rightStackView, leftStackView])
+        self.view.addSubview(patView)
+        self.mainView.addSubviews([ rightStackView, leftStackView])
         self.patView.addSubviews([petViewLeftButton, petViewRightButton])
+
+        self.navigationItem.setRightBarButton(self.addButton, animated: true)
 
     }
 
@@ -247,6 +252,7 @@ class FMPMyPatsViewController: FMPViewController {
 
         self.patView.snp.makeConstraints { (make) in
             make.top.left.right.equalTo(self.view.safeAreaLayoutGuide)
+            make.bottom.equalTo(self.mainView.snp.top)
             make.height.equalTo(self.view.bounds.height / 4)
         }
 
@@ -261,14 +267,20 @@ class FMPMyPatsViewController: FMPViewController {
         }
 
         self.leftStackView.snp.makeConstraints { (make) in
-            make.top.equalTo(self.patView.snp.bottom).offset(30)
+            make.top.equalTo(self.mainView.snp.top).offset(20)
             make.left.equalToSuperview().inset(30)
+            make.bottom.equalToSuperview()
+//            make.height.equalTo(500)
         }
 
         self.rightStackView.snp.makeConstraints { (make) in
-            make.top.equalTo(self.patView.snp.bottom).offset(30)
-            make.left.equalTo(self.leftStackView.snp.right).inset(0)
-            make.right.equalToSuperview().offset(30)
+            make.top.equalTo(self.mainView.snp.top).offset(20)
+            make.left.equalTo(self.leftStackView.snp.right).offset(70)
+            make.right.equalToSuperview().inset(30)
+            make.bottom.equalToSuperview()
+
+//            make.height.equalTo(500)
+
         }
 
             super.updateViewConstraints()
@@ -308,6 +320,10 @@ class FMPMyPatsViewController: FMPViewController {
             self.view.backgroundColor = .white
             flag.toggle()
         }
+    }
+
+    @objc private func addButtonTapped() {
+        self.navigationController?.present(FMPAddPatViewController(), animated: true)
     }
 
 }

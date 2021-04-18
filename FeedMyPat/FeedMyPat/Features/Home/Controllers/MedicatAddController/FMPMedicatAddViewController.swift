@@ -126,15 +126,13 @@ class FMPMedicatAddViewController: FMPViewController {
             self.typeTextFieldDescription,
             self.dateLabel,
             self.dateTextFieldDescription
-//            self.datePicker
         ])
-//        self.dateTextFieldDescription.inputView = self.datePicker
     }
 
     override func updateViewConstraints() {
         self.nameLabel.snp.updateConstraints { (make) in
-            make.top.equalTo(self.mainView).inset(50)
-            make.left.equalTo(self.mainView).inset(15)
+            make.top.equalToSuperview().inset(50)
+            make.left.equalToSuperview().inset(15)
 
         }
 
@@ -174,6 +172,7 @@ class FMPMedicatAddViewController: FMPViewController {
 
         super.updateViewConstraints()
     }
+
 
     @objc private func imageViewButtonTapped() {
         // выбор фото из галллереи

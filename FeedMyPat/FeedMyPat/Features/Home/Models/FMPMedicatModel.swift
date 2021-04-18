@@ -8,7 +8,6 @@
 import UIKit
 
 class FMPMedicatModel {
-    var flag: Bool?
 
     var imageView: UIImageView?
     var nameLabel: String
@@ -17,15 +16,13 @@ class FMPMedicatModel {
     var dateLabel: String
     var dateDescriptionLabel: Date
 
-    init(flag: Bool,
+    init(
          imageView: UIImageView?,
          nameLabel: String = "Vaccine",
-         typeLabel: String = "Type",
+         typeLabel: String = "Type:",
          typeDescriptionLabel: String,
-         dateLabel: String = "Date",
+         dateLabel: String = "Date:",
          dateDescriptionLabel: Date) {
-
-        self.flag = flag  // testing delite after
 
         self.imageView = imageView
         self.nameLabel = nameLabel
