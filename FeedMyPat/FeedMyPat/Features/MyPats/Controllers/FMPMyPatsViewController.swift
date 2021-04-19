@@ -12,6 +12,8 @@ class FMPMyPatsViewController: FMPViewController {
 
     var flag: Bool = true
 
+    lazy var patModel: [FMPPatModel] = []
+
     let patView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -51,6 +53,7 @@ class FMPMyPatsViewController: FMPViewController {
         label.textColor = .systemGray2
         label.font = UIFont.systemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Name:"
 
         return label
     }()
@@ -69,7 +72,7 @@ class FMPMyPatsViewController: FMPViewController {
         label.textColor = .systemGray2
         label.font = UIFont.systemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
-
+        label.text = "Date of Birth:"
         return label
     }()
 
@@ -87,7 +90,7 @@ class FMPMyPatsViewController: FMPViewController {
         label.textColor = .systemGray2
         label.font = UIFont.systemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
-
+        label.text = "Type:"
         return label
     }()
 
@@ -105,7 +108,7 @@ class FMPMyPatsViewController: FMPViewController {
         label.textColor = .systemGray2
         label.font = UIFont.systemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
-
+        label.text = "Breed:"
         return label
     }()
 
@@ -123,7 +126,7 @@ class FMPMyPatsViewController: FMPViewController {
         label.textColor = .systemGray2
         label.font = UIFont.systemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
-
+        label.text = "Gender:"
         return label
     }()
 
@@ -141,7 +144,7 @@ class FMPMyPatsViewController: FMPViewController {
         label.textColor = .systemGray2
         label.font = UIFont.systemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
-
+        label.text = "Color:"
         return label
     }()
 
@@ -159,7 +162,7 @@ class FMPMyPatsViewController: FMPViewController {
         label.textColor = .systemGray2
         label.font = UIFont.systemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
-
+        label.text = "Sterilization:"
         return label
     }()
 
@@ -177,7 +180,7 @@ class FMPMyPatsViewController: FMPViewController {
         label.textColor = .systemGray2
         label.font = UIFont.systemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
-
+        label.text = "Chip:"
         return label
     }()
 
@@ -237,7 +240,7 @@ class FMPMyPatsViewController: FMPViewController {
             chipLabelDescription
         ])
 
-//        setDescriptionToLabelDescription()
+//        self.addPatController.delegate = self.myPatsController
 
         self.view.backgroundColor = .systemRed
         self.view.addSubview(patView)
@@ -286,17 +289,6 @@ class FMPMyPatsViewController: FMPViewController {
             super.updateViewConstraints()
     }
 
-    private func setDescriptionToLabel() {
-        nameLabel.text = "Name:"
-        dateOfBirthLabel.text = "Date of Birth:"
-        typeLabel.text = "Type:"
-        breedLabel.text = "Breed:"
-        genderLabel.text = "Gender:"
-        colorLabel.text = "Color:"
-        sterilizationLabel.text = "Sterilization:"
-        chipLabel.text = "Chip:"
-    }
-
     // исправить!
 
     private func setDescriptionToLabelDescription() {
@@ -309,7 +301,6 @@ class FMPMyPatsViewController: FMPViewController {
         sterilizationLabelDescription.text = "Yes"
         chipLabelDescription.text = "none"
 
-        setDescriptionToLabel()
     }
 
     @objc private func leftRightButtonTapped() {
@@ -326,4 +317,28 @@ class FMPMyPatsViewController: FMPViewController {
         self.navigationController?.present(FMPAddPatViewController(), animated: true)
     }
 
+}
+
+extension FMPMyPatsViewController: FMPAddPatViewControllerDelegate {
+
+
+
+    func passData(name: String,
+                  dateOfBirth: String,
+                  type: String,
+                  breed: String,
+                  gender: String,
+                  color: String,
+                  sterilization: String,
+                  chip: String) {
+        patModel.append(FMPPatModel.init(
+                            nameLabelDescription: name,
+                            dateOfBirthLabelDescription: dateOfBirth,
+                            typeLabelDescription: type,
+                            breedLabelDescription: breed,
+                            genderLabelDescription: gender,
+                            colorLabelDescription: color,
+                            sterilizationLabelDescription: sterilization,
+                            chipLabelDescription: chip))
+    }
 }

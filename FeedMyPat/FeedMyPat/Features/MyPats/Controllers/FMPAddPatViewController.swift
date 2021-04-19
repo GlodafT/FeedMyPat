@@ -8,9 +8,22 @@
 import UIKit
 import SnapKit
 
+protocol FMPAddPatViewControllerDelegate: class {
+    func passData(name: String,
+                  dateOfBirth: String,
+                  type: String,
+                  breed: String,
+                  gender: String,
+                  color: String,
+                  sterilization: String,
+                  chip: String)
+}
+
 class FMPAddPatViewController: FMPViewController {
 
-    var nameLabel: UILabel = {
+    weak var delegate: FMPAddPatViewControllerDelegate?
+
+    private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemGray2
         label.font = UIFont.systemFont(ofSize: 20)
@@ -20,7 +33,7 @@ class FMPAddPatViewController: FMPViewController {
         return label
     }()
 
-    var nameTextFieldDescription: UITextField = {
+    private lazy var nameTextFieldDescription: UITextField = {
         let text = UITextField()
         text.backgroundColor = .systemGray4
         text.textColor = .systemGreen
@@ -32,7 +45,7 @@ class FMPAddPatViewController: FMPViewController {
         return text
     }()
 
-    var dateOfBirthLabel: UILabel = {
+    private lazy var dateOfBirthLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemGray2
         label.font = UIFont.systemFont(ofSize: 20)
@@ -42,29 +55,31 @@ class FMPAddPatViewController: FMPViewController {
         return label
     }()
 
-    var dateOfBirthTextFieldDescription: UITextField = {
+    private lazy var dateOfBirthTextFieldDescription: UITextField = {
         let text = UITextField()
         text.backgroundColor = .systemGray4
         text.textColor = .systemGreen
         text.tintColor = .systemGreen
         text.font = UIFont.systemFont(ofSize: 18)
         text.borderStyle = .roundedRect
+        text.inputView = self.datePicker
+        text.inputAccessoryView = self.doneToollBar
         text.translatesAutoresizingMaskIntoConstraints = false
 
         return text
     }()
 
-    var typeLabel: UILabel = {
+    private lazy var typeLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemGray2
         label.font = UIFont.systemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Type"
+        label.text = "Type:"
 
         return label
     }()
 
-    var typeTextFieldDescription: UITextField = {
+    private lazy var typeTextFieldDescription: UITextField = {
         let text = UITextField()
         text.backgroundColor = .systemGray4
         text.textColor = .systemGreen
@@ -76,7 +91,7 @@ class FMPAddPatViewController: FMPViewController {
         return text
     }()
 
-    var breedLabel: UILabel = {
+    private lazy var breedLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemGray2
         label.font = UIFont.systemFont(ofSize: 20)
@@ -86,7 +101,7 @@ class FMPAddPatViewController: FMPViewController {
         return label
     }()
 
-    var breedTextFieldDescription: UITextField = {
+    private lazy var breedTextFieldDescription: UITextField = {
         let text = UITextField()
         text.backgroundColor = .systemGray4
         text.textColor = .systemGreen
@@ -98,7 +113,7 @@ class FMPAddPatViewController: FMPViewController {
         return text
     }()
 
-    var genderLabel: UILabel = {
+    private lazy var genderLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemGray2
         label.font = UIFont.systemFont(ofSize: 20)
@@ -109,9 +124,9 @@ class FMPAddPatViewController: FMPViewController {
     }()
 
     // ставить значения от сегмента
-    var segments = ["Male:", "Female:"]
+    private lazy var segments = ["Male:", "Female:"]
 
-    var genderSegmentedControlDescription: UISegmentedControl = {
+    private lazy var genderSegmentedControlDescription: UISegmentedControl = {
         var segments = ["Male:", "Female:"]
         let control = UISegmentedControl(items: segments )
         control.selectedSegmentTintColor = .systemGreen
@@ -120,7 +135,7 @@ class FMPAddPatViewController: FMPViewController {
         return control
     }()
 
-    var colorLabel: UILabel = {
+    private lazy var colorLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemGray2
         label.font = UIFont.systemFont(ofSize: 20)
@@ -130,7 +145,7 @@ class FMPAddPatViewController: FMPViewController {
         return label
     }()
 
-    var colorTextFieldDescription: UITextField = {
+    private lazy var colorTextFieldDescription: UITextField = {
         let text = UITextField()
         text.backgroundColor = .systemGray4
         text.textColor = .systemGreen
@@ -142,7 +157,7 @@ class FMPAddPatViewController: FMPViewController {
         return text
     }()
 
-    var sterilizationLabel: UILabel = {
+    private lazy var sterilizationLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemGray2
         label.font = UIFont.systemFont(ofSize: 20)
@@ -152,7 +167,7 @@ class FMPAddPatViewController: FMPViewController {
         return label
     }()
 
-    var sterilizationSwitchDescription: UISwitch = {
+    private lazy var sterilizationSwitchDescription: UISwitch = {
         let swich = UISwitch()
         swich.onTintColor = .systemGreen
         swich.translatesAutoresizingMaskIntoConstraints = false
@@ -160,7 +175,7 @@ class FMPAddPatViewController: FMPViewController {
         return swich
     }()
 
-    var chipLabel: UILabel = {
+    private lazy var chipLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemGray2
         label.font = UIFont.systemFont(ofSize: 20)
@@ -170,7 +185,7 @@ class FMPAddPatViewController: FMPViewController {
         return label
     }()
 
-    var chipTextFieldDescription: UITextField = {
+    private lazy var chipTextFieldDescription: UITextField = {
         let text = UITextField()
         text.backgroundColor = .systemGray4
         text.textColor = .systemGreen
@@ -180,6 +195,30 @@ class FMPAddPatViewController: FMPViewController {
         text.translatesAutoresizingMaskIntoConstraints = false
 
         return text
+    }()
+
+    private lazy var datePicker: UIDatePicker = {
+        let picker = UIDatePicker()
+        picker.datePickerMode = .date
+        picker.preferredDatePickerStyle = .wheels
+        picker.maximumDate = Date()
+        picker.translatesAutoresizingMaskIntoConstraints = false
+
+        picker.addTarget(self, action: #selector(self.valueChanged), for: .valueChanged)
+
+        return picker
+    }()
+
+    private lazy var doneToollBar: UIToolbar = {
+        let toolbar = UIToolbar()
+        toolbar.translatesAutoresizingMaskIntoConstraints = false
+        toolbar.items = [
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneTapped))
+        ]
+        toolbar.sizeToFit()
+
+        return toolbar
     }()
 
     override func initController() {
@@ -207,6 +246,32 @@ class FMPAddPatViewController: FMPViewController {
 
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        guard nameTextFieldDescription.text != "",
+              dateOfBirthTextFieldDescription.text != "",
+              typeTextFieldDescription.text != "",
+              breedTextFieldDescription.text != "",
+              genderSegmentedControlDescription.isSelected,
+              colorTextFieldDescription.text != "",
+              chipTextFieldDescription.text != "" else {return}
+
+        /// ?????????
+
+        delegate?.passData(name: nameTextFieldDescription.text ?? "error",
+                           dateOfBirth: dateOfBirthTextFieldDescription.text ?? "error",
+                           type: typeTextFieldDescription.text ?? "error",
+                           breed: breedTextFieldDescription.text ?? "error",
+                           gender: genderSegmentedControlDescription.description,
+                           color: colorTextFieldDescription.text ?? "error",
+                           sterilization: sterilizationToString(swich: sterilizationSwitchDescription),
+                           chip: chipTextFieldDescription.text ?? "error")
+
+    }
+
+
+
     override func updateViewConstraints() {
 
         self.nameLabel.snp.makeConstraints { (make) in
@@ -223,7 +288,7 @@ class FMPAddPatViewController: FMPViewController {
         self.dateOfBirthLabel.snp.makeConstraints { (make) in
             make.top.equalTo(self.nameTextFieldDescription.snp.bottom).offset(5)
             make.left.equalToSuperview().inset(30)
-//            make.right.equalToSuperview().offset(30)
+            //            make.right.equalToSuperview().offset(30)
 
         }
 
@@ -302,15 +367,20 @@ class FMPAddPatViewController: FMPViewController {
         super.updateViewConstraints()
     }
 
-    private func setDescriptionToLabel() {
-        nameLabel.text = "Name:"
-        dateOfBirthLabel.text = "Date of Birth:"
-        typeLabel.text = "Type:"
-        breedLabel.text = "Breed:"
-        genderLabel.text = "Gender:"
-        colorLabel.text = "Color:"
-        sterilizationLabel.text = "Sterilization:"
-        chipLabel.text = "Chip:"
+    func sterilizationToString(swich: UISwitch) -> String {
+        if swich.isOn {
+            return "Yes"
+        } else {
+            return "No"
+        }
+    }
+
+    @objc private func valueChanged(sender: UIDatePicker) {
+        self.dateOfBirthTextFieldDescription.text = sender.date.toString()
+    }
+
+    @objc private func doneTapped() {
+        self.dateOfBirthTextFieldDescription.resignFirstResponder()
     }
 
 }

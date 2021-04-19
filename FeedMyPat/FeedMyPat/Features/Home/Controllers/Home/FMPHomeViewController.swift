@@ -240,13 +240,11 @@ class FMPHomeViewController: UIViewController {
     }
 
     @objc private func documentsButtonTapped() {
-        // поменять на документы
-        self.navigationController?.pushViewController(FMPAddPatViewController(), animated: true)
+        self.navigationController?.pushViewController(FMPDocumentsViewController(), animated: true)
     }
 
     @objc private func certificateButtonTapped() {
-        // поменять на сертификат
-        self.navigationController?.pushViewController(FMPMedicatAddViewController(), animated: true)
+        self.navigationController?.pushViewController(FMPCertificateViewController(), animated: true)
     }
 
 }
