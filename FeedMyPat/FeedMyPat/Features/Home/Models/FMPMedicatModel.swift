@@ -17,7 +17,7 @@ class FMPMedicatModel {
     var dateDescriptionLabel: Date
 
     init(
-         imageView: UIImageView?,
+         imageView: UIImageView? = nil,
          nameLabel: String = "Vaccine",
          typeLabel: String = "Type:",
          typeDescriptionLabel: String,

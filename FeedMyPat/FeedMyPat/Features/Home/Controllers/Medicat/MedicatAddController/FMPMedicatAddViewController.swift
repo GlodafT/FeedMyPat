@@ -128,6 +128,10 @@ class FMPMedicatAddViewController: FMPViewController {
             self.dateLabel,
             self.dateTextFieldDescription
         ])
+        let recognizer = UITapGestureRecognizer()
+        recognizer.addTarget(self, action: #selector(tapRecognizer))
+
+        self.mainView.addGestureRecognizer(recognizer)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -196,5 +200,10 @@ class FMPMedicatAddViewController: FMPViewController {
 
     @objc private func doneTapped() {
         self.dateTextFieldDescription.resignFirstResponder()
+    }
+
+    @objc private func tapRecognizer() {
+        self.mainView.endEditing(true)
+        resignFirstResponder()
     }
 }

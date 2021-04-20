@@ -5,24 +5,43 @@
 //  Created by Mikita Igonin on 1.04.21.
 //
 
-import UIKit
+import SnapKit
+import MapKit
 
-class FMPMapViewController: UIViewController {
+class FMPMapViewController: FMPViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    // MARK: - gui variables
 
-        self.view.backgroundColor = .systemGreen
-        // Do any additional setup after loading the view.
+    private lazy var mapView: MKMapView = {
+        let view = MKMapView()
+        view.delegate = self
+
+        return view
+    }()
+
+    override func initController() {
+        super.initController()
+        self.setContentScrolling(isEnabled: false)
+
+        self.controllerTitle = "Map"
+
+        self.view.addSubview(self.mapView)
+
+        self.mapView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    init() {
+        super.init(nibName: nil, bundle: nil)
     }
-    */
 
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+
+}
+
+extension FMPMapViewController: MKMapViewDelegate {
+    
 }

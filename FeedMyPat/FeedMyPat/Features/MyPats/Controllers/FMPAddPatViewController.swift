@@ -9,19 +9,30 @@ import UIKit
 import SnapKit
 
 protocol FMPAddPatViewControllerDelegate: class {
-    func passData(name: String,
-                  dateOfBirth: String,
-                  type: String,
-                  breed: String,
-                  gender: String,
-                  color: String,
-                  sterilization: String,
-                  chip: String)
+    func passData(model: FMPPatModel)
 }
 
 class FMPAddPatViewController: FMPViewController {
 
+    var data: [String]?
+
+    func set(data: [String]) {
+        self.data = data
+    }
+
     weak var delegate: FMPAddPatViewControllerDelegate?
+
+    private lazy var saveButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(" Save ", for: UIControl.State())
+        button.setTitleColor(.systemGreen, for: UIControl.State())
+        button.backgroundColor = .systemGray5
+        button.layer.cornerRadius = 12
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
+
+        return button
+    }()
 
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
@@ -124,10 +135,10 @@ class FMPAddPatViewController: FMPViewController {
     }()
 
     // ставить значения от сегмента
-    private lazy var segments = ["Male:", "Female:"]
+//    private lazy var segments = ["Male:", "Female:"]
 
     private lazy var genderSegmentedControlDescription: UISegmentedControl = {
-        var segments = ["Male:", "Female:"]
+        var segments = ["Male", "Female"]
         let control = UISegmentedControl(items: segments )
         control.selectedSegmentTintColor = .systemGreen
         control.translatesAutoresizingMaskIntoConstraints = false
@@ -226,6 +237,7 @@ class FMPAddPatViewController: FMPViewController {
         self.setContentScrolling(isEnabled: false)
 
         self.mainView.addSubviews([
+            self.saveButton,
             self.nameLabel,
             self.nameTextFieldDescription,
             self.dateOfBirthLabel,
@@ -244,38 +256,21 @@ class FMPAddPatViewController: FMPViewController {
             self.chipTextFieldDescription
         ])
 
-    }
+        let recognizer = UITapGestureRecognizer()
+        recognizer.addTarget(self, action: #selector(tapRecognizer))
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
-        guard nameTextFieldDescription.text != "",
-              dateOfBirthTextFieldDescription.text != "",
-              typeTextFieldDescription.text != "",
-              breedTextFieldDescription.text != "",
-              genderSegmentedControlDescription.isSelected,
-              colorTextFieldDescription.text != "",
-              chipTextFieldDescription.text != "" else {return}
-
-        /// ?????????
-
-        delegate?.passData(name: nameTextFieldDescription.text ?? "error",
-                           dateOfBirth: dateOfBirthTextFieldDescription.text ?? "error",
-                           type: typeTextFieldDescription.text ?? "error",
-                           breed: breedTextFieldDescription.text ?? "error",
-                           gender: genderSegmentedControlDescription.description,
-                           color: colorTextFieldDescription.text ?? "error",
-                           sterilization: sterilizationToString(swich: sterilizationSwitchDescription),
-                           chip: chipTextFieldDescription.text ?? "error")
+        self.mainView.addGestureRecognizer(recognizer)
 
     }
-
-
 
     override func updateViewConstraints() {
+        self.saveButton.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().inset(15)
+            make.right.equalToSuperview().inset(20)
+        }
 
         self.nameLabel.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().inset(50)
+            make.top.equalTo(self.saveButton.snp.bottom).offset(20)
             make.left.right.equalToSuperview().inset(30)
         }
 
@@ -288,14 +283,13 @@ class FMPAddPatViewController: FMPViewController {
         self.dateOfBirthLabel.snp.makeConstraints { (make) in
             make.top.equalTo(self.nameTextFieldDescription.snp.bottom).offset(5)
             make.left.equalToSuperview().inset(30)
-            //            make.right.equalToSuperview().offset(30)
-
         }
 
         self.dateOfBirthTextFieldDescription.snp.makeConstraints { (make) in
             make.top.equalTo(self.nameTextFieldDescription.snp.bottom).offset(5)
-            make.left.greaterThanOrEqualTo(self.dateOfBirthLabel.snp.right).inset(5)
+            make.left.greaterThanOrEqualTo(self.dateOfBirthLabel.snp.right)
             make.right.equalToSuperview().inset(30)
+            make.width.equalTo(105)
         }
 
         self.typeLabel.snp.makeConstraints { (make) in
@@ -375,6 +369,27 @@ class FMPAddPatViewController: FMPViewController {
         }
     }
 
+    @objc private func saveButtonTapped() {
+        guard nameTextFieldDescription.text != "",
+              dateOfBirthTextFieldDescription.text != "",
+              typeTextFieldDescription.text != "",
+              breedTextFieldDescription.text != "",
+              genderSegmentedControlDescription.isEnabled,
+              colorTextFieldDescription.text != "",
+              chipTextFieldDescription.text != "" else {return}
+
+        /// ?????????
+        let patData: FMPPatModel = FMPPatModel.init(nameLabelDescription: nameTextFieldDescription.text ?? "error",
+                                                    dateOfBirthLabelDescription: dateOfBirthTextFieldDescription.text ?? "error",
+                                                    typeLabelDescription: typeTextFieldDescription.text ?? "error",
+                                                    breedLabelDescription: breedTextFieldDescription.text ?? "error",
+                                                    genderLabelDescription: genderSegmentedControlDescription.description,
+                                                    colorLabelDescription: colorTextFieldDescription.text ?? "error",
+                                                    sterilizationLabelDescription: sterilizationToString(swich: sterilizationSwitchDescription),
+                                                    chipLabelDescription: chipTextFieldDescription.text ?? "error")
+        delegate?.passData(model: patData)
+    }
+
     @objc private func valueChanged(sender: UIDatePicker) {
         self.dateOfBirthTextFieldDescription.text = sender.date.toString()
     }
@@ -383,4 +398,9 @@ class FMPAddPatViewController: FMPViewController {
         self.dateOfBirthTextFieldDescription.resignFirstResponder()
     }
 
+    @objc private func tapRecognizer() {
+        self.mainView.endEditing(true)
+        resignFirstResponder()
+
+}
 }

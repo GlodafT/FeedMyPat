@@ -11,9 +11,11 @@ class FMPMedicatViewController: FMPViewController {
 
     // MARK: - gui variables
 
-    private lazy var isEditButtonTapped: Bool = false
+    private var isEditButtonTapped: Bool = false
 
-    lazy var models: [FMPMedicatModel] = [] {
+    lazy var models: [FMPMedicatModel] = [FMPMedicatModel(imageView: nil, typeDescriptionLabel: "asdsad", dateDescriptionLabel: Date()),
+                                          FMPMedicatModel(imageView: nil, typeDescriptionLabel: "asdsad", dateDescriptionLabel: Date()),
+                                          FMPMedicatModel(imageView: nil, typeDescriptionLabel: "asdsad", dateDescriptionLabel: Date())] {
         didSet {
             self.collectionView.reloadData()
 //            self.setNeedsUpdateConstraints()
@@ -64,18 +66,6 @@ class FMPMedicatViewController: FMPViewController {
 
     }
 
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        self.view.backgroundColor = .blue
-//        self.navigationController?.navigationBar.isHidden = false
-//    }
-//
-//    override func viewDidDisappear(_ animated: Bool) {
-//        super.viewDidDisappear(animated)
-//        self.navigationController?.navigationBar.isHidden = true
-//
-//    }
-
     @objc private func editButtonTapped() {
         self.isEditButtonTapped.toggle()
         if self.isEditButtonTapped {
@@ -113,8 +103,10 @@ extension FMPMedicatViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.view.backgroundColor = .systemTeal
         guard isEditButtonTapped else { return }
-        self.models.remove(at: indexPath.row)
         self.collectionView.deleteItems(at: [indexPath])
+        self.models.remove(at: indexPath.row)
+
+//        self.collectionView.reloadData()
     }
 }
 

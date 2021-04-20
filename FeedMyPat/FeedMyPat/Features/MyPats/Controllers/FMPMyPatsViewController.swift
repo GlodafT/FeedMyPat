@@ -10,9 +10,35 @@ import SnapKit
 
 class FMPMyPatsViewController: FMPViewController {
 
+//    struct Animal {
+//        let name: String
+//        let id: UUID
+//
+//        let document: [Document]
+//        let vaccine: [Vaccine]
+//    }
+//
+//    struct Document {
+//        let name: String
+//        let date: Date
+//    }
+//
+//    struct Vaccine {
+//        let name: String
+//        let date: Date
+//    }
+
     var flag: Bool = true
 
-    lazy var patModel: [FMPPatModel] = []
+//    private lazy var addPatId: UUID = UUID()
+
+    lazy var patModel = FMPMainAnimalData.animals
+
+//    lazy var patModel: [Animal] = []
+//
+//    func set(vaccines: [Vaccine]) {
+//
+//    }
 
     let patView: UIView = {
         let view = UIView()
@@ -278,7 +304,7 @@ class FMPMyPatsViewController: FMPViewController {
 
         self.rightStackView.snp.makeConstraints { (make) in
             make.top.equalTo(self.mainView.snp.top).offset(20)
-            make.left.greaterThanOrEqualTo(self.leftStackView.snp.right).offset(10)
+            make.left.greaterThanOrEqualTo(self.leftStackView.snp.right)
             make.right.equalToSuperview().inset(30)
 //            make.bottom.equalToSuperview()
 
@@ -291,16 +317,19 @@ class FMPMyPatsViewController: FMPViewController {
 
     // исправить!
 
-    private func setDescriptionToLabelDescription() {
-        nameLabelDescription.text = "Felix"
-        dateOfBirthLabelDescription.text = "15.10.2012"
-        typeLabelDescription.text = "cat"
-        breedLabelDescription.text = "none"
-        genderLabelDescription.text = "mail"
-        colorLabelDescription.text = "Black & White"
-        sterilizationLabelDescription.text = "Yes"
-        chipLabelDescription.text = "none"
-
+    private func setDescriptionToLabelDescription(setId: UUID) {
+        for pat in patModel {
+            if pat.id == setId {
+                nameLabelDescription.text = pat.nameLabelDescription
+                dateOfBirthLabelDescription.text = pat.dateOfBirthLabelDescription
+                typeLabelDescription.text = pat.typeLabelDescription
+                breedLabelDescription.text = pat.breedLabelDescription
+                genderLabelDescription.text = pat.genderLabelDescription
+                colorLabelDescription.text = pat.colorLabelDescription
+                sterilizationLabelDescription.text = pat.sterilizationLabelDescription
+                chipLabelDescription.text = pat.chipLabelDescription
+            }
+        }
     }
 
     @objc private func leftRightButtonTapped() {
@@ -314,31 +343,19 @@ class FMPMyPatsViewController: FMPViewController {
     }
 
     @objc private func addButtonTapped() {
-        self.navigationController?.present(FMPAddPatViewController(), animated: true)
+        let controller = FMPAddPatViewController()
+        controller.delegate = self
+        controller.set(data: [""])
+        self.navigationController?.present(controller, animated: true)
     }
 
 }
 
 extension FMPMyPatsViewController: FMPAddPatViewControllerDelegate {
-
-
-
-    func passData(name: String,
-                  dateOfBirth: String,
-                  type: String,
-                  breed: String,
-                  gender: String,
-                  color: String,
-                  sterilization: String,
-                  chip: String) {
-        patModel.append(FMPPatModel.init(
-                            nameLabelDescription: name,
-                            dateOfBirthLabelDescription: dateOfBirth,
-                            typeLabelDescription: type,
-                            breedLabelDescription: breed,
-                            genderLabelDescription: gender,
-                            colorLabelDescription: color,
-                            sterilizationLabelDescription: sterilization,
-                            chipLabelDescription: chip))
+    func passData(model: FMPPatModel) {
+//        self.addPatId = model.id
+        patModel.append(model)
+        self.setDescriptionToLabelDescription(setId: model.id)
     }
+
 }

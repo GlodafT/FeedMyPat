@@ -72,16 +72,8 @@ class FMPViewController: UIViewController {
 
         self.setContentScrolling(isEnabled: true)
 
-        let recognizer = UITapGestureRecognizer()
-        recognizer.addTarget(self, action: #selector(tapRecognizer))
-
-        self.mainView.addGestureRecognizer(recognizer)
     }
 
     func initController() {}
 
-    @objc private func tapRecognizer() {
-        self.mainView.endEditing(true)
-        resignFirstResponder()
-    }
 }

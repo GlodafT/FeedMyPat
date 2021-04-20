@@ -15,8 +15,8 @@
 		1021EED9261617BC00EB6E9D /* FMPTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1021EED8261617BC00EB6E9D /* FMPTabBarViewController.swift */; };
 		1021EEFB261A150500EB6E9D /* FMPMedicatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1021EEFA261A150500EB6E9D /* FMPMedicatViewController.swift */; };
 		105DCA00262CB44400343354 /* FMPDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 105DC9FE262CB44300343354 /* FMPDataModel.xcdatamodeld */; };
-		10610C03262CC5BB00BCAB55 /* FMPMainData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C02262CC5BB00BCAB55 /* FMPMainData.swift */; };
 		10610C06262D6D1F00BCAB55 /* FMPPatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C05262D6D1E00BCAB55 /* FMPPatModel.swift */; };
+		10610C10262EE34200BCAB55 /* FMPMainAnimalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C0F262EE34200BCAB55 /* FMPMainAnimalData.swift */; };
 		10E2E9A72614C773003BBE77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E2E9A62614C773003BBE77 /* AppDelegate.swift */; };
 		10E2E9A92614C773003BBE77 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E2E9A82614C773003BBE77 /* SceneDelegate.swift */; };
 		10E2E9AB2614C773003BBE77 /* FMPMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E2E9AA2614C773003BBE77 /* FMPMainViewController.swift */; };
@@ -46,8 +46,8 @@
 		1021EED8261617BC00EB6E9D /* FMPTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPTabBarViewController.swift; sourceTree = "<group>"; };
 		1021EEFA261A150500EB6E9D /* FMPMedicatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPMedicatViewController.swift; sourceTree = "<group>"; };
 		105DC9FF262CB44300343354 /* FMPDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FMPDataModel.xcdatamodel; sourceTree = "<group>"; };
-		10610C02262CC5BB00BCAB55 /* FMPMainData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPMainData.swift; sourceTree = "<group>"; };
 		10610C05262D6D1E00BCAB55 /* FMPPatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPPatModel.swift; sourceTree = "<group>"; };
+		10610C0F262EE34200BCAB55 /* FMPMainAnimalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPMainAnimalData.swift; sourceTree = "<group>"; };
 		10E2E9A32614C773003BBE77 /* FeedMyPat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedMyPat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10E2E9A62614C773003BBE77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10E2E9A82614C773003BBE77 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -268,7 +268,7 @@
 				10E2E9D126150073003BBE77 /* InDeveloping */,
 				10E2E9CF2615004F003BBE77 /* Map */,
 				10E2E9D026150061003BBE77 /* Settings */,
-				10610C02262CC5BB00BCAB55 /* FMPMainData.swift */,
+				10610C0F262EE34200BCAB55 /* FMPMainAnimalData.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -532,8 +532,8 @@
 				10E60FE1261B4201008BF60F /* FMPVaccineViewController.swift in Sources */,
 				1021EED9261617BC00EB6E9D /* FMPTabBarViewController.swift in Sources */,
 				10610C06262D6D1F00BCAB55 /* FMPPatModel.swift in Sources */,
+				10610C10262EE34200BCAB55 /* FMPMainAnimalData.swift in Sources */,
 				1021EEFB261A150500EB6E9D /* FMPMedicatViewController.swift in Sources */,
-				10610C03262CC5BB00BCAB55 /* FMPMainData.swift in Sources */,
 				1021EECC261601FF00EB6E9D /* FMPMapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

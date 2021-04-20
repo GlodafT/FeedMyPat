@@ -8,6 +8,10 @@
 import UIKit
 
 class FMPPatModel {
+
+    // MARK: - gui variables
+
+    var id: UUID = UUID()
     var nameLabelDescription: String
     var dateOfBirthLabelDescription: String
     var typeLabelDescription: String
@@ -17,6 +21,10 @@ class FMPPatModel {
     var sterilizationLabelDescription: String
     var chipLabelDescription: String
 
+    var mediCatModel: [FMPMedicatModel] = []
+
+    // MARK: - init
+
     init(nameLabelDescription: String,
          dateOfBirthLabelDescription: String,
          typeLabelDescription: String,
@@ -25,7 +33,7 @@ class FMPPatModel {
          colorLabelDescription: String,
          sterilizationLabelDescription: String,
          chipLabelDescription: String) {
-        
+
         self.nameLabelDescription = nameLabelDescription
         self.dateOfBirthLabelDescription = dateOfBirthLabelDescription
         self.typeLabelDescription = typeLabelDescription
