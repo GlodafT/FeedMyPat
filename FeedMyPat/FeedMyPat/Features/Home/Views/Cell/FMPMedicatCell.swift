@@ -154,7 +154,7 @@ class FMPMedicatCell: UICollectionViewCell {
         self.typeLabel.text = medicatModel.typeLabel
         self.dateLabel.text = medicatModel.dateLabel
         self.typeDescriptionLabel.text = medicatModel.typeDescriptionLabel
-        self.dateDescriptionLabel.text = medicatModel.dateDescriptionLabel.toString()
+        self.dateDescriptionLabel.text = medicatModel.dateDescriptionLabel
 
         self.setNeedsUpdateConstraints()
     }

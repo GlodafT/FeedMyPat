@@ -126,7 +126,7 @@ class FMPHomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = .init(white: 15, alpha: 1)
+        self.view.backgroundColor = .init(white: 0.9, alpha: 1)
 
 //        self.navigationController?.navigationBar.isHidden = true
 
@@ -138,12 +138,8 @@ class FMPHomeViewController: UIViewController {
         self.patView.addSubview(petViewLeftButton)
         self.patView.addSubview(petViewRightButton)
 
+        self.isExistAnimal()
     }
-
-//    override func viewDidDisappear(_ animated: Bool) {
-//        super.viewDidDisappear(animated)
-//        self.navigationController?.navigationBar.isHidden = false
-//    }
 
     override func updateViewConstraints() {
         let boundsOfButtons = self.view.bounds.width / 5
@@ -220,6 +216,33 @@ class FMPHomeViewController: UIViewController {
 
         super.updateViewConstraints()
     }
+    private func isExistAnimal() {
+        if FMPMainAnimalData.sh.animals.isEmpty {
+            self.medicatButton.backgroundColor = .init(white: 1, alpha: 0.7)
+            self.vaccineButton.backgroundColor = .init(white: 1, alpha: 0.7)
+            self.documentsButton.backgroundColor = .init(white: 1, alpha: 0.7)
+            self.certificateButton.backgroundColor = .init(white: 1, alpha: 0.7)
+
+            var alert: UIAlertController {
+                let alert = UIAlertController(title: "Pls Add Animal))",
+                                              message: "Smthnk about adding animal",
+                                              preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK",
+                                              style: .default,
+                                              handler: {_ in
+                                                self.navigationController?.present(FMPAddPatViewController(), animated: true)
+                                              }))
+                alert.addAction(UIAlertAction(title: "Cancel",
+                                              style: .destructive,
+                                              handler: nil))
+
+                return alert
+            }
+            self.present(alert, animated: true)
+        } else {
+            return
+        }
+    }
 
     @objc private func leftRightButtonTapped() {
         if flag {
@@ -232,18 +255,24 @@ class FMPHomeViewController: UIViewController {
     }
 
     @objc private func medicatButtonTapped() {
-        self.navigationController?.pushViewController(FMPMedicatViewController(), animated: true)
+        guard !FMPMainAnimalData.sh.animals.isEmpty else { isExistAnimal(); return }
+        let controller = FMPMedicatViewController()
+        controller.loadMedicatData(animalId: FMPMainAnimalData.sh.selectPatId)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 
     @objc private func vaccineButtonTapped() {
+        guard !FMPMainAnimalData.sh.animals.isEmpty else { isExistAnimal(); return }
         self.navigationController?.pushViewController(FMPVaccineViewController(), animated: true)
     }
 
     @objc private func documentsButtonTapped() {
+        guard !FMPMainAnimalData.sh.animals.isEmpty else { isExistAnimal(); return }
         self.navigationController?.pushViewController(FMPDocumentsViewController(), animated: true)
     }
 
     @objc private func certificateButtonTapped() {
+        guard !FMPMainAnimalData.sh.animals.isEmpty else { isExistAnimal(); return }
         self.navigationController?.pushViewController(FMPCertificateViewController(), animated: true)
     }
 

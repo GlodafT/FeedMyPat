@@ -13,12 +13,9 @@ class FMPMedicatViewController: FMPViewController {
 
     private var isEditButtonTapped: Bool = false
 
-    lazy var models: [FMPMedicatModel] = [FMPMedicatModel(imageView: nil, typeDescriptionLabel: "asdsad", dateDescriptionLabel: Date()),
-                                          FMPMedicatModel(imageView: nil, typeDescriptionLabel: "asdsad", dateDescriptionLabel: Date()),
-                                          FMPMedicatModel(imageView: nil, typeDescriptionLabel: "asdsad", dateDescriptionLabel: Date())] {
+    lazy var models: [FMPMedicatModel] = [] {
         didSet {
             self.collectionView.reloadData()
-//            self.setNeedsUpdateConstraints()
         }
     }
 
@@ -66,6 +63,14 @@ class FMPMedicatViewController: FMPViewController {
 
     }
 
+    func loadMedicatData(animalId: UUID) {
+        for animal in FMPMainAnimalData.sh.animals {
+            if animal.id == animalId {
+                self.models = animal.mediCatModel
+            }
+        }
+    }
+
     @objc private func editButtonTapped() {
         self.isEditButtonTapped.toggle()
         if self.isEditButtonTapped {
@@ -105,8 +110,11 @@ extension FMPMedicatViewController: UICollectionViewDelegate, UICollectionViewDa
         guard isEditButtonTapped else { return }
         self.collectionView.deleteItems(at: [indexPath])
         self.models.remove(at: indexPath.row)
-
-//        self.collectionView.reloadData()
+        for animal in FMPMainAnimalData.sh.animals {
+            if animal.id == FMPMainAnimalData.sh.selectPatId {
+                animal.mediCatModel.remove(at: indexPath.row)
+            }
+        }
     }
 }
 
@@ -122,5 +130,11 @@ extension FMPMedicatViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+    }
+}
+
+extension FMPMedicatViewController: FMPMedicatAddViewControllerDelegate {
+    func reloadData(model: FMPMedicatModel) {
+        self.models.append(model)
     }
 }

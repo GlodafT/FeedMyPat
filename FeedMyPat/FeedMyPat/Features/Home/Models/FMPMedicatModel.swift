@@ -14,7 +14,7 @@ class FMPMedicatModel {
     var typeLabel: String
     var typeDescriptionLabel: String
     var dateLabel: String
-    var dateDescriptionLabel: Date
+    var dateDescriptionLabel: String
 
     init(
          imageView: UIImageView? = nil,
@@ -22,7 +22,7 @@ class FMPMedicatModel {
          typeLabel: String = "Type:",
          typeDescriptionLabel: String,
          dateLabel: String = "Date:",
-         dateDescriptionLabel: Date) {
+         dateDescriptionLabel: String) {
 
         self.imageView = imageView
         self.nameLabel = nameLabel

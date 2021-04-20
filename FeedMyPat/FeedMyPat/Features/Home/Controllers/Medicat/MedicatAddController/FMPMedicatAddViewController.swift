@@ -8,7 +8,13 @@
 import UIKit
 import SnapKit
 
+protocol FMPMedicatAddViewControllerDelegate: class {
+    func reloadData(model: FMPMedicatModel)
+}
+
 class FMPMedicatAddViewController: FMPViewController {
+
+    weak var delegate: FMPMedicatAddViewControllerDelegate?
 
 //    let addButton: UIButton = {
 //        let button = UIButton()
@@ -33,6 +39,18 @@ class FMPMedicatAddViewController: FMPViewController {
 //
 //        return button
 //    }()
+
+    private lazy var saveButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(" Save ", for: UIControl.State())
+        button.setTitleColor(.systemGreen, for: UIControl.State())
+        button.backgroundColor = .systemGray5
+        button.layer.cornerRadius = 12
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
+
+        return button
+    }()
 
     let nameLabel: UILabel = {
         let label = UILabel()
@@ -121,7 +139,7 @@ class FMPMedicatAddViewController: FMPViewController {
         self.setContentScrolling(isEnabled: false)
 
         self.mainView.addSubviews([
-//            self.imageViewButton,
+            self.saveButton,
             self.nameLabel,
             self.typeLabel,
             self.typeTextFieldDescription,
@@ -130,25 +148,17 @@ class FMPMedicatAddViewController: FMPViewController {
         ])
         let recognizer = UITapGestureRecognizer()
         recognizer.addTarget(self, action: #selector(tapRecognizer))
-
         self.mainView.addGestureRecognizer(recognizer)
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
-    }
-
-//    private func saveData() {
-//        guard let typeDescription = typeTextFieldDescription.text, let dateDescription = dateTextFieldDescription.text else { return }
-//        if !typeDescription.isEmpty && !dateDescription.isEmpty {
-//            FMPMedicatViewController.models
-//        }
-//    }
-
     override func updateViewConstraints() {
+        self.saveButton.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().inset(15)
+            make.right.equalToSuperview().inset(20)
+        }
+
         self.nameLabel.snp.updateConstraints { (make) in
-            make.top.equalToSuperview().inset(50)
+            make.top.equalTo(self.saveButton.snp.bottom).offset(20)
             make.left.equalToSuperview().inset(15)
 
         }
@@ -188,6 +198,20 @@ class FMPMedicatAddViewController: FMPViewController {
 //        }
 
         super.updateViewConstraints()
+    }
+
+    @objc private func saveButtonTapped() {
+        guard self.typeTextFieldDescription.text != "",
+              self.dateTextFieldDescription.text != "" else { return }
+        let model: FMPMedicatModel = FMPMedicatModel(typeDescriptionLabel: typeTextFieldDescription.text ?? "error",
+                                                     dateDescriptionLabel: dateTextFieldDescription.text ?? "error")
+        for animal in FMPMainAnimalData.sh.animals {
+            if animal.id == FMPMainAnimalData.sh.selectPatId {
+                animal.mediCatModel.append(model)
+            }
+        }
+        delegate?.reloadData(model: model)
+        self.dismiss(animated: true, completion: nil)
     }
 
     @objc private func imageViewButtonTapped() {

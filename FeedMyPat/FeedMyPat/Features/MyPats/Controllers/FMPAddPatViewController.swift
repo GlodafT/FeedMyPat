@@ -388,6 +388,9 @@ class FMPAddPatViewController: FMPViewController {
                                                     sterilizationLabelDescription: sterilizationToString(swich: sterilizationSwitchDescription),
                                                     chipLabelDescription: chipTextFieldDescription.text ?? "error")
         delegate?.passData(model: patData)
+        FMPMainAnimalData.sh.animals.append(patData)
+
+        self.dismiss(animated: true, completion: nil)
     }
 
     @objc private func valueChanged(sender: UIDatePicker) {

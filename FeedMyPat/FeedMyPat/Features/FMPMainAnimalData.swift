@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct FMPMainAnimalData {
-    static var animals: [FMPPatModel] = []
-
-
-    init() {}
+class FMPMainAnimalData {
+    static var sh: FMPMainAnimalData = FMPMainAnimalData()
+    var animals: [FMPPatModel] = []
+    var selectPatId: UUID = UUID()
+    private init() {}
 }
