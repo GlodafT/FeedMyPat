@@ -25,7 +25,6 @@ extension Animal {
     @NSManaged public var color: String?
     @NSManaged public var sterilization: String?
     @NSManaged public var chip: String?
-    @NSManaged public var selectAnimals: SelectAnimal?
     @NSManaged public var mediCats: NSOrderedSet?
 
 }

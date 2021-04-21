@@ -7,6 +7,8 @@
 
 import Foundation
 
+typealias FMAD = FMPMainAnimalData
+
 class FMPMainAnimalData {
     static var sh: FMPMainAnimalData = FMPMainAnimalData()
     var animals: [FMPPatModel] = []

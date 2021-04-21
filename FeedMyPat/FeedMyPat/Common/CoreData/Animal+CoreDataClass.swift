@@ -25,4 +25,16 @@ public class Animal: NSManagedObject {
         self.mediCats = NSOrderedSet(object: model.mediCatModel)
     }
 
+    getAnimals() -> FMPPatModel {
+        let patModel = FMPPatModel(nameLabelDescription: <#T##String#>,
+                               dateOfBirthLabelDescription: <#T##String#>,
+                               typeLabelDescription: <#T##String#>,
+                               breedLabelDescription: <#T##String#>,
+                               genderLabelDescription: <#T##String#>,
+                               colorLabelDescription: <#T##String#>,
+                               sterilizationLabelDescription: <#T##String#>,
+                               chipLabelDescription: <#T##String#>)
+        return petModel
+    }
+
 }
