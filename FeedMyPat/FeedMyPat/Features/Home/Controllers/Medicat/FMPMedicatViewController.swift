@@ -136,5 +136,6 @@ extension FMPMedicatViewController: UICollectionViewDelegateFlowLayout {
 extension FMPMedicatViewController: FMPMedicatAddViewControllerDelegate {
     func reloadData(model: FMPMedicatModel) {
         self.models.append(model)
+        self.collectionView.reloadData()
     }
 }

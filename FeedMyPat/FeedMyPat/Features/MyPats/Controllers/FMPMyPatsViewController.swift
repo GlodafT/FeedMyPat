@@ -34,12 +34,6 @@ class FMPMyPatsViewController: FMPViewController {
 
     lazy var patModel = FMPMainAnimalData.sh.animals
 
-//    lazy var patModel: [Animal] = []
-//
-//    func set(vaccines: [Vaccine]) {
-//
-//    }
-
     let patView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -222,7 +216,7 @@ class FMPMyPatsViewController: FMPViewController {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.distribution = .fillEqually
-        stack.spacing = 20
+        stack.spacing = 13
         stack.translatesAutoresizingMaskIntoConstraints = false
 
         return stack
@@ -232,7 +226,7 @@ class FMPMyPatsViewController: FMPViewController {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.distribution = .fillEqually
-        stack.spacing = 20
+        stack.spacing = 13
         stack.translatesAutoresizingMaskIntoConstraints = false
 
         return stack
@@ -265,11 +259,9 @@ class FMPMyPatsViewController: FMPViewController {
             chipLabelDescription
         ])
 
-//        self.addPatController.delegate = self.myPatsController
-
         self.view.backgroundColor = .systemRed
-        self.view.addSubview(patView)
-        self.mainView.addSubviews([ rightStackView, leftStackView])
+        self.mainView.addSubview(patView)
+        self.mainView.addSubviews([rightStackView, leftStackView])
         self.patView.addSubviews([petViewLeftButton, petViewRightButton])
         self.setDescriptionToLabelDescription(setId: FMPMainAnimalData.sh.selectPatId)
         self.navigationItem.setRightBarButton(self.addButton, animated: true)
@@ -279,8 +271,7 @@ class FMPMyPatsViewController: FMPViewController {
     override func updateViewConstraints() {
 
         self.patView.snp.makeConstraints { (make) in
-            make.top.left.right.equalTo(self.view.safeAreaLayoutGuide)
-            make.bottom.equalTo(self.mainView.snp.top)
+            make.top.left.right.equalToSuperview()
             make.height.equalTo(self.view.bounds.height / 4)
         }
 
@@ -295,20 +286,16 @@ class FMPMyPatsViewController: FMPViewController {
         }
 
         self.leftStackView.snp.makeConstraints { (make) in
-            make.top.equalTo(self.mainView.snp.top).offset(20)
+            make.top.equalTo(self.patView.snp.bottom).offset(10)
             make.left.equalToSuperview().inset(30)
-//            make.bottom.equalToSuperview()
-//            make.height.equalTo(500)
+            make.bottom.equalToSuperview()
         }
 
         self.rightStackView.snp.makeConstraints { (make) in
-            make.top.equalTo(self.mainView.snp.top).offset(20)
-            make.left.greaterThanOrEqualTo(self.leftStackView.snp.right)
+            make.top.equalTo(self.mainView.snp.bottom).offset(20)
+            make.left.lessThanOrEqualTo(self.leftStackView.snp.right).offset(30)
             make.right.equalToSuperview().inset(30)
-//            make.bottom.equalToSuperview()
-
-//            make.height.equalTo(500)
-
+            make.bottom.equalToSuperview()
         }
 
             super.updateViewConstraints()
@@ -344,7 +331,6 @@ class FMPMyPatsViewController: FMPViewController {
     @objc private func addButtonTapped() {
         let controller = FMPAddPatViewController()
         controller.delegate = self
-        controller.set(data: [""])
         self.navigationController?.present(controller, animated: true)
     }
 
@@ -355,7 +341,6 @@ extension FMPMyPatsViewController: FMPAddPatViewControllerDelegate {
         patModel.append(model)
         FMPMainAnimalData.sh.animals.append(model)
         FMPMainAnimalData.sh.selectPatId = model.id
-//        FMAD.sh.save(animalsData: FMAD.sh)
         self.setDescriptionToLabelDescription(setId: model.id)
     }
 

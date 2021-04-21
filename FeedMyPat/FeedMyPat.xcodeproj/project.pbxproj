@@ -23,6 +23,7 @@
 		10610C5B262FA40D00BCAB55 /* Animal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C55262FA40D00BCAB55 /* Animal+CoreDataClass.swift */; };
 		10610C5C262FA40D00BCAB55 /* Medicat+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C56262FA40D00BCAB55 /* Medicat+CoreDataProperties.swift */; };
 		10610C5D262FA40D00BCAB55 /* SelectAnimal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C57262FA40D00BCAB55 /* SelectAnimal+CoreDataClass.swift */; };
+		10610C732630441200BCAB55 /* FMPPatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C722630441200BCAB55 /* FMPPatView.swift */; };
 		10E2E9A72614C773003BBE77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E2E9A62614C773003BBE77 /* AppDelegate.swift */; };
 		10E2E9A92614C773003BBE77 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E2E9A82614C773003BBE77 /* SceneDelegate.swift */; };
 		10E2E9AB2614C773003BBE77 /* FMPMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E2E9AA2614C773003BBE77 /* FMPMainViewController.swift */; };
@@ -60,6 +61,7 @@
 		10610C55262FA40D00BCAB55 /* Animal+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Animal+CoreDataClass.swift"; sourceTree = "<group>"; };
 		10610C56262FA40D00BCAB55 /* Medicat+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Medicat+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		10610C57262FA40D00BCAB55 /* SelectAnimal+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SelectAnimal+CoreDataClass.swift"; sourceTree = "<group>"; };
+		10610C722630441200BCAB55 /* FMPPatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPPatView.swift; sourceTree = "<group>"; };
 		10E2E9A32614C773003BBE77 /* FeedMyPat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedMyPat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10E2E9A62614C773003BBE77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10E2E9A82614C773003BBE77 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				10610C57262FA40D00BCAB55 /* SelectAnimal+CoreDataClass.swift */,
 				10610C54262FA40D00BCAB55 /* SelectAnimal+CoreDataProperties.swift */,
 				105DC9FE262CB44300343354 /* FMPDataModel.xcdatamodeld */,
+				10610C0F262EE34200BCAB55 /* FMPMainAnimalData.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -278,7 +281,6 @@
 				10E2E9D126150073003BBE77 /* InDeveloping */,
 				10E2E9CF2615004F003BBE77 /* Map */,
 				10E2E9D026150061003BBE77 /* Settings */,
-				10610C0F262EE34200BCAB55 /* FMPMainAnimalData.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -304,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				10E6100C261DF388008BF60F /* Cell */,
+				10610C722630441200BCAB55 /* FMPPatView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -534,6 +537,7 @@
 				10E2E9A92614C773003BBE77 /* SceneDelegate.swift in Sources */,
 				10E6101B261F14EC008BF60F /* FMPViewController.swift in Sources */,
 				10610C58262FA40D00BCAB55 /* Medicat+CoreDataClass.swift in Sources */,
+				10610C732630441200BCAB55 /* FMPPatView.swift in Sources */,
 				1021EEC7261601DA00EB6E9D /* FMPInDevelopingViewController.swift in Sources */,
 				1021EED52616027600EB6E9D /* FMPSettingsViewController.swift in Sources */,
 				10E60FE4261B4217008BF60F /* FMPDocumentsViewController.swift in Sources */,

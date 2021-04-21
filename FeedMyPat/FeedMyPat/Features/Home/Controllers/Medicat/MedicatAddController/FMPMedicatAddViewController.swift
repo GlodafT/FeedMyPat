@@ -16,30 +16,6 @@ class FMPMedicatAddViewController: FMPViewController {
 
     weak var delegate: FMPMedicatAddViewControllerDelegate?
 
-//    let addButton: UIButton = {
-//        let button = UIButton()
-//        button.backgroundColor = .clear
-//        button.setTitle("Add", for: UIControl.State())
-//        button.setImage(UIImage(systemName: "Plus"), for: UIControl.State())
-//        button.layer.borderWidth = 2
-//        button.layer.borderColor = UIColor.systemGray3.cgColor
-//
-//        return button
-//    }()
-
-//    let imageViewButton: UIButton = {
-//        let button = UIButton()
-//        button.backgroundColor = .systemGray
-//        button.setImage(UIImage(named: "tabBarHomeIcon"), for: UIControl.State())
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.layer.cornerRadius = 35
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//
-//        button.addTarget(self, action: #selector(imageViewButtonTapped), for: .touchUpInside)
-//
-//        return button
-//    }()
-
     private lazy var saveButton: UIButton = {
         let button = UIButton()
         button.setTitle(" Save ", for: UIControl.State())
@@ -52,7 +28,7 @@ class FMPMedicatAddViewController: FMPViewController {
         return button
     }()
 
-    let nameLabel: UILabel = {
+    private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 20)
@@ -62,7 +38,7 @@ class FMPMedicatAddViewController: FMPViewController {
         return label
     }()
 
-    let typeLabel: UILabel = {
+    private lazy var typeLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 20)
@@ -84,7 +60,7 @@ class FMPMedicatAddViewController: FMPViewController {
         return text
     }()
 
-    let dateLabel: UILabel = {
+    private lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 20)
@@ -146,9 +122,7 @@ class FMPMedicatAddViewController: FMPViewController {
             self.dateLabel,
             self.dateTextFieldDescription
         ])
-        let recognizer = UITapGestureRecognizer()
-        recognizer.addTarget(self, action: #selector(tapRecognizer))
-        self.mainView.addGestureRecognizer(recognizer)
+        addGesture()
     }
 
     override func updateViewConstraints() {
@@ -191,13 +165,13 @@ class FMPMedicatAddViewController: FMPViewController {
 
         }
 
-//        self.imageViewButton.snp.updateConstraints { (make) in
-//            make.top.equalTo(self.dateTextFieldDescription.snp.bottom).offset(10)
-//            make.left.equalToSuperview().inset(15)
-//
-//        }
-
         super.updateViewConstraints()
+    }
+
+    fileprivate func addGesture() {
+        let recognizer = UITapGestureRecognizer()
+        recognizer.addTarget(self, action: #selector(tapRecognizer))
+        self.mainView.addGestureRecognizer(recognizer)
     }
 
     @objc private func saveButtonTapped() {

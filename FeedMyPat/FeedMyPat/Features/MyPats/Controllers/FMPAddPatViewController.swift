@@ -14,12 +14,6 @@ protocol FMPAddPatViewControllerDelegate: class {
 
 class FMPAddPatViewController: FMPViewController {
 
-    var data: [String]?
-
-    func set(data: [String]) {
-        self.data = data
-    }
-
     weak var delegate: FMPAddPatViewControllerDelegate?
 
     private lazy var saveButton: UIButton = {
@@ -133,9 +127,6 @@ class FMPAddPatViewController: FMPViewController {
 
         return label
     }()
-
-    // ставить значения от сегмента
-//    private lazy var segments = ["Male:", "Female:"]
 
     private lazy var genderSegmentedControlDescription: UISegmentedControl = {
         var segments = ["Male", "Female"]
@@ -256,10 +247,7 @@ class FMPAddPatViewController: FMPViewController {
             self.chipTextFieldDescription
         ])
 
-        let recognizer = UITapGestureRecognizer()
-        recognizer.addTarget(self, action: #selector(tapRecognizer))
-
-        self.mainView.addGestureRecognizer(recognizer)
+        addGesture()
 
     }
 
@@ -361,11 +349,26 @@ class FMPAddPatViewController: FMPViewController {
         super.updateViewConstraints()
     }
 
+    fileprivate func addGesture() {
+        let recognizer = UITapGestureRecognizer()
+        recognizer.addTarget(self, action: #selector(tapRecognizer))
+
+        self.mainView.addGestureRecognizer(recognizer)
+    }
+
     func sterilizationToString(swich: UISwitch) -> String {
         if swich.isOn {
             return "Yes"
         } else {
             return "No"
+        }
+    }
+
+    func selectSegmentDescription(segment: UISegmentedControl) -> String {
+        if segment.selectedSegmentIndex == 0 {
+            return "Male"
+        } else {
+            return "Female"
         }
     }
 
@@ -378,19 +381,18 @@ class FMPAddPatViewController: FMPViewController {
               colorTextFieldDescription.text != "",
               chipTextFieldDescription.text != "" else {return}
 
-        /// ?????????
         let patData: FMPPatModel = FMPPatModel.init(
+            id: UUID(),
             nameLabelDescription: nameTextFieldDescription.text ?? "error",
             dateOfBirthLabelDescription: dateOfBirthTextFieldDescription.text ?? "error",
             typeLabelDescription: typeTextFieldDescription.text ?? "error",
             breedLabelDescription: breedTextFieldDescription.text ?? "error",
-            genderLabelDescription: genderSegmentedControlDescription.description,
+            genderLabelDescription: selectSegmentDescription(segment: genderSegmentedControlDescription),
             colorLabelDescription: colorTextFieldDescription.text ?? "error",
             sterilizationLabelDescription: sterilizationToString(swich: sterilizationSwitchDescription),
             chipLabelDescription: chipTextFieldDescription.text ?? "error")
 
         delegate?.passData(model: patData)
-        
         FMPMainAnimalData.sh.animals.append(patData)
 
         self.dismiss(animated: true, completion: nil)

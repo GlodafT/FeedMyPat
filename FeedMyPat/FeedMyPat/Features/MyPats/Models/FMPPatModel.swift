@@ -11,7 +11,7 @@ class FMPPatModel {
 
     // MARK: - gui variables
 
-    var id: UUID 
+    var id: UUID
     var nameLabelDescription: String
     var dateOfBirthLabelDescription: String
     var typeLabelDescription: String

@@ -12,7 +12,7 @@ class FMPHomeViewController: UIViewController {
 
     var flag: Bool = true
 
-    let patView: UIView = {
+    lazy var patView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false

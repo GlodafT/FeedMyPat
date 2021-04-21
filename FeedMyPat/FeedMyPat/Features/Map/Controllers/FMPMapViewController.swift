@@ -43,5 +43,4 @@ class FMPMapViewController: FMPViewController {
 }
 
 extension FMPMapViewController: MKMapViewDelegate {
-    
 }
