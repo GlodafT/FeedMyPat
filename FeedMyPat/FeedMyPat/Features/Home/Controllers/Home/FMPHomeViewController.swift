@@ -53,7 +53,7 @@ class FMPHomeViewController: UIViewController {
 
         button.setTitleColor(.systemGray, for: UIControl.State())
         button.backgroundColor = .white
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(medicatButtonTapped), for: .touchUpInside)
         button.layer.shadowColor = UIColor.black.cgColor
@@ -72,7 +72,7 @@ class FMPHomeViewController: UIViewController {
         button.setTitle("Vaccine", for: UIControl.State())
         button.setTitleColor(.systemGray, for: UIControl.State())
         button.backgroundColor = .white
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(vaccineButtonTapped), for: .touchUpInside)
         button.layer.shadowColor = UIColor.black.cgColor
@@ -91,7 +91,7 @@ class FMPHomeViewController: UIViewController {
         button.setTitle("Documents", for: UIControl.State())
         button.setTitleColor(.systemGray, for: UIControl.State())
         button.backgroundColor = .white
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(documentsButtonTapped), for: .touchUpInside)
         button.layer.shadowColor = UIColor.black.cgColor
@@ -110,13 +110,13 @@ class FMPHomeViewController: UIViewController {
         button.setTitle("Certificate", for: UIControl.State())
         button.setTitleColor(.systemGray, for: UIControl.State())
         button.backgroundColor = .white
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(certificateButtonTapped), for: .touchUpInside)
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset = CGSize(width: 12, height: 12)
-        button.layer.shadowRadius = 12
-        button.layer.shadowOpacity = 12
+//        button.layer.shadowColor = UIColor.black.cgColor
+//        button.layer.shadowOffset = CGSize(width: 12, height: 12)
+//        button.layer.shadowRadius = 12
+//        button.layer.shadowOpacity = 12
         button.layer.cornerRadius = 35
         button.contentEdgeInsets = .zero
 
@@ -218,10 +218,19 @@ class FMPHomeViewController: UIViewController {
     }
     private func isExistAnimal() {
         if FMPMainAnimalData.sh.animals.isEmpty {
-            self.medicatButton.backgroundColor = .init(white: 1, alpha: 0.7)
-            self.vaccineButton.backgroundColor = .init(white: 1, alpha: 0.7)
-            self.documentsButton.backgroundColor = .init(white: 1, alpha: 0.7)
-            self.certificateButton.backgroundColor = .init(white: 1, alpha: 0.7)
+            UIButton.animate(withDuration: 2) {
+                self.medicatButton.backgroundColor = .init(white: 1, alpha: 0.4)
+                self.vaccineButton.backgroundColor = .init(white: 1, alpha: 0.4)
+                self.documentsButton.backgroundColor = .init(white: 1, alpha: 0.4)
+                self.certificateButton.backgroundColor = .init(white: 1, alpha: 0.4)
+
+                UIButton.animate(withDuration: 3, delay: 0.7) {
+                    self.medicatButton.backgroundColor = .init(white: 0.9, alpha: 1)
+                    self.vaccineButton.backgroundColor = .init(white: 0.9, alpha: 1)
+                    self.documentsButton.backgroundColor = .init(white: 0.9, alpha: 1)
+                    self.certificateButton.backgroundColor = .init(white: 0.9, alpha: 1)
+                }
+            }
 
             var alert: UIAlertController {
                 let alert = UIAlertController(title: "Pls Add Animal))",
@@ -238,7 +247,7 @@ class FMPHomeViewController: UIViewController {
 
                 return alert
             }
-            self.present(alert, animated: true)
+                self.present(alert, animated: true)
         } else {
             return
         }

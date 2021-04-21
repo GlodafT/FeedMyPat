@@ -37,6 +37,7 @@ class FMPMedicatCell: UICollectionViewCell {
         label.textAlignment = .left
         label.tintColor = .black
         label.font = UIFont.systemFont(ofSize: 18)
+        label.text = "Vaccine"
         label.translatesAutoresizingMaskIntoConstraints = false
     return label
     }()
@@ -46,6 +47,7 @@ class FMPMedicatCell: UICollectionViewCell {
         label.textAlignment = .left
         label.tintColor = .black  // поменять
         label.font = UIFont.systemFont(ofSize: 16)
+        label.text = "Type:"
         label.translatesAutoresizingMaskIntoConstraints = false
     return label
     }()
@@ -67,6 +69,7 @@ class FMPMedicatCell: UICollectionViewCell {
         label.textAlignment = .left
         label.tintColor = .black // поменять
         label.font = UIFont.systemFont(ofSize: 16)
+        label.text = "Date:"
         label.translatesAutoresizingMaskIntoConstraints = false
     return label
     }()
@@ -150,9 +153,6 @@ class FMPMedicatCell: UICollectionViewCell {
     }
 
     func set(medicatModel: FMPMedicatModel) {
-        self.nameLabel.text = medicatModel.nameLabel
-        self.typeLabel.text = medicatModel.typeLabel
-        self.dateLabel.text = medicatModel.dateLabel
         self.typeDescriptionLabel.text = medicatModel.typeDescriptionLabel
         self.dateDescriptionLabel.text = medicatModel.dateDescriptionLabel
 

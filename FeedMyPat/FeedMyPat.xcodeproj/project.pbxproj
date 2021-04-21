@@ -17,6 +17,12 @@
 		105DCA00262CB44400343354 /* FMPDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 105DC9FE262CB44300343354 /* FMPDataModel.xcdatamodeld */; };
 		10610C06262D6D1F00BCAB55 /* FMPPatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C05262D6D1E00BCAB55 /* FMPPatModel.swift */; };
 		10610C10262EE34200BCAB55 /* FMPMainAnimalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C0F262EE34200BCAB55 /* FMPMainAnimalData.swift */; };
+		10610C58262FA40D00BCAB55 /* Medicat+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C52262FA40D00BCAB55 /* Medicat+CoreDataClass.swift */; };
+		10610C59262FA40D00BCAB55 /* Animal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C53262FA40D00BCAB55 /* Animal+CoreDataProperties.swift */; };
+		10610C5A262FA40D00BCAB55 /* SelectAnimal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C54262FA40D00BCAB55 /* SelectAnimal+CoreDataProperties.swift */; };
+		10610C5B262FA40D00BCAB55 /* Animal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C55262FA40D00BCAB55 /* Animal+CoreDataClass.swift */; };
+		10610C5C262FA40D00BCAB55 /* Medicat+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C56262FA40D00BCAB55 /* Medicat+CoreDataProperties.swift */; };
+		10610C5D262FA40D00BCAB55 /* SelectAnimal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C57262FA40D00BCAB55 /* SelectAnimal+CoreDataClass.swift */; };
 		10E2E9A72614C773003BBE77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E2E9A62614C773003BBE77 /* AppDelegate.swift */; };
 		10E2E9A92614C773003BBE77 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E2E9A82614C773003BBE77 /* SceneDelegate.swift */; };
 		10E2E9AB2614C773003BBE77 /* FMPMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E2E9AA2614C773003BBE77 /* FMPMainViewController.swift */; };
@@ -48,6 +54,12 @@
 		105DC9FF262CB44300343354 /* FMPDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FMPDataModel.xcdatamodel; sourceTree = "<group>"; };
 		10610C05262D6D1E00BCAB55 /* FMPPatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPPatModel.swift; sourceTree = "<group>"; };
 		10610C0F262EE34200BCAB55 /* FMPMainAnimalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPMainAnimalData.swift; sourceTree = "<group>"; };
+		10610C52262FA40D00BCAB55 /* Medicat+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Medicat+CoreDataClass.swift"; sourceTree = "<group>"; };
+		10610C53262FA40D00BCAB55 /* Animal+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Animal+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		10610C54262FA40D00BCAB55 /* SelectAnimal+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SelectAnimal+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		10610C55262FA40D00BCAB55 /* Animal+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Animal+CoreDataClass.swift"; sourceTree = "<group>"; };
+		10610C56262FA40D00BCAB55 /* Medicat+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Medicat+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		10610C57262FA40D00BCAB55 /* SelectAnimal+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SelectAnimal+CoreDataClass.swift"; sourceTree = "<group>"; };
 		10E2E9A32614C773003BBE77 /* FeedMyPat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedMyPat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10E2E9A62614C773003BBE77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10E2E9A82614C773003BBE77 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +132,12 @@
 		105DC9FD262CB41B00343354 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				10610C55262FA40D00BCAB55 /* Animal+CoreDataClass.swift */,
+				10610C53262FA40D00BCAB55 /* Animal+CoreDataProperties.swift */,
+				10610C52262FA40D00BCAB55 /* Medicat+CoreDataClass.swift */,
+				10610C56262FA40D00BCAB55 /* Medicat+CoreDataProperties.swift */,
+				10610C57262FA40D00BCAB55 /* SelectAnimal+CoreDataClass.swift */,
+				10610C54262FA40D00BCAB55 /* SelectAnimal+CoreDataProperties.swift */,
 				105DC9FE262CB44300343354 /* FMPDataModel.xcdatamodeld */,
 			);
 			path = CoreData;
@@ -512,6 +530,7 @@
 			files = (
 				10E6100E261DF3BD008BF60F /* FMPMedicatCell.swift in Sources */,
 				10E6102326231F11008BF60F /* FMPMedicatAddViewController.swift in Sources */,
+				10610C5B262FA40D00BCAB55 /* Animal+CoreDataClass.swift in Sources */,
 				1021EEC3261601AC00EB6E9D /* FMPMyPatsViewController.swift in Sources */,
 				10E6106426286096008BF60F /* FMPStackViewModel.swift in Sources */,
 				10E6106B26287423008BF60F /* FMPAddPatViewController.swift in Sources */,
@@ -519,17 +538,22 @@
 				10E61017261E0A2F008BF60F /* Date+Ex.swift in Sources */,
 				10E2E9AB2614C773003BBE77 /* FMPMainViewController.swift in Sources */,
 				10E2E9A72614C773003BBE77 /* AppDelegate.swift in Sources */,
+				10610C5A262FA40D00BCAB55 /* SelectAnimal+CoreDataProperties.swift in Sources */,
 				10E2E9A92614C773003BBE77 /* SceneDelegate.swift in Sources */,
 				10E6101B261F14EC008BF60F /* FMPViewController.swift in Sources */,
+				10610C58262FA40D00BCAB55 /* Medicat+CoreDataClass.swift in Sources */,
 				1021EEC7261601DA00EB6E9D /* FMPInDevelopingViewController.swift in Sources */,
 				1021EED52616027600EB6E9D /* FMPSettingsViewController.swift in Sources */,
 				10E60FE4261B4217008BF60F /* FMPDocumentsViewController.swift in Sources */,
 				10E6100A261DF19D008BF60F /* FMPMedicatModel.swift in Sources */,
 				10E61068262863D9008BF60F /* UiStackView+Ex.swift in Sources */,
 				1021EEBF2615DBDF00EB6E9D /* FMPHomeViewController.swift in Sources */,
+				10610C59262FA40D00BCAB55 /* Animal+CoreDataProperties.swift in Sources */,
 				10E60FE7261B422E008BF60F /* FMPCertificateViewController.swift in Sources */,
+				10610C5D262FA40D00BCAB55 /* SelectAnimal+CoreDataClass.swift in Sources */,
 				10E61013261DFCB8008BF60F /* UiView+Ex.swift in Sources */,
 				10E60FE1261B4201008BF60F /* FMPVaccineViewController.swift in Sources */,
+				10610C5C262FA40D00BCAB55 /* Medicat+CoreDataProperties.swift in Sources */,
 				1021EED9261617BC00EB6E9D /* FMPTabBarViewController.swift in Sources */,
 				10610C06262D6D1F00BCAB55 /* FMPPatModel.swift in Sources */,
 				10610C10262EE34200BCAB55 /* FMPMainAnimalData.swift in Sources */,
