@@ -143,14 +143,6 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		105DCA02262CBE5F00343354 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				1021EEBE2615DBDF00EB6E9D /* FMPHomeViewController.swift */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
 		105DCA03262CBE6E00343354 /* Medicat */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,7 +319,7 @@
 		10E2E9D9261502EE003BBE77 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				105DCA02262CBE5F00343354 /* Home */,
+				1021EEBE2615DBDF00EB6E9D /* FMPHomeViewController.swift */,
 				105DCA03262CBE6E00343354 /* Medicat */,
 				105DCA04262CBE8800343354 /* Vaccine */,
 				105DCA05262CBEB000343354 /* Documents */,

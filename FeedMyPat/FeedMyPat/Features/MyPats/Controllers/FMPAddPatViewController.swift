@@ -379,15 +379,18 @@ class FMPAddPatViewController: FMPViewController {
               chipTextFieldDescription.text != "" else {return}
 
         /// ?????????
-        let patData: FMPPatModel = FMPPatModel.init(nameLabelDescription: nameTextFieldDescription.text ?? "error",
-                                                    dateOfBirthLabelDescription: dateOfBirthTextFieldDescription.text ?? "error",
-                                                    typeLabelDescription: typeTextFieldDescription.text ?? "error",
-                                                    breedLabelDescription: breedTextFieldDescription.text ?? "error",
-                                                    genderLabelDescription: genderSegmentedControlDescription.description,
-                                                    colorLabelDescription: colorTextFieldDescription.text ?? "error",
-                                                    sterilizationLabelDescription: sterilizationToString(swich: sterilizationSwitchDescription),
-                                                    chipLabelDescription: chipTextFieldDescription.text ?? "error")
+        let patData: FMPPatModel = FMPPatModel.init(
+            nameLabelDescription: nameTextFieldDescription.text ?? "error",
+            dateOfBirthLabelDescription: dateOfBirthTextFieldDescription.text ?? "error",
+            typeLabelDescription: typeTextFieldDescription.text ?? "error",
+            breedLabelDescription: breedTextFieldDescription.text ?? "error",
+            genderLabelDescription: genderSegmentedControlDescription.description,
+            colorLabelDescription: colorTextFieldDescription.text ?? "error",
+            sterilizationLabelDescription: sterilizationToString(swich: sterilizationSwitchDescription),
+            chipLabelDescription: chipTextFieldDescription.text ?? "error")
+
         delegate?.passData(model: patData)
+        
         FMPMainAnimalData.sh.animals.append(patData)
 
         self.dismiss(animated: true, completion: nil)

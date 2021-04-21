@@ -18,7 +18,9 @@ public class Medicat: NSManagedObject {
     }
 
     func getMedicats() -> FMPMedicatModel {
-        
+        let medicatModel = FMPMedicatModel(typeDescriptionLabel: self.type ?? "",
+                                           dateDescriptionLabel: self.date ?? "")
+        return medicatModel
     }
 
 }

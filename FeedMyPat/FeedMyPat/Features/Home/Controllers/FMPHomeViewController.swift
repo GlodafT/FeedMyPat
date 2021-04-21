@@ -21,7 +21,6 @@ class FMPHomeViewController: UIViewController {
         view.layer.shadowRadius = 12
         view.layer.shadowOpacity = 12
         view.layer.cornerRadius = 3
-//        view.isUserInteractionEnabled = true
         return view
     }()
 
@@ -113,10 +112,10 @@ class FMPHomeViewController: UIViewController {
         button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(certificateButtonTapped), for: .touchUpInside)
-//        button.layer.shadowColor = UIColor.black.cgColor
-//        button.layer.shadowOffset = CGSize(width: 12, height: 12)
-//        button.layer.shadowRadius = 12
-//        button.layer.shadowOpacity = 12
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 12, height: 12)
+        button.layer.shadowRadius = 12
+        button.layer.shadowOpacity = 12
         button.layer.cornerRadius = 35
         button.contentEdgeInsets = .zero
 

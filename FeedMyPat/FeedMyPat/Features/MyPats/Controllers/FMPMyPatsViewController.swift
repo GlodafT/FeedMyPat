@@ -355,6 +355,7 @@ extension FMPMyPatsViewController: FMPAddPatViewControllerDelegate {
         patModel.append(model)
         FMPMainAnimalData.sh.animals.append(model)
         FMPMainAnimalData.sh.selectPatId = model.id
+//        FMAD.sh.save(animalsData: FMAD.sh)
         self.setDescriptionToLabelDescription(setId: model.id)
     }
 
