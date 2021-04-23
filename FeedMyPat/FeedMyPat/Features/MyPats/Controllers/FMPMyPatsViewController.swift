@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 class FMPMyPatsViewController: FMPViewController {
 
@@ -32,7 +33,13 @@ class FMPMyPatsViewController: FMPViewController {
 
 //    private lazy var addPatId: UUID = UUID()
 
-    lazy var mainData = FMAD()
+//    lazy var mainData = FMAD()
+
+
+    let realm = try! Realm()
+    lazy var mainData: Results<FMAD> = { self.realm.objects(FMAD)}()
+
+
 
     let patView: UIView = FMPPatView()
 

@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 protocol FMPMedicatAddViewControllerDelegate: class {
     func loadData(model: FMPMedicatModel)
@@ -14,7 +15,14 @@ protocol FMPMedicatAddViewControllerDelegate: class {
 
 class FMPMedicatAddViewController: FMPViewController {
 
-    var mainData: FMAD?
+    let realm: Realm = { do {
+    let realm = try Realm()
+    } catch let error as NSError {
+        Swift.debugPrint(error)
+    }
+    }()
+    
+    lazy var patData: Results<FMPPatModel> = { self.realm.objects(FMPPatModel.self) }()
 
     weak var delegate: FMPMedicatAddViewControllerDelegate?
 
@@ -168,6 +176,17 @@ class FMPMedicatAddViewController: FMPViewController {
         }
 
         super.updateViewConstraints()
+    }
+
+     private func addNewMedicatData() {
+        let realm = try! Realm()
+        try! realm.write {
+            let newMediCat = FMPMedicatModel()
+            newMediCat.typeDescriptionLabel = self.typeTextFieldDescription.text ?? ""
+            newMediCat.dateDescriptionLabel = self.dateTextFieldDescription.text ?? ""
+            realm.add(newMediCat)
+            self.mediCatData = newMediCat
+        }
     }
 
     fileprivate func addGesture() {

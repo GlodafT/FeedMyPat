@@ -6,21 +6,25 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FMPMedicatViewController: FMPViewController {
 
     // MARK: - gui variables
 
-    lazy var mainData = FMAD()
+//    dynamic var patData = FMPPatModel!
 
     // консультация по поводу изменения
     var mainDataControl: FMAD?
 
-    lazy var models: [FMPMedicatModel] = [] {
-        didSet {
-            self.collectionView.reloadData()
-        }
-    }
+    let realm = try! Realm()
+    lazy var models: Results<FMPPatModel> = {self.realm.objects(FMPPatModel.self)}()
+
+//    lazy var models: [FMPMedicatModel] = [] {
+//        didSet {
+//            self.collectionView.reloadData()
+//        }
+//    }
 
     private var isEditButtonTapped: Bool = false
 
@@ -104,9 +108,10 @@ extension FMPMedicatViewController: UICollectionViewDelegate, UICollectionViewDa
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FMPMedicatCell.reuseIdentifier, for: indexPath)
 
         if let cell = cell as? FMPMedicatCell {
-//            let array = Array(self.models)[indexPath.section]
+            let model = models[indexPath.row]
 
-            cell.set(medicatModel: self.models[indexPath.row])
+            cell.set(medicatModel: model.)
+//            cell.set(medicatModel: self.models[indexPath.row])
         }
 
         return cell
