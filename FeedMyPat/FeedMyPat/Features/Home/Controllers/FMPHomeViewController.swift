@@ -10,135 +10,81 @@ import SnapKit
 
 class FMPHomeViewController: UIViewController {
 
-    var flag: Bool = true
+    // MARK: - gui variables
 
-    lazy var patView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOffset = CGSize(width: 12, height: 12)
-        view.layer.shadowRadius = 12
-        view.layer.shadowOpacity = 12
-        view.layer.cornerRadius = 3
-        return view
-    }()
+    var flag: Bool = true               /// testing
 
-    let petViewLeftButton: UIButton = {
-        let button = UIButton()
+    lazy var patView: UIView = FMPPatView()
 
+    private lazy var petViewLeftButton: UIButton = {
+        let button = FMPChangeButton()
         button.setImage(UIImage(named: "tabBarHomeIcon"), for: UIControl.State())
-        button.backgroundColor = .white
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(leftRightButtonTapped), for: .touchUpInside)
-
         return button
     }()
 
-    let petViewRightButton: UIButton = {
-        let button = UIButton()
+    private lazy var petViewRightButton: UIButton = {
+        let button = FMPChangeButton()
         button.setImage(UIImage(named: "tabBarHomeIcon"), for: UIControl.State())
-        button.backgroundColor = .white
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(leftRightButtonTapped), for: .touchUpInside)
-
         return button
     }()
 
-    let medicatButton: UIButton = {
-        let button = UIButton()
+    private lazy var medicatButton: FMPMainButton = {
+        let button = FMPMainButton()
+        button.addTarget(self, action: #selector(medicatButtonTapped), for: .touchUpInside)
         button.setImage(UIImage(named: "tabBarHomeIcon"), for: UIControl.State())
         button.setTitle("MediCat", for: UIControl.State())
 
-        button.setTitleColor(.systemGray, for: UIControl.State())
-        button.backgroundColor = .white
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(medicatButtonTapped), for: .touchUpInside)
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset = CGSize(width: 12, height: 12)
-        button.layer.shadowRadius = 12
-        button.layer.shadowOpacity = 12
-        button.layer.cornerRadius = 35
-        button.contentEdgeInsets = .zero
-
         return button
     }()
 
-    let vaccineButton: UIButton = {
-        let button = UIButton()
+    private lazy var vaccineButton: FMPMainButton = {
+        let button = FMPMainButton()
+        button.addTarget(self, action: #selector(vaccineButtonTapped), for: .touchUpInside)
         button.setImage(UIImage(named: "tabBarHomeIcon"), for: UIControl.State())
         button.setTitle("Vaccine", for: UIControl.State())
-        button.setTitleColor(.systemGray, for: UIControl.State())
-        button.backgroundColor = .white
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(vaccineButtonTapped), for: .touchUpInside)
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset = CGSize(width: 12, height: 12)
-        button.layer.shadowRadius = 12
-        button.layer.shadowOpacity = 12
-        button.layer.cornerRadius = 35
-        button.contentEdgeInsets = .zero
 
         return button
     }()
 
-    let documentsButton: UIButton = {
-        let button = UIButton()
+    private lazy var documentsButton: FMPMainButton = {
+        let button = FMPMainButton()
+        button.addTarget(self, action: #selector(documentsButtonTapped), for: .touchUpInside)
         button.setImage(UIImage(named: "tabBarHomeIcon"), for: UIControl.State())
         button.setTitle("Documents", for: UIControl.State())
-        button.setTitleColor(.systemGray, for: UIControl.State())
-        button.backgroundColor = .white
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(documentsButtonTapped), for: .touchUpInside)
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset = CGSize(width: 12, height: 12)
-        button.layer.shadowRadius = 12
-        button.layer.shadowOpacity = 12
-        button.layer.cornerRadius = 35
-        button.contentEdgeInsets = .zero
 
         return button
     }()
 
-    let certificateButton: UIButton = {
-        let button = UIButton()
+    private lazy var certificateButton: FMPMainButton = {
+        let button = FMPMainButton()
+        button.addTarget(self, action: #selector(certificateButtonTapped), for: .touchUpInside)
         button.setImage(UIImage(named: "tabBarHomeIcon"), for: UIControl.State())
         button.setTitle("Certificate", for: UIControl.State())
-        button.setTitleColor(.systemGray, for: UIControl.State())
-        button.backgroundColor = .white
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(certificateButtonTapped), for: .touchUpInside)
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset = CGSize(width: 12, height: 12)
-        button.layer.shadowRadius = 12
-        button.layer.shadowOpacity = 12
-        button.layer.cornerRadius = 35
-        button.contentEdgeInsets = .zero
 
         return button
     }()
+
+    private lazy var mainData = FMAD()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.view.backgroundColor = .init(white: 0.9, alpha: 1)
 
-//        self.navigationController?.navigationBar.isHidden = true
-
-        self.view.addSubview(patView)
-        self.view.addSubview(medicatButton)
-        self.view.addSubview(vaccineButton)
-        self.view.addSubview(documentsButton)
-        self.view.addSubview(certificateButton)
-        self.patView.addSubview(petViewLeftButton)
-        self.patView.addSubview(petViewRightButton)
+        self.view.addSubviews([patView,
+                               medicatButton,
+                               vaccineButton,
+                               documentsButton,
+                               certificateButton])
+        self.patView.addSubviews([petViewLeftButton,
+                                  petViewRightButton])
 
         self.isExistAnimal()
     }
+
+    // MARK: - Constraints
 
     override func updateViewConstraints() {
         let boundsOfButtons = self.view.bounds.width / 5
@@ -215,14 +161,16 @@ class FMPHomeViewController: UIViewController {
 
         super.updateViewConstraints()
     }
+
+    // MARK: - Functions
+
     private func isExistAnimal() {
-        if FMPMainAnimalData.sh.animals.isEmpty {
+        if mainData.animals.isEmpty {
             UIButton.animate(withDuration: 2) {
                 self.medicatButton.backgroundColor = .init(white: 1, alpha: 0.4)
                 self.vaccineButton.backgroundColor = .init(white: 1, alpha: 0.4)
                 self.documentsButton.backgroundColor = .init(white: 1, alpha: 0.4)
                 self.certificateButton.backgroundColor = .init(white: 1, alpha: 0.4)
-
                 UIButton.animate(withDuration: 3, delay: 0.7) {
                     self.medicatButton.backgroundColor = .init(white: 0.9, alpha: 1)
                     self.vaccineButton.backgroundColor = .init(white: 0.9, alpha: 1)
@@ -252,7 +200,9 @@ class FMPHomeViewController: UIViewController {
         }
     }
 
-    @objc private func leftRightButtonTapped() {
+    // MARK: - Objc functions
+
+    @objc private func leftRightButtonTapped() {                    /// testing         |||         change
         if flag {
             self.view.backgroundColor = .blue
             flag.toggle()
@@ -263,24 +213,24 @@ class FMPHomeViewController: UIViewController {
     }
 
     @objc private func medicatButtonTapped() {
-        guard !FMPMainAnimalData.sh.animals.isEmpty else { isExistAnimal(); return }
+        guard !mainData.animals.isEmpty else { isExistAnimal(); return }
         let controller = FMPMedicatViewController()
-        controller.loadMedicatData(animalId: FMPMainAnimalData.sh.selectPatId)
+        controller.loadMedicatData(animalId: mainData.selectPatId)
         self.navigationController?.pushViewController(controller, animated: true)
     }
 
     @objc private func vaccineButtonTapped() {
-        guard !FMPMainAnimalData.sh.animals.isEmpty else { isExistAnimal(); return }
+        guard !mainData.animals.isEmpty else { isExistAnimal(); return }
         self.navigationController?.pushViewController(FMPVaccineViewController(), animated: true)
     }
 
     @objc private func documentsButtonTapped() {
-        guard !FMPMainAnimalData.sh.animals.isEmpty else { isExistAnimal(); return }
+        guard !mainData.animals.isEmpty else { isExistAnimal(); return }
         self.navigationController?.pushViewController(FMPDocumentsViewController(), animated: true)
     }
 
     @objc private func certificateButtonTapped() {
-        guard !FMPMainAnimalData.sh.animals.isEmpty else { isExistAnimal(); return }
+        guard !mainData.animals.isEmpty else { isExistAnimal(); return }
         self.navigationController?.pushViewController(FMPCertificateViewController(), animated: true)
     }
 

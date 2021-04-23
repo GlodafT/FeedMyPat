@@ -7,14 +7,14 @@
 
 import UIKit
 
-class FMPStackViewModel: UIStackView {
-    var stackView: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.distribution = .fillEqually
-        stack.spacing = 20
-        stack.translatesAutoresizingMaskIntoConstraints = false
+class FMPStackViewModel: UIView {
 
-        return stack
-    }()
+//    var view3 = UIView()
+//
+//    let view2: UIView = {
+//        let view = UIView()
+//        view.addSubview()
+//        return view
+//    }()
+
 }

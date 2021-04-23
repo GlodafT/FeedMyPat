@@ -11,7 +11,7 @@ class FMPPatModel {
 
     // MARK: - gui variables
 
-    var id: UUID
+    var id: UUID = UUID()
     var nameLabelDescription: String
     var dateOfBirthLabelDescription: String
     var typeLabelDescription: String
@@ -25,7 +25,7 @@ class FMPPatModel {
 
     // MARK: - init
 
-    init(id: UUID = UUID(),
+    init(
          nameLabelDescription: String,
          dateOfBirthLabelDescription: String,
          typeLabelDescription: String,
@@ -35,7 +35,6 @@ class FMPPatModel {
          sterilizationLabelDescription: String,
          chipLabelDescription: String) {
 
-        self.id = id
         self.nameLabelDescription = nameLabelDescription
         self.dateOfBirthLabelDescription = dateOfBirthLabelDescription
         self.typeLabelDescription = typeLabelDescription

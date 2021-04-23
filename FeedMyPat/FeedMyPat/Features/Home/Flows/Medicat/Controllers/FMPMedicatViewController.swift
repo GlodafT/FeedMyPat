@@ -11,13 +11,18 @@ class FMPMedicatViewController: FMPViewController {
 
     // MARK: - gui variables
 
-    private var isEditButtonTapped: Bool = false
+    lazy var mainData = FMAD()
+
+    // консультация по поводу изменения
+    var mainDataControl: FMAD?
 
     lazy var models: [FMPMedicatModel] = [] {
         didSet {
             self.collectionView.reloadData()
         }
     }
+
+    private var isEditButtonTapped: Bool = false
 
     private lazy var collectionLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -64,7 +69,7 @@ class FMPMedicatViewController: FMPViewController {
     }
 
     func loadMedicatData(animalId: UUID) {
-        for animal in FMPMainAnimalData.sh.animals {
+        for animal in mainData.animals {
             if animal.id == animalId {
                 self.models = animal.mediCatModel
             }
@@ -82,7 +87,9 @@ class FMPMedicatViewController: FMPViewController {
     }
 
     @objc private func addButtonTapped() {
-        self.navigationController?.present(FMPMedicatAddViewController(), animated: true)
+        let controller = FMPMedicatAddViewController()
+        controller.delegate = self
+        self.navigationController?.present(controller, animated: true)
     }
 
 }
@@ -99,7 +106,7 @@ extension FMPMedicatViewController: UICollectionViewDelegate, UICollectionViewDa
         if let cell = cell as? FMPMedicatCell {
 //            let array = Array(self.models)[indexPath.section]
 
-            cell.set(medicatModel: models[indexPath.row])
+            cell.set(medicatModel: self.models[indexPath.row])
         }
 
         return cell
@@ -110,8 +117,9 @@ extension FMPMedicatViewController: UICollectionViewDelegate, UICollectionViewDa
         guard isEditButtonTapped else { return }
         self.collectionView.deleteItems(at: [indexPath])
         self.models.remove(at: indexPath.row)
-        for animal in FMPMainAnimalData.sh.animals {
-            if animal.id == FMPMainAnimalData.sh.selectPatId {
+        guard let data = mainDataControl else {return}
+        for animal in data.animals {
+            if animal.id == mainData.selectPatId {
                 animal.mediCatModel.remove(at: indexPath.row)
             }
         }
@@ -134,8 +142,7 @@ extension FMPMedicatViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension FMPMedicatViewController: FMPMedicatAddViewControllerDelegate {
-    func reloadData(model: FMPMedicatModel) {
+    func loadData(model: FMPMedicatModel) {
         self.models.append(model)
-        self.collectionView.reloadData()
     }
 }

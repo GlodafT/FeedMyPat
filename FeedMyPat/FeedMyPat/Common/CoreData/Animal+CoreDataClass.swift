@@ -26,7 +26,7 @@ public class Animal: NSManagedObject {
     }
 
     func getAnimal() -> FMPPatModel {
-        let animal = FMPPatModel(id: self.id ?? UUID(),
+        let animal = FMPPatModel(
                                  nameLabelDescription: self.name ?? "",
                                  dateOfBirthLabelDescription: self.date ?? "",
                                  typeLabelDescription: self.type ?? "",

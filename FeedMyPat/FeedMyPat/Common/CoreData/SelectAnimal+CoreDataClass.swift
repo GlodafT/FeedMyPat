@@ -18,8 +18,8 @@ public class SelectAnimal: NSManagedObject {
     }
 
     func getSelectAnimal() {
-        FMPMainAnimalData.sh.selectPatId = self.id ?? UUID()
-        FMPMainAnimalData.sh.animals = self.animals?.array as? [FMPPatModel] ?? []
+//        FMPMainAnimalData.sh.selectPatId = self.id ?? UUID()
+//        FMPMainAnimalData.sh.animals = self.animals?.array as? [FMPPatModel] ?? []
 
     }
 

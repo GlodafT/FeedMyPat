@@ -9,10 +9,12 @@ import UIKit
 import SnapKit
 
 protocol FMPMedicatAddViewControllerDelegate: class {
-    func reloadData(model: FMPMedicatModel)
+    func loadData(model: FMPMedicatModel)
 }
 
 class FMPMedicatAddViewController: FMPViewController {
+
+    var mainData: FMAD?
 
     weak var delegate: FMPMedicatAddViewControllerDelegate?
 
@@ -177,14 +179,15 @@ class FMPMedicatAddViewController: FMPViewController {
     @objc private func saveButtonTapped() {
         guard self.typeTextFieldDescription.text != "",
               self.dateTextFieldDescription.text != "" else { return }
-        let model: FMPMedicatModel = FMPMedicatModel(typeDescriptionLabel: typeTextFieldDescription.text ?? "error",
-                                                     dateDescriptionLabel: dateTextFieldDescription.text ?? "error")
-        for animal in FMPMainAnimalData.sh.animals {
-            if animal.id == FMPMainAnimalData.sh.selectPatId {
+        let model: FMPMedicatModel = FMPMedicatModel(typeDescriptionLabel: self.typeTextFieldDescription.text ?? "error",
+                                                     dateDescriptionLabel: self.dateTextFieldDescription.text ?? "error")
+        guard let mainData = self.mainData else { return }
+        for animal in mainData.animals {
+            if animal.id == mainData.selectPatId {
                 animal.mediCatModel.append(model)
             }
         }
-        delegate?.reloadData(model: model)
+        delegate?.loadData(model: model)
         self.dismiss(animated: true, completion: nil)
     }
 

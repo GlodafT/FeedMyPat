@@ -28,244 +28,124 @@ class FMPMyPatsViewController: FMPViewController {
 //        let date: Date
 //    }
 
-    var flag: Bool = true
+    var flag: Bool = true                       /// delite
 
 //    private lazy var addPatId: UUID = UUID()
 
-    lazy var patModel = FMPMainAnimalData.sh.animals
+    lazy var mainData = FMAD()
 
-    let patView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOffset = CGSize(width: 12, height: 12)
-        view.layer.shadowRadius = 12
-        view.layer.shadowOpacity = 12
-        view.layer.cornerRadius = 3
-        return view
-    }()
+    let patView: UIView = FMPPatView()
 
     let petViewLeftButton: UIButton = {
-        let button = UIButton()
-
+        let button = FMPChangeButton()
         button.setImage(UIImage(named: "tabBarHomeIcon"), for: UIControl.State())
-        button.backgroundColor = .white
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(leftRightButtonTapped), for: .touchUpInside)
-
         return button
     }()
 
     let petViewRightButton: UIButton = {
-        let button = UIButton()
+        let button = FMPChangeButton()
         button.setImage(UIImage(named: "tabBarHomeIcon"), for: UIControl.State())
-        button.backgroundColor = .white
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(leftRightButtonTapped), for: .touchUpInside)
-
         return button
     }()
 
     var nameLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemGray2
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        let label = FMPMediumlabelView()
         label.text = "Name:"
-
         return label
     }()
 
-    var nameLabelDescription: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemGreen
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.translatesAutoresizingMaskIntoConstraints = false
-
-        return label
-    }()
+    var nameLabelDescription = FMPMediumlabelView()
 
     var dateOfBirthLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemGray2
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        let label = FMPMediumlabelView()
         label.text = "Date of Birth:"
         return label
     }()
 
-    var dateOfBirthLabelDescription: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemGreen
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.translatesAutoresizingMaskIntoConstraints = false
-
-        return label
-    }()
+    var dateOfBirthLabelDescription = FMPMediumlabelView()
 
     var typeLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemGray2
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        let label = FMPMediumlabelView()
         label.text = "Type:"
         return label
     }()
 
-    var typeLabelDescription: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemGreen
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.translatesAutoresizingMaskIntoConstraints = false
-
-        return label
-    }()
+    var typeLabelDescription = FMPMediumlabelView()
 
     var breedLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemGray2
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        let label = FMPMediumlabelView()
         label.text = "Breed:"
         return label
     }()
 
-    var breedLabelDescription: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemGreen
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.translatesAutoresizingMaskIntoConstraints = false
-
-        return label
-    }()
+    var breedLabelDescription = FMPMediumlabelView()
 
     var genderLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemGray2
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        let label = FMPMediumlabelView()
         label.text = "Gender:"
         return label
     }()
 
-    var genderLabelDescription: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemGreen
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.translatesAutoresizingMaskIntoConstraints = false
-
-        return label
-    }()
+    var genderLabelDescription = FMPMediumlabelView()
 
     var colorLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemGray2
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        let label = FMPMediumlabelView()
         label.text = "Color:"
         return label
     }()
 
-    var colorLabelDescription: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemGreen
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.translatesAutoresizingMaskIntoConstraints = false
-
-        return label
-    }()
+    var colorLabelDescription = FMPMediumlabelView()
 
     var sterilizationLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemGray2
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        let label = FMPMediumlabelView()
         label.text = "Sterilization:"
         return label
     }()
 
-    var sterilizationLabelDescription: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemGreen
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.translatesAutoresizingMaskIntoConstraints = false
-
-        return label
-    }()
+    var sterilizationLabelDescription = FMPMediumlabelView()
 
     var chipLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemGray2
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        let label = FMPMediumlabelView()
         label.text = "Chip:"
         return label
     }()
 
-    var chipLabelDescription: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemGreen
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.translatesAutoresizingMaskIntoConstraints = false
+    var chipLabelDescription = FMPMediumlabelView()
 
-        return label
-    }()
+    var rightStackView = FMPStackView()
 
-    var rightStackView: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.distribution = .fillEqually
-        stack.spacing = 13
-        stack.translatesAutoresizingMaskIntoConstraints = false
-
-        return stack
-    }()
-
-    var leftStackView: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.distribution = .fillEqually
-        stack.spacing = 13
-        stack.translatesAutoresizingMaskIntoConstraints = false
-
-        return stack
-    }()
+    var leftStackView = FMPStackView()
 
     private lazy var addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addButtonTapped))
 
     override func initController() {
         super.initController()
 
-        self.leftStackView.addArrangedSubviews([
-            nameLabel,
-            dateOfBirthLabel,
-            typeLabel,
-            breedLabel,
-            genderLabel,
-            colorLabel,
-            sterilizationLabel,
-            chipLabel
-        ])
+        self.leftStackView.addArrangedSubviews([nameLabel,
+                                                dateOfBirthLabel,
+                                                typeLabel,
+                                                breedLabel,
+                                                genderLabel,
+                                                colorLabel,
+                                                sterilizationLabel,
+                                                chipLabel])
 
-        self.rightStackView.addArrangedSubviews([
-            nameLabelDescription,
-            dateOfBirthLabelDescription,
-            typeLabelDescription,
-            breedLabelDescription,
-            genderLabelDescription,
-            colorLabelDescription,
-            sterilizationLabelDescription,
-            chipLabelDescription
-        ])
+        self.rightStackView.addArrangedSubviews([nameLabelDescription,
+                                                 dateOfBirthLabelDescription,
+                                                 typeLabelDescription,
+                                                 breedLabelDescription,
+                                                 genderLabelDescription,
+                                                 colorLabelDescription,
+                                                 sterilizationLabelDescription,
+                                                 chipLabelDescription])
 
         self.view.backgroundColor = .systemRed
-        self.mainView.addSubview(patView)
-        self.mainView.addSubviews([rightStackView, leftStackView])
+        self.mainView.addSubviews([patView, rightStackView, leftStackView])
         self.patView.addSubviews([petViewLeftButton, petViewRightButton])
-        self.setDescriptionToLabelDescription(setId: FMPMainAnimalData.sh.selectPatId)
+        self.setDescriptionToLabelDescription(setId: mainData.selectPatId)
         self.navigationItem.setRightBarButton(self.addButton, animated: true)
-
     }
 
     override func updateViewConstraints() {
@@ -292,8 +172,8 @@ class FMPMyPatsViewController: FMPViewController {
         }
 
         self.rightStackView.snp.makeConstraints { (make) in
-            make.top.equalTo(self.mainView.snp.bottom).offset(20)
-            make.left.lessThanOrEqualTo(self.leftStackView.snp.right).offset(30)
+            make.top.equalTo(self.patView.snp.bottom).offset(20)
+            make.left.greaterThanOrEqualTo(self.leftStackView.snp.right).offset(5)
             make.right.equalToSuperview().inset(30)
             make.bottom.equalToSuperview()
         }
@@ -304,16 +184,16 @@ class FMPMyPatsViewController: FMPViewController {
     // исправить!
 
     private func setDescriptionToLabelDescription(setId: UUID) {
-        for pat in FMPMainAnimalData.sh.animals {
+        for pat in mainData.animals {
             if pat.id == setId {
-                nameLabelDescription.text = pat.nameLabelDescription
-                dateOfBirthLabelDescription.text = pat.dateOfBirthLabelDescription
-                typeLabelDescription.text = pat.typeLabelDescription
-                breedLabelDescription.text = pat.breedLabelDescription
-                genderLabelDescription.text = pat.genderLabelDescription
-                colorLabelDescription.text = pat.colorLabelDescription
-                sterilizationLabelDescription.text = pat.sterilizationLabelDescription
-                chipLabelDescription.text = pat.chipLabelDescription
+                self.nameLabelDescription.text = pat.nameLabelDescription
+                self.dateOfBirthLabelDescription.text = pat.dateOfBirthLabelDescription
+                self.typeLabelDescription.text = pat.typeLabelDescription
+                self.breedLabelDescription.text = pat.breedLabelDescription
+                self.genderLabelDescription.text = pat.genderLabelDescription
+                self.colorLabelDescription.text = pat.colorLabelDescription
+                self.sterilizationLabelDescription.text = pat.sterilizationLabelDescription
+                self.chipLabelDescription.text = pat.chipLabelDescription
             }
         }
     }
@@ -337,11 +217,9 @@ class FMPMyPatsViewController: FMPViewController {
 }
 
 extension FMPMyPatsViewController: FMPAddPatViewControllerDelegate {
-    func passData(model: FMPPatModel) {
-        patModel.append(model)
-        FMPMainAnimalData.sh.animals.append(model)
-        FMPMainAnimalData.sh.selectPatId = model.id
-        self.setDescriptionToLabelDescription(setId: model.id)
+    func passData(id: UUID, Data: FMPPatModel) {
+        mainData.animals.append(Data)
+        self.setDescriptionToLabelDescription(setId: id)
     }
 
 }
