@@ -35,11 +35,9 @@ class FMPMyPatsViewController: FMPViewController {
 
 //    lazy var mainData = FMAD()
 
-
     let realm = try! Realm()
-    lazy var mainData: Results<FMAD> = { self.realm.objects(FMAD)}()
-
-
+    lazy var mainData: Results<FMPPatModel> = { self.realm.objects(FMPPatModel.self)}()
+//    lazy var mainData = FMAD()
 
     let patView: UIView = FMPPatView()
 
@@ -151,7 +149,7 @@ class FMPMyPatsViewController: FMPViewController {
         self.view.backgroundColor = .systemRed
         self.mainView.addSubviews([patView, rightStackView, leftStackView])
         self.patView.addSubviews([petViewLeftButton, petViewRightButton])
-        self.setDescriptionToLabelDescription(setId: mainData.selectPatId)
+        self.setDescriptionToLabelDescription(setId: FMAD.selectPatId)
         self.navigationItem.setRightBarButton(self.addButton, animated: true)
     }
 
@@ -190,8 +188,8 @@ class FMPMyPatsViewController: FMPViewController {
 
     // исправить!
 
-    private func setDescriptionToLabelDescription(setId: UUID) {
-        for pat in mainData.animals {
+    private func setDescriptionToLabelDescription(setId: String) {
+        for pat in self.mainData {
             if pat.id == setId {
                 self.nameLabelDescription.text = pat.nameLabelDescription
                 self.dateOfBirthLabelDescription.text = pat.dateOfBirthLabelDescription
@@ -224,9 +222,9 @@ class FMPMyPatsViewController: FMPViewController {
 }
 
 extension FMPMyPatsViewController: FMPAddPatViewControllerDelegate {
-    func passData(id: UUID, Data: FMPPatModel) {
-        mainData.animals.append(Data)
-        self.setDescriptionToLabelDescription(setId: id)
+    func passData() {
+//        mainData.animals.append(Data)
+        self.setDescriptionToLabelDescription(setId: FMAD.selectPatId)
     }
 
 }

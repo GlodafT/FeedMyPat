@@ -127,12 +127,12 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		105DC9FD262CB41B00343354 /* CoreData */ = {
+		105DC9FD262CB41B00343354 /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				10610C0F262EE34200BCAB55 /* FMPMainAnimalData.swift */,
 			);
-			path = CoreData;
+			path = Data;
 			sourceTree = "<group>";
 		};
 		105DCA03262CBE6E00343354 /* Medicat */ = {
@@ -295,7 +295,7 @@
 		10E2E9D326150177003BBE77 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				105DC9FD262CB41B00343354 /* CoreData */,
+				105DC9FD262CB41B00343354 /* Data */,
 				10E61019261F14BF008BF60F /* Controllers */,
 			);
 			path = Common;

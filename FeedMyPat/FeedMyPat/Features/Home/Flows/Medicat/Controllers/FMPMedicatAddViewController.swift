@@ -10,18 +10,18 @@ import SnapKit
 import RealmSwift
 
 protocol FMPMedicatAddViewControllerDelegate: class {
-    func loadData(model: FMPMedicatModel)
+    func loadData()
 }
 
 class FMPMedicatAddViewController: FMPViewController {
 
-    let realm: Realm = { do {
-    let realm = try Realm()
-    } catch let error as NSError {
-        Swift.debugPrint(error)
-    }
-    }()
-    
+//    let realm: Realm = { do {
+//    let realm = try Realm()
+//    } catch let error as NSError {
+//        Swift.debugPrint(error)
+//    }
+//    }()
+    let realm = try! Realm()
     lazy var patData: Results<FMPPatModel> = { self.realm.objects(FMPPatModel.self) }()
 
     weak var delegate: FMPMedicatAddViewControllerDelegate?
@@ -179,13 +179,25 @@ class FMPMedicatAddViewController: FMPViewController {
     }
 
      private func addNewMedicatData() {
-        let realm = try! Realm()
+//        let realm = try! Realm()
         try! realm.write {
-            let newMediCat = FMPMedicatModel()
-            newMediCat.typeDescriptionLabel = self.typeTextFieldDescription.text ?? ""
-            newMediCat.dateDescriptionLabel = self.dateTextFieldDescription.text ?? ""
-            realm.add(newMediCat)
-            self.mediCatData = newMediCat
+            let mediCatData = FMPMedicatModel(id: FMAD.selectPatId,
+                            type: self.typeTextFieldDescription.text ?? "",
+                            date: self.dateTextFieldDescription.text ?? "")
+            realm.add(mediCatData)
+//            let newMediCat = FMPMedicatModel()
+//            newMediCat.id = FMAD.selectPatId
+//            newMediCat.typeDescriptionLabel = self.typeTextFieldDescription.text ?? ""
+//            newMediCat.dateDescriptionLabel = self.dateTextFieldDescription.text ?? ""
+
+//            for pat in self.patData {
+//                guard pat.id == FMAD.selectPatId else {return}
+//                pat.mediCatsData.append(newMediCat)
+//            }
+
+//            realm.add(newMediCat)
+//            realm.
+//            self.mediCatData = newMediCat
         }
     }
 
@@ -198,15 +210,16 @@ class FMPMedicatAddViewController: FMPViewController {
     @objc private func saveButtonTapped() {
         guard self.typeTextFieldDescription.text != "",
               self.dateTextFieldDescription.text != "" else { return }
-        let model: FMPMedicatModel = FMPMedicatModel(typeDescriptionLabel: self.typeTextFieldDescription.text ?? "error",
-                                                     dateDescriptionLabel: self.dateTextFieldDescription.text ?? "error")
-        guard let mainData = self.mainData else { return }
-        for animal in mainData.animals {
-            if animal.id == mainData.selectPatId {
-                animal.mediCatModel.append(model)
-            }
-        }
-        delegate?.loadData(model: model)
+//        let model: FMPMedicatModel = FMPMedicatModel(typeDescriptionLabel: self.typeTextFieldDescription.text ?? "error",
+//                                                     dateDescriptionLabel: self.dateTextFieldDescription.text ?? "error")
+//        guard let mainData = self.mainData else { return }
+//        for animal in mainData.animals {
+//            if animal.id == mainData.selectPatId {
+//                animal.mediCatModel.append(model)
+//            }
+//        }
+        self.addNewMedicatData()
+        delegate?.loadData()
         self.dismiss(animated: true, completion: nil)
     }
 

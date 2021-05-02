@@ -7,16 +7,27 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 protocol FMPAddPatViewControllerDelegate: class {
-    func passData(id: UUID, Data: FMPPatModel)
+    func passData()
 }
 
 class FMPAddPatViewController: FMPViewController {
 
+//    let realm: Realm = { do {
+//    let realm = try Realm()
+//    } catch let error as NSError {
+//        Swift.debugPrint(error)
+//    }
+//    return
+//    }()
+    let realm = try! Realm()
+
+//    private func
     weak var delegate: FMPAddPatViewControllerDelegate?
 
-    var mainData: FMPMainAnimalData?
+    var mainData = FMAD()
 
     private lazy var saveButton: UIButton = {
         let button = UIButton()
@@ -306,18 +317,24 @@ class FMPAddPatViewController: FMPViewController {
               chipTextFieldDescription.text != "" else {return}
 
         let patData: FMPPatModel = FMPPatModel.init(
-            nameLabelDescription: nameTextFieldDescription.text ?? "error",
-            dateOfBirthLabelDescription: dateOfBirthTextFieldDescription.text ?? "error",
-            typeLabelDescription: typeTextFieldDescription.text ?? "error",
-            breedLabelDescription: breedTextFieldDescription.text ?? "error",
-            genderLabelDescription: selectSegmentDescription(segment: genderSegmentedControlDescription),
-            colorLabelDescription: colorTextFieldDescription.text ?? "error",
-            sterilizationLabelDescription: sterilizationToString(swich: sterilizationSwitchDescription),
-            chipLabelDescription: chipTextFieldDescription.text ?? "error")
+            name: nameTextFieldDescription.text ?? "error",
+            date: dateOfBirthTextFieldDescription.text ?? "error",
+            type: typeTextFieldDescription.text ?? "error",
+            breed: breedTextFieldDescription.text ?? "error",
+            gender: selectSegmentDescription(segment: genderSegmentedControlDescription),
+            color: colorTextFieldDescription.text ?? "error",
+            sterilization: sterilizationToString(swich: sterilizationSwitchDescription),
+            chip: chipTextFieldDescription.text ?? "error")
 
-        delegate?.passData(id: patData.id, Data: patData)
-        self.mainData?.animals.append(patData)
-        self.mainData?.selectPatId = patData.id
+        FMAD.selectPatId = patData.id
+
+        try! realm.write {
+//            realm.add(self.mainData)
+            realm.add(patData)
+        }
+        delegate?.passData()
+//        self.mainData?.animals.append(patData)
+//        self.mainData?.selectPatId = patData.id
 
         self.dismiss(animated: true, completion: nil)
     }

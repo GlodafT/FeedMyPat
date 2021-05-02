@@ -6,12 +6,12 @@
 //
 
 import Foundation
-import RealmSwift
+//import RealmSwift
 
 typealias FMAD = FMPMainAnimalData
 
-class FMPMainAnimalData: Object {
+class FMPMainAnimalData {
 
-//    dynamic var animals: [FMPPatModel] = []
-    dynamic var selectPatId: UUID = UUID()
+//    dynamic var animals = List<FMPPatModel>()
+    static var selectPatId: String = ""
 }

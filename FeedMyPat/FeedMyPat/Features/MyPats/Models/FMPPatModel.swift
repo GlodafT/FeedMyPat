@@ -12,18 +12,38 @@ class FMPPatModel: Object {
 
     // MARK: - gui variables
 
-    dynamic var id: UUID = UUID()
-    dynamic var nameLabelDescription: String = ""
-    dynamic var dateOfBirthLabelDescription: String = ""
-    dynamic var typeLabelDescription: String = ""
-    dynamic var breedLabelDescription: String = ""
-    dynamic var genderLabelDescription: String = ""
-    dynamic var colorLabelDescription: String = ""
-    dynamic var sterilizationLabelDescription: String = ""
-    dynamic var chipLabelDescription: String = ""
+    @objc dynamic var id = UUID().uuidString
+    @objc dynamic var nameLabelDescription: String = ""
+    @objc dynamic var dateOfBirthLabelDescription: String = ""
+    @objc dynamic var typeLabelDescription: String = ""
+    @objc dynamic var breedLabelDescription: String = ""
+    @objc dynamic var genderLabelDescription: String = ""
+    @objc dynamic var colorLabelDescription: String = ""
+    @objc dynamic var sterilizationLabelDescription: String = ""
+    @objc dynamic var chipLabelDescription: String = ""
 
-    dynamic var mainData: FMAD!
+    dynamic var mediCatsData = List<FMPMedicatModel>()
 
+//    @objc dynamic var mainData: FMAD!
+
+    convenience init(name: String,
+                     date: String,
+                     type: String,
+                     breed: String,
+                     gender: String,
+                     color: String,
+                     sterilization: String,
+                     chip: String) {
+        self.init()
+        self.nameLabelDescription = name
+        self.dateOfBirthLabelDescription = date
+        self.typeLabelDescription = type
+        self.breedLabelDescription = breed
+        self.genderLabelDescription = gender
+        self.colorLabelDescription = color
+        self.sterilizationLabelDescription = sterilization
+        self.chipLabelDescription = chip
+    }
 //    dynamic var mediCatModel: [FMPMedicatModel] = []
 
     // MARK: - init

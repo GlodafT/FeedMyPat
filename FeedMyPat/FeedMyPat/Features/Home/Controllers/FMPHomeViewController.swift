@@ -81,7 +81,7 @@ class FMPHomeViewController: UIViewController {
         self.patView.addSubviews([petViewLeftButton,
                                   petViewRightButton])
 
-        self.isExistAnimal()
+//        self.isExistAnimal()
     }
 
     // MARK: - Constraints
@@ -164,41 +164,41 @@ class FMPHomeViewController: UIViewController {
 
     // MARK: - Functions
 
-    private func isExistAnimal() {
-        if mainData.animals.isEmpty {
-            UIButton.animate(withDuration: 2) {
-                self.medicatButton.backgroundColor = .init(white: 1, alpha: 0.4)
-                self.vaccineButton.backgroundColor = .init(white: 1, alpha: 0.4)
-                self.documentsButton.backgroundColor = .init(white: 1, alpha: 0.4)
-                self.certificateButton.backgroundColor = .init(white: 1, alpha: 0.4)
-                UIButton.animate(withDuration: 3, delay: 0.7) {
-                    self.medicatButton.backgroundColor = .init(white: 0.9, alpha: 1)
-                    self.vaccineButton.backgroundColor = .init(white: 0.9, alpha: 1)
-                    self.documentsButton.backgroundColor = .init(white: 0.9, alpha: 1)
-                    self.certificateButton.backgroundColor = .init(white: 0.9, alpha: 1)
-                }
-            }
-
-            var alert: UIAlertController {
-                let alert = UIAlertController(title: "Pls Add Animal))",
-                                              message: "Smthnk about adding animal",
-                                              preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK",
-                                              style: .default,
-                                              handler: {_ in
-                                                self.navigationController?.present(FMPAddPatViewController(), animated: true)
-                                              }))
-                alert.addAction(UIAlertAction(title: "Cancel",
-                                              style: .destructive,
-                                              handler: nil))
-
-                return alert
-            }
-                self.present(alert, animated: true)
-        } else {
-            return
-        }
-    }
+//    private func isExistAnimal() {
+//        if mainData.animals.isEmpty {
+//            UIButton.animate(withDuration: 2) {
+//                self.medicatButton.backgroundColor = .init(white: 1, alpha: 0.4)
+//                self.vaccineButton.backgroundColor = .init(white: 1, alpha: 0.4)
+//                self.documentsButton.backgroundColor = .init(white: 1, alpha: 0.4)
+//                self.certificateButton.backgroundColor = .init(white: 1, alpha: 0.4)
+//                UIButton.animate(withDuration: 3, delay: 0.7) {
+//                    self.medicatButton.backgroundColor = .init(white: 0.9, alpha: 1)
+//                    self.vaccineButton.backgroundColor = .init(white: 0.9, alpha: 1)
+//                    self.documentsButton.backgroundColor = .init(white: 0.9, alpha: 1)
+//                    self.certificateButton.backgroundColor = .init(white: 0.9, alpha: 1)
+//                }
+//            }
+//
+//            var alert: UIAlertController {
+//                let alert = UIAlertController(title: "Pls Add Animal))",
+//                                              message: "Smthnk about adding animal",
+//                                              preferredStyle: .alert)
+//                alert.addAction(UIAlertAction(title: "OK",
+//                                              style: .default,
+//                                              handler: {_ in
+//                                                self.navigationController?.present(FMPAddPatViewController(), animated: true)
+//                                              }))
+//                alert.addAction(UIAlertAction(title: "Cancel",
+//                                              style: .destructive,
+//                                              handler: nil))
+//
+//                return alert
+//            }
+//                self.present(alert, animated: true)
+//        } else {
+//            return
+//        }
+//    }
 
     // MARK: - Objc functions
 
@@ -213,24 +213,24 @@ class FMPHomeViewController: UIViewController {
     }
 
     @objc private func medicatButtonTapped() {
-        guard !mainData.animals.isEmpty else { isExistAnimal(); return }
+//        guard !mainData.animals.isEmpty else { isExistAnimal(); return }
         let controller = FMPMedicatViewController()
-        controller.loadMedicatData(animalId: mainData.selectPatId)
+//        controller.loadMedicatData(animalId: mainData.selectPatId)
         self.navigationController?.pushViewController(controller, animated: true)
     }
 
     @objc private func vaccineButtonTapped() {
-        guard !mainData.animals.isEmpty else { isExistAnimal(); return }
+//        guard !mainData.animals.isEmpty else { isExistAnimal(); return }
         self.navigationController?.pushViewController(FMPVaccineViewController(), animated: true)
     }
 
     @objc private func documentsButtonTapped() {
-        guard !mainData.animals.isEmpty else { isExistAnimal(); return }
+//        guard !mainData.animals.isEmpty else { isExistAnimal(); return }
         self.navigationController?.pushViewController(FMPDocumentsViewController(), animated: true)
     }
 
     @objc private func certificateButtonTapped() {
-        guard !mainData.animals.isEmpty else { isExistAnimal(); return }
+//        guard !mainData.animals.isEmpty else { isExistAnimal(); return }
         self.navigationController?.pushViewController(FMPCertificateViewController(), animated: true)
     }
 
