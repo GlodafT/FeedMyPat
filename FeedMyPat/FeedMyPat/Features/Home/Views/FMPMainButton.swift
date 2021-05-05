@@ -27,6 +27,9 @@ class FMPMainButton: UIButton {
         layer.shadowRadius = 12
         layer.shadowOpacity = 12
         layer.cornerRadius = 35
-        contentEdgeInsets = .zero
+        contentEdgeInsets = .init(top: 2, left: 10, bottom: 2, right: 3)
+        contentHorizontalAlignment = .left
+        imageEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 10)
+        titleEdgeInsets = .init(top: 0, left: 10, bottom: 0, right: 0)
     }
 }

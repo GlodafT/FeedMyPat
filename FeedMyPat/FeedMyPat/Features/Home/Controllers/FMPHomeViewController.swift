@@ -30,6 +30,8 @@ class FMPHomeViewController: UIViewController {
         return button
     }()
 
+    private lazy var mainScrollView: UIScrollView = FMPScrollView()
+
     private lazy var medicatButton: FMPMainButton = {
         let button = FMPMainButton()
         button.addTarget(self, action: #selector(medicatButtonTapped), for: .touchUpInside)
@@ -74,20 +76,21 @@ class FMPHomeViewController: UIViewController {
         self.view.backgroundColor = .init(white: 0.9, alpha: 1)
 
         self.view.addSubviews([patView,
-                               medicatButton,
-                               vaccineButton,
-                               documentsButton,
-                               certificateButton])
+                               mainScrollView])
+        self.mainScrollView.addSubviews([medicatButton,
+                                         vaccineButton,
+                                         documentsButton,
+                                         certificateButton])
         self.patView.addSubviews([petViewLeftButton,
                                   petViewRightButton])
 
-//        self.isExistAnimal()
+        //        self.isExistAnimal()
     }
 
     // MARK: - Constraints
 
     override func updateViewConstraints() {
-        let boundsOfButtons = self.view.bounds.width / 5
+        let boundsOfButtons = self.view.bounds.width - 70
 
         self.patView.snp.makeConstraints { (make) in
             make.top.left.right.equalTo(self.view.safeAreaLayoutGuide)
@@ -103,6 +106,12 @@ class FMPHomeViewController: UIViewController {
         self.petViewRightButton.snp.makeConstraints { (make) in
             make.top.right.bottom.equalToSuperview()
             make.width.equalTo(self.view.bounds.width / 6)
+        }
+
+        self.mainScrollView.snp.makeConstraints { (make) in
+            make.top.equalTo(self.patView.snp.bottom)
+            make.left.right.equalToSuperview()
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
         }
 
 //        self.medicatButton.snp.makeConstraints { (make) in
@@ -134,29 +143,31 @@ class FMPHomeViewController: UIViewController {
 //        }
 
         self.medicatButton.snp.makeConstraints { (make) in
-            make.height.width.equalTo(boundsOfButtons)
+            make.width.equalTo(boundsOfButtons)
             make.left.right.equalToSuperview().inset(35)
-            make.top.equalTo(self.patView.snp.bottom).offset(50)
+            make.top.equalToSuperview().offset(50)
 
         }
 
         self.vaccineButton.snp.makeConstraints { (make) in
-            make.height.width.equalTo(boundsOfButtons)
-            make.left.right.equalToSuperview().inset(35)
+            make.width.equalTo(boundsOfButtons)
+            make.left.equalToSuperview().inset(35)
+            make.right.equalToSuperview().inset(35)
             make.top.equalTo(self.medicatButton.snp.bottom).offset(15)
 
         }
 
         self.documentsButton.snp.makeConstraints { (make) in
-            make.height.width.equalTo(boundsOfButtons)
+            make.width.equalTo(boundsOfButtons)
             make.left.right.equalToSuperview().inset(35)
             make.top.equalTo(self.vaccineButton.snp.bottom).offset(15)
         }
 
         self.certificateButton.snp.makeConstraints { (make) in
-            make.height.width.equalTo(boundsOfButtons)
+            make.width.equalTo(boundsOfButtons)
             make.left.right.equalToSuperview().inset(35)
             make.top.equalTo(self.documentsButton.snp.bottom).offset(15)
+            make.bottom.equalToSuperview().inset(50)
         }
 
         super.updateViewConstraints()

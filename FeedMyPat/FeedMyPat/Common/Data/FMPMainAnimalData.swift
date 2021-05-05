@@ -13,5 +13,11 @@ typealias FMAD = FMPMainAnimalData
 class FMPMainAnimalData {
 
 //    dynamic var animals = List<FMPPatModel>()
-    static var selectPatId: String = ""
+    static var selectPatId: String {
+        get {
+            UserDefaults.standard.string(forKey: "SelectPat") ?? ""
+        } set {
+            UserDefaults.standard.setValue(newValue, forKey: "SelectPat")
+        }
+    }
 }

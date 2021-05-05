@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import RealmSwift
 
-class FMPMyPatsViewController: FMPViewController {
+class FMPMyPatsViewController: UIViewController {
 
 //    struct Animal {
 //        let name: String
@@ -44,16 +44,18 @@ class FMPMyPatsViewController: FMPViewController {
     let petViewLeftButton: UIButton = {
         let button = FMPChangeButton()
         button.setImage(UIImage(named: "tabBarHomeIcon"), for: UIControl.State())
-        button.addTarget(self, action: #selector(leftRightButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(leftButtonTapped), for: .touchUpInside)
         return button
     }()
 
     let petViewRightButton: UIButton = {
         let button = FMPChangeButton()
         button.setImage(UIImage(named: "tabBarHomeIcon"), for: UIControl.State())
-        button.addTarget(self, action: #selector(leftRightButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(rightButtonTapped), for: .touchUpInside)
         return button
     }()
+
+    private lazy var mainScrolView: UIScrollView = FMPScrollView()
 
     var nameLabel: UILabel = {
         let label = FMPMediumlabelView()
@@ -125,8 +127,12 @@ class FMPMyPatsViewController: FMPViewController {
 
     private lazy var addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addButtonTapped))
 
-    override func initController() {
-        super.initController()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.view.addSubviews([patView, mainScrolView])
+        self.patView.addSubviews([petViewLeftButton, petViewRightButton])
+        self.mainScrolView.addSubviews([rightStackView, leftStackView])
 
         self.leftStackView.addArrangedSubviews([nameLabel,
                                                 dateOfBirthLabel,
@@ -147,8 +153,6 @@ class FMPMyPatsViewController: FMPViewController {
                                                  chipLabelDescription])
 
         self.view.backgroundColor = .systemRed
-        self.mainView.addSubviews([patView, rightStackView, leftStackView])
-        self.patView.addSubviews([petViewLeftButton, petViewRightButton])
         self.setDescriptionToLabelDescription(setId: FMAD.selectPatId)
         self.navigationItem.setRightBarButton(self.addButton, animated: true)
     }
@@ -156,7 +160,7 @@ class FMPMyPatsViewController: FMPViewController {
     override func updateViewConstraints() {
 
         self.patView.snp.makeConstraints { (make) in
-            make.top.left.right.equalToSuperview()
+            make.top.left.right.equalTo(self.view.safeAreaLayoutGuide)
             make.height.equalTo(self.view.bounds.height / 4)
         }
 
@@ -170,17 +174,23 @@ class FMPMyPatsViewController: FMPViewController {
             make.width.equalTo(self.view.bounds.width / 6)
         }
 
+        self.mainScrolView.snp.makeConstraints { (make) in
+            make.top.equalTo(self.patView.snp.bottom)
+            make.left.right.equalToSuperview()
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide)
+        }
+
         self.leftStackView.snp.makeConstraints { (make) in
-            make.top.equalTo(self.patView.snp.bottom).offset(10)
+            make.top.equalToSuperview().offset(40)
             make.left.equalToSuperview().inset(30)
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().inset(30)
         }
 
         self.rightStackView.snp.makeConstraints { (make) in
-            make.top.equalTo(self.patView.snp.bottom).offset(20)
+            make.top.equalToSuperview().offset(40)
             make.left.greaterThanOrEqualTo(self.leftStackView.snp.right).offset(5)
             make.right.equalToSuperview().inset(30)
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().inset(30)
         }
 
             super.updateViewConstraints()
@@ -203,13 +213,27 @@ class FMPMyPatsViewController: FMPViewController {
         }
     }
 
-    @objc private func leftRightButtonTapped() {
-        if flag {
-            self.view.backgroundColor = .systemBlue
-            flag.toggle()
-        } else {
-            self.view.backgroundColor = .white
-            flag.toggle()
+    @objc private func rightButtonTapped() {
+        for object in self.mainData {
+            if object.id == FMAD.selectPatId {
+                let indexOfLoadedPat = self.mainData.index(of: object)
+                let indexOfNextPat = self.mainData.index(after: indexOfLoadedPat ?? 0)
+                guard indexOfNextPat <= self.mainData.count - 1 else {return}
+                FMAD.selectPatId = self.mainData[indexOfNextPat].id
+                self.setDescriptionToLabelDescription(setId: FMAD.selectPatId)
+            }
+        }
+    }
+
+    @objc private func leftButtonTapped() {
+        for object in self.mainData {
+            if object.id == FMAD.selectPatId {
+                let indexOfLoadedPat = self.mainData.index(of: object)
+                let indexOfNextPat = self.mainData.index(before: indexOfLoadedPat ?? 0)
+                guard indexOfNextPat >= 0 else {return}
+                FMAD.selectPatId = self.mainData[indexOfNextPat].id
+                self.setDescriptionToLabelDescription(setId: FMAD.selectPatId)
+            }
         }
     }
 

@@ -27,6 +27,7 @@
 		10E2E9AB2614C773003BBE77 /* FMPMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E2E9AA2614C773003BBE77 /* FMPMainViewController.swift */; };
 		10E2E9B02614C775003BBE77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10E2E9AF2614C775003BBE77 /* Assets.xcassets */; };
 		10E2E9B32614C775003BBE77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10E2E9B12614C775003BBE77 /* LaunchScreen.storyboard */; };
+		10E4C4BA264051FD001ECF76 /* FMPScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E4C4B9264051FD001ECF76 /* FMPScrollView.swift */; };
 		10E60FE1261B4201008BF60F /* FMPVaccineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E60FE0261B4201008BF60F /* FMPVaccineViewController.swift */; };
 		10E60FE4261B4217008BF60F /* FMPDocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E60FE3261B4217008BF60F /* FMPDocumentsViewController.swift */; };
 		10E60FE7261B422E008BF60F /* FMPCertificateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E60FE6261B422E008BF60F /* FMPCertificateViewController.swift */; };
@@ -65,6 +66,7 @@
 		10E2E9AF2614C775003BBE77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10E2E9B22614C775003BBE77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		10E2E9B42614C775003BBE77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10E4C4B9264051FD001ECF76 /* FMPScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPScrollView.swift; sourceTree = "<group>"; };
 		10E60FE0261B4201008BF60F /* FMPVaccineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPVaccineViewController.swift; sourceTree = "<group>"; };
 		10E60FE3261B4217008BF60F /* FMPDocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPDocumentsViewController.swift; sourceTree = "<group>"; };
 		10E60FE6261B422E008BF60F /* FMPCertificateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPCertificateViewController.swift; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				105DC9FD262CB41B00343354 /* Data */,
+				10E4C4B8264051B3001ECF76 /* Views */,
 				10E61019261F14BF008BF60F /* Controllers */,
 			);
 			path = Common;
@@ -354,6 +357,14 @@
 				1021EEBE2615DBDF00EB6E9D /* FMPHomeViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		10E4C4B8264051B3001ECF76 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				10E4C4B9264051FD001ECF76 /* FMPScrollView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		10E6100C261DF388008BF60F /* Cell */ = {
@@ -569,6 +580,7 @@
 				10E60FE4261B4217008BF60F /* FMPDocumentsViewController.swift in Sources */,
 				10E6100A261DF19D008BF60F /* FMPMedicatModel.swift in Sources */,
 				10E61068262863D9008BF60F /* UiStackView+Ex.swift in Sources */,
+				10E4C4BA264051FD001ECF76 /* FMPScrollView.swift in Sources */,
 				1021EEBF2615DBDF00EB6E9D /* FMPHomeViewController.swift in Sources */,
 				10E60FE7261B422E008BF60F /* FMPCertificateViewController.swift in Sources */,
 				106A951D2631DE4E001B15DE /* FMPMainButton.swift in Sources */,
