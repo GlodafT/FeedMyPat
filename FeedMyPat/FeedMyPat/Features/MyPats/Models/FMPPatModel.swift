@@ -10,7 +10,7 @@ import RealmSwift
 
 class FMPPatModel: Object {
 
-    // MARK: - gui variables
+    // MARK: - variables
 
     @objc dynamic var id = UUID().uuidString
     @objc dynamic var nameLabelDescription: String = ""
@@ -22,9 +22,9 @@ class FMPPatModel: Object {
     @objc dynamic var sterilizationLabelDescription: String = ""
     @objc dynamic var chipLabelDescription: String = ""
 
-    dynamic var mediCatsData = List<FMPMedicatModel>()
+//    dynamic var mediCatsData = List<FMPMedicatModel>()
 
-//    @objc dynamic var mainData: FMAD!
+    // MARK: - init
 
     convenience init(name: String,
                      date: String,
@@ -44,27 +44,4 @@ class FMPPatModel: Object {
         self.sterilizationLabelDescription = sterilization
         self.chipLabelDescription = chip
     }
-//    dynamic var mediCatModel: [FMPMedicatModel] = []
-
-    // MARK: - init
-
-//    init(
-//         nameLabelDescription: String,
-//         dateOfBirthLabelDescription: String,
-//         typeLabelDescription: String,
-//         breedLabelDescription: String,
-//         genderLabelDescription: String,
-//         colorLabelDescription: String,
-//         sterilizationLabelDescription: String,
-//         chipLabelDescription: String) {
-//
-//        self.nameLabelDescription = nameLabelDescription
-//        self.dateOfBirthLabelDescription = dateOfBirthLabelDescription
-//        self.typeLabelDescription = typeLabelDescription
-//        self.breedLabelDescription = breedLabelDescription
-//        self.genderLabelDescription = genderLabelDescription
-//        self.colorLabelDescription = colorLabelDescription
-//        self.sterilizationLabelDescription = sterilizationLabelDescription
-//        self.chipLabelDescription = chipLabelDescription
-//    }
 }

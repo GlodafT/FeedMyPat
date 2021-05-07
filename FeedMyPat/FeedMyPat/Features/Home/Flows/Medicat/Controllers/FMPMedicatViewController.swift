@@ -12,7 +12,7 @@ class FMPMedicatViewController: FMPViewController {
 
     // MARK: - gui variables
 
-    let realm = try! Realm()
+    let realm = FMPRealmManager.safeRealm
     lazy var mediCatModels: Results<FMPMedicatModel> = {self.realm.objects(FMPMedicatModel.self)}()
 
     lazy var models: [FMPMedicatModel] = [] {
@@ -68,18 +68,10 @@ class FMPMedicatViewController: FMPViewController {
 
     }
 
-    func loadMedicatData(animalId: UUID) {
-        //        for animal in mainData.animals {
-        //            if animal.id == animalId {
-        //                self.models = animal.mediCatModel
-        //            }
-        //        }
-    }
-
     private func mediCatSelectModels()  {
         var filtredModels: [FMPMedicatModel] = []
         for model in self.mediCatModels {
-            if model.id == FMAD.selectPatId {
+            if model.id == FSP.selectPatId {
                 filtredModels.append(model)
             }
             self.models = filtredModels
@@ -120,21 +112,14 @@ extension FMPMedicatViewController: UICollectionViewDelegate, UICollectionViewDa
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        self.view.backgroundColor = .systemTeal
         guard isEditButtonTapped else { return }
         let selectItem = self.mediCatModels.index(of: self.models[indexPath.row])
         guard let Item = selectItem else { return }
-        try! realm.write {
+        FMPRealmManager.write(realm: realm, writeClosure: {
             realm.delete(self.mediCatModels[Item])
-        }
+        })
         self.collectionView.deleteItems(at: [indexPath])
         self.models.remove(at: indexPath.row)
-//        guard let data = mainDataControl else {return}
-//        for animal in data.animals {
-//            if animal.id == mainData.selectPatId {
-//                animal.mediCatModel.remove(at: indexPath.row)
-//            }
-//        }
     }
 }
 
@@ -156,6 +141,5 @@ extension FMPMedicatViewController: UICollectionViewDelegateFlowLayout {
 extension FMPMedicatViewController: FMPMedicatAddViewControllerDelegate {
     func loadData() {
         self.mediCatSelectModels()
-//        self.collectionView.reloadData()
     }
 }

@@ -11,33 +11,8 @@ import RealmSwift
 
 class FMPMyPatsViewController: UIViewController {
 
-//    struct Animal {
-//        let name: String
-//        let id: UUID
-//
-//        let document: [Document]
-//        let vaccine: [Vaccine]
-//    }
-//
-//    struct Document {
-//        let name: String
-//        let date: Date
-//    }
-//
-//    struct Vaccine {
-//        let name: String
-//        let date: Date
-//    }
-
-    var flag: Bool = true                       /// delite
-
-//    private lazy var addPatId: UUID = UUID()
-
-//    lazy var mainData = FMAD()
-
-    let realm = try! Realm()
+    let realm = FMPRealmManager.safeRealm
     lazy var mainData: Results<FMPPatModel> = { self.realm.objects(FMPPatModel.self)}()
-//    lazy var mainData = FMAD()
 
     let patView: UIView = FMPPatView()
 
@@ -123,9 +98,14 @@ class FMPMyPatsViewController: UIViewController {
 
     var rightStackView = FMPStackView()
 
-    var leftStackView = FMPStackView()
+    var leftStackView: UIStackView = {
+        let stack = FMPStackView()
+        stack.contentMode = .right
+        return stack
+    }()
 
     private lazy var addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addButtonTapped))
+    private lazy var editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(self.editButtonTapped))
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -153,8 +133,9 @@ class FMPMyPatsViewController: UIViewController {
                                                  chipLabelDescription])
 
         self.view.backgroundColor = .systemRed
-        self.setDescriptionToLabelDescription(setId: FMAD.selectPatId)
-        self.navigationItem.setRightBarButton(self.addButton, animated: true)
+        self.setDescriptionToLabelDescription(setId: FSP.selectPatId)
+        self.navigationItem.setRightBarButtonItems([self.addButton, self.editButton], animated: true)
+        self.navigationController?.navigationBar.tintColor = .systemGreen
     }
 
     override func updateViewConstraints() {
@@ -196,8 +177,6 @@ class FMPMyPatsViewController: UIViewController {
             super.updateViewConstraints()
     }
 
-    // исправить!
-
     private func setDescriptionToLabelDescription(setId: String) {
         for pat in self.mainData {
             if pat.id == setId {
@@ -213,29 +192,48 @@ class FMPMyPatsViewController: UIViewController {
         }
     }
 
+    private func setNillToDescription() {
+        if FSP.selectPatId == "" {
+            self.nameLabelDescription.text = ""
+            self.dateOfBirthLabelDescription.text = ""
+            self.typeLabelDescription.text = ""
+            self.breedLabelDescription.text = ""
+            self.genderLabelDescription.text = ""
+            self.colorLabelDescription.text = ""
+            self.sterilizationLabelDescription.text = ""
+            self.chipLabelDescription.text = ""
+        }
+    }
+
+    @objc private func editButtonTapped() {
+        self.navigationController?.pushViewController(FMPAllPatsViewController(), animated: true)
+    }
+
     @objc private func rightButtonTapped() {
         for object in self.mainData {
-            if object.id == FMAD.selectPatId {
+            if object.id == FSP.selectPatId {
                 let indexOfLoadedPat = self.mainData.index(of: object)
                 let indexOfNextPat = self.mainData.index(after: indexOfLoadedPat ?? 0)
                 guard indexOfNextPat <= self.mainData.count - 1 else {return}
-                FMAD.selectPatId = self.mainData[indexOfNextPat].id
-                self.setDescriptionToLabelDescription(setId: FMAD.selectPatId)
+                FSP.selectPatId = self.mainData[indexOfNextPat].id
+                self.setDescriptionToLabelDescription(setId: FSP.selectPatId)
             }
         }
     }
 
     @objc private func leftButtonTapped() {
         for object in self.mainData {
-            if object.id == FMAD.selectPatId {
+            if object.id == FSP.selectPatId {
                 let indexOfLoadedPat = self.mainData.index(of: object)
                 let indexOfNextPat = self.mainData.index(before: indexOfLoadedPat ?? 0)
                 guard indexOfNextPat >= 0 else {return}
-                FMAD.selectPatId = self.mainData[indexOfNextPat].id
-                self.setDescriptionToLabelDescription(setId: FMAD.selectPatId)
+                FSP.selectPatId = self.mainData[indexOfNextPat].id
+                self.setDescriptionToLabelDescription(setId: FSP.selectPatId)
             }
         }
     }
+
+    // доделать если сетайди  == нил и перейти на хоть чтото
 
     @objc private func addButtonTapped() {
         let controller = FMPAddPatViewController()
@@ -247,8 +245,7 @@ class FMPMyPatsViewController: UIViewController {
 
 extension FMPMyPatsViewController: FMPAddPatViewControllerDelegate {
     func passData() {
-//        mainData.animals.append(Data)
-        self.setDescriptionToLabelDescription(setId: FMAD.selectPatId)
+        self.setDescriptionToLabelDescription(setId: FSP.selectPatId)
     }
 
 }

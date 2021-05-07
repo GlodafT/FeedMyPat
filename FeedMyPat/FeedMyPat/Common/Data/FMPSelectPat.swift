@@ -1,18 +1,16 @@
 //
-//  FMPMainAnimalData.swift
+//  FMPSelectPat.swift
 //  FeedMyPat
 //
 //  Created by Mikita Igonin on 20.04.21.
 //
 
 import Foundation
-//import RealmSwift
 
-typealias FMAD = FMPMainAnimalData
+typealias FSP = FMPSelectPat
 
-class FMPMainAnimalData {
+class FMPSelectPat {
 
-//    dynamic var animals = List<FMPPatModel>()
     static var selectPatId: String {
         get {
             UserDefaults.standard.string(forKey: "SelectPat") ?? ""

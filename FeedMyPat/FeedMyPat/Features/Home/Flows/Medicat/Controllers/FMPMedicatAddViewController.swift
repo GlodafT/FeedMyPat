@@ -21,7 +21,7 @@ class FMPMedicatAddViewController: FMPViewController {
 //        Swift.debugPrint(error)
 //    }
 //    }()
-    let realm = try! Realm()
+    let realm = FMPRealmManager.safeRealm
     lazy var patData: Results<FMPPatModel> = { self.realm.objects(FMPPatModel.self) }()
 
     weak var delegate: FMPMedicatAddViewControllerDelegate?
@@ -179,25 +179,11 @@ class FMPMedicatAddViewController: FMPViewController {
     }
 
      private func addNewMedicatData() {
-//        let realm = try! Realm()
-        try! realm.write {
-            let mediCatData = FMPMedicatModel(id: FMAD.selectPatId,
+        FMPRealmManager.write(realm: realm) {
+            let mediCatData = FMPMedicatModel(id: FSP.selectPatId,
                             type: self.typeTextFieldDescription.text ?? "",
                             date: self.dateTextFieldDescription.text ?? "")
             realm.add(mediCatData)
-//            let newMediCat = FMPMedicatModel()
-//            newMediCat.id = FMAD.selectPatId
-//            newMediCat.typeDescriptionLabel = self.typeTextFieldDescription.text ?? ""
-//            newMediCat.dateDescriptionLabel = self.dateTextFieldDescription.text ?? ""
-
-//            for pat in self.patData {
-//                guard pat.id == FMAD.selectPatId else {return}
-//                pat.mediCatsData.append(newMediCat)
-//            }
-
-//            realm.add(newMediCat)
-//            realm.
-//            self.mediCatData = newMediCat
         }
     }
 

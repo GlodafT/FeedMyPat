@@ -15,19 +15,9 @@ protocol FMPAddPatViewControllerDelegate: class {
 
 class FMPAddPatViewController: FMPViewController {
 
-//    let realm: Realm = { do {
-//    let realm = try Realm()
-//    } catch let error as NSError {
-//        Swift.debugPrint(error)
-//    }
-//    return
-//    }()
-    let realm = try! Realm()
+    let realm = FMPRealmManager.safeRealm
 
-//    private func
     weak var delegate: FMPAddPatViewControllerDelegate?
-
-    var mainData = FMAD()
 
     private lazy var saveButton: UIButton = {
         let button = UIButton()
@@ -212,7 +202,7 @@ class FMPAddPatViewController: FMPViewController {
             make.top.equalTo(self.nameTextFieldDescription.snp.bottom).offset(5)
             make.left.greaterThanOrEqualTo(self.dateOfBirthLabel.snp.right)
             make.right.equalToSuperview().inset(30)
-            make.width.equalTo(105)
+            make.width.equalTo(110)
         }
 
         self.typeLabel.snp.makeConstraints { (make) in
@@ -326,15 +316,12 @@ class FMPAddPatViewController: FMPViewController {
             sterilization: sterilizationToString(swich: sterilizationSwitchDescription),
             chip: chipTextFieldDescription.text ?? "error")
 
-        FMAD.selectPatId = patData.id
+        FSP.selectPatId = patData.id
 
-        try! realm.write {
-//            realm.add(self.mainData)
+        FMPRealmManager.write(realm: realm, writeClosure: {
             realm.add(patData)
-        }
+        })
         delegate?.passData()
-//        self.mainData?.animals.append(patData)
-//        self.mainData?.selectPatId = patData.id
 
         self.dismiss(animated: true, completion: nil)
     }
