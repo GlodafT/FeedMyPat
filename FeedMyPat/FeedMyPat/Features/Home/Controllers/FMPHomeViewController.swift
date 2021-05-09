@@ -16,9 +16,9 @@ class FMPHomeViewController: UIViewController {
     var flag: Bool = true               /// testing
 
     let realm = FMPRealmManager.safeRealm
-    lazy var mainData: Results<FMPPatModel> = { self.realm.objects(FMPPatModel.self)}()
+    private lazy var mainData: Results<FMPPatModel> = { self.realm.objects(FMPPatModel.self)}()
 
-    lazy var patView: UIView = FMPPatView()
+    private lazy var patView: UIView = FMPPatView()
 
     private lazy var petViewLeftButton: UIButton = {
         let button = FMPChangeButton()
@@ -72,6 +72,8 @@ class FMPHomeViewController: UIViewController {
         return button
     }()
 
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -86,7 +88,6 @@ class FMPHomeViewController: UIViewController {
         self.patView.addSubviews([petViewLeftButton,
                                   petViewRightButton])
 
-        //        self.isExistAnimal()
     }
 
     // MARK: - Constraints
@@ -147,7 +148,7 @@ class FMPHomeViewController: UIViewController {
         super.updateViewConstraints()
     }
 
-    // MARK: - Functions
+    // MARK: - Private Methods
 
     private func isExistAnimal() {
             UIButton.animate(withDuration: 2) {
@@ -181,7 +182,7 @@ class FMPHomeViewController: UIViewController {
                 self.present(alert, animated: true)
     }
 
-    // MARK: - Objc functions
+    // MARK: - Objc Private Methods
 
     @objc private func leftRightButtonTapped() {                    /// testing         |||         change
         if flag {

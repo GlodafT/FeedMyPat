@@ -19,6 +19,8 @@ class FMPAddPatViewController: FMPViewController {
 
     weak var delegate: FMPAddPatViewControllerDelegate?
 
+    // MARK: - Private Properties
+
     private lazy var saveButton: UIButton = {
         let button = UIButton()
         button.setTitle(" Save ", for: UIControl.State())
@@ -37,17 +39,7 @@ class FMPAddPatViewController: FMPViewController {
         return label
     }()
 
-    private lazy var nameTextFieldDescription: UITextField = {
-        let text = UITextField()
-        text.backgroundColor = .systemGray4
-        text.textColor = .systemGreen
-        text.tintColor = .systemGreen
-        text.font = UIFont.systemFont(ofSize: 18)
-        text.borderStyle = .roundedRect
-        text.translatesAutoresizingMaskIntoConstraints = false
-
-        return text
-    }()
+    private lazy var nameTextFieldDescription = FMPGrayCornerTextField()
 
     private lazy var dateOfBirthLabel: UILabel = {
         let label = FMPMediumlabelView()
@@ -148,6 +140,8 @@ class FMPAddPatViewController: FMPViewController {
         return toolbar
     }()
 
+    // MARK: - Lifecycle
+
     override func initController() {
         super.initController()
         self.setContentScrolling(isEnabled: false)
@@ -175,6 +169,8 @@ class FMPAddPatViewController: FMPViewController {
         addGesture()
 
     }
+
+    // MARK: - Constraints
 
     override func updateViewConstraints() {
         self.saveButton.snp.makeConstraints { (make) in
@@ -274,14 +270,16 @@ class FMPAddPatViewController: FMPViewController {
         super.updateViewConstraints()
     }
 
-    fileprivate func addGesture() {
+    // MARK: - Private Methods
+
+    private func addGesture() {
         let recognizer = UITapGestureRecognizer()
         recognizer.addTarget(self, action: #selector(tapRecognizer))
 
         self.mainView.addGestureRecognizer(recognizer)
     }
 
-    func sterilizationToString(swich: UISwitch) -> String {
+    private func sterilizationToString(swich: UISwitch) -> String {
         if swich.isOn {
             return "Yes"
         } else {
@@ -289,13 +287,15 @@ class FMPAddPatViewController: FMPViewController {
         }
     }
 
-    func selectSegmentDescription(segment: UISegmentedControl) -> String {
+    private func selectSegmentDescription(segment: UISegmentedControl) -> String {
         if segment.selectedSegmentIndex == 0 {
             return "Male"
         } else {
             return "Female"
         }
     }
+
+    // MARK: - Objc Private Methods
 
     @objc private func saveButtonTapped() {
         guard nameTextFieldDescription.text != "",

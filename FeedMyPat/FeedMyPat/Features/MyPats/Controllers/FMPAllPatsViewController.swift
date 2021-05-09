@@ -11,8 +11,13 @@ import RealmSwift
 class FMPAllPatsViewController: UITableViewController {
 
     let realm = FMPRealmManager.safeRealm
-    lazy var patData: Results<FMPPatModel> = { self.realm.objects(FMPPatModel.self)}()
-    lazy var mediCatModels: Results<FMPMedicatModel> = {self.realm.objects(FMPMedicatModel.self)}()
+
+    // MARK: - Private Properties
+
+    private lazy var patData: Results<FMPPatModel> = { self.realm.objects(FMPPatModel.self)}()
+    private lazy var mediCatModels: Results<FMPMedicatModel> = {self.realm.objects(FMPMedicatModel.self)}()
+
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +65,7 @@ class FMPAllPatsViewController: UITableViewController {
             }
         }
         } else if self.patData.count == 1 {
-            FSP.selectPatId = self.patData[1].id
+            FSP.selectPatId = self.patData[0].id
         } else {
             FSP.selectPatId = ""
         }

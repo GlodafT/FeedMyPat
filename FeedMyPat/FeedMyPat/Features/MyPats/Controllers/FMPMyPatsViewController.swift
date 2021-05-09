@@ -12,18 +12,21 @@ import RealmSwift
 class FMPMyPatsViewController: UIViewController {
 
     let realm = FMPRealmManager.safeRealm
-    lazy var mainData: Results<FMPPatModel> = { self.realm.objects(FMPPatModel.self)}()
 
-    let patView: UIView = FMPPatView()
+    // MARK: - Private Properties
+    
+    private lazy var mainData: Results<FMPPatModel> = { self.realm.objects(FMPPatModel.self)}()
 
-    let petViewLeftButton: UIButton = {
+    private lazy var patView: UIView = FMPPatView()
+
+    private lazy var petViewLeftButton: UIButton = {
         let button = FMPChangeButton()
         button.setImage(UIImage(named: "tabBarHomeIcon"), for: UIControl.State())
         button.addTarget(self, action: #selector(leftButtonTapped), for: .touchUpInside)
         return button
     }()
 
-    let petViewRightButton: UIButton = {
+    private lazy var petViewRightButton: UIButton = {
         let button = FMPChangeButton()
         button.setImage(UIImage(named: "tabBarHomeIcon"), for: UIControl.State())
         button.addTarget(self, action: #selector(rightButtonTapped), for: .touchUpInside)
@@ -32,73 +35,73 @@ class FMPMyPatsViewController: UIViewController {
 
     private lazy var mainScrolView: UIScrollView = FMPScrollView()
 
-    var nameLabel: UILabel = {
+    private lazy var nameLabel: UILabel = {
         let label = FMPMediumlabelView()
         label.text = "Name:"
         return label
     }()
 
-    var nameLabelDescription = FMPMediumlabelView()
+    private lazy var nameLabelDescription = FMPMediumlabelView()
 
-    var dateOfBirthLabel: UILabel = {
+    private lazy var dateOfBirthLabel: UILabel = {
         let label = FMPMediumlabelView()
         label.text = "Date of Birth:"
         return label
     }()
 
-    var dateOfBirthLabelDescription = FMPMediumlabelView()
+    private lazy var dateOfBirthLabelDescription = FMPMediumlabelView()
 
-    var typeLabel: UILabel = {
+    private lazy var typeLabel: UILabel = {
         let label = FMPMediumlabelView()
         label.text = "Type:"
         return label
     }()
 
-    var typeLabelDescription = FMPMediumlabelView()
+    private lazy var typeLabelDescription = FMPMediumlabelView()
 
-    var breedLabel: UILabel = {
+    private lazy var breedLabel: UILabel = {
         let label = FMPMediumlabelView()
         label.text = "Breed:"
         return label
     }()
 
-    var breedLabelDescription = FMPMediumlabelView()
+    private lazy var breedLabelDescription = FMPMediumlabelView()
 
-    var genderLabel: UILabel = {
+    private lazy var genderLabel: UILabel = {
         let label = FMPMediumlabelView()
         label.text = "Gender:"
         return label
     }()
 
-    var genderLabelDescription = FMPMediumlabelView()
+    private lazy var genderLabelDescription = FMPMediumlabelView()
 
-    var colorLabel: UILabel = {
+    private lazy var colorLabel: UILabel = {
         let label = FMPMediumlabelView()
         label.text = "Color:"
         return label
     }()
 
-    var colorLabelDescription = FMPMediumlabelView()
+    private lazy var colorLabelDescription = FMPMediumlabelView()
 
-    var sterilizationLabel: UILabel = {
+    private lazy var sterilizationLabel: UILabel = {
         let label = FMPMediumlabelView()
         label.text = "Sterilization:"
         return label
     }()
 
-    var sterilizationLabelDescription = FMPMediumlabelView()
+    private lazy var sterilizationLabelDescription = FMPMediumlabelView()
 
-    var chipLabel: UILabel = {
+    private lazy var chipLabel: UILabel = {
         let label = FMPMediumlabelView()
         label.text = "Chip:"
         return label
     }()
 
-    var chipLabelDescription = FMPMediumlabelView()
+    private lazy var chipLabelDescription = FMPMediumlabelView()
 
-    var rightStackView = FMPStackView()
+    private lazy var rightStackView = FMPStackView()
 
-    var leftStackView: UIStackView = {
+    private lazy var leftStackView: UIStackView = {
         let stack = FMPStackView()
         stack.contentMode = .right
         return stack
@@ -106,6 +109,8 @@ class FMPMyPatsViewController: UIViewController {
 
     private lazy var addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addButtonTapped))
     private lazy var editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(self.editButtonTapped))
+
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,11 +137,15 @@ class FMPMyPatsViewController: UIViewController {
                                                  sterilizationLabelDescription,
                                                  chipLabelDescription])
 
+        self.observSelectPat()
+
         self.view.backgroundColor = .systemRed
         self.setDescriptionToLabelDescription(setId: FSP.selectPatId)
         self.navigationItem.setRightBarButtonItems([self.addButton, self.editButton], animated: true)
         self.navigationController?.navigationBar.tintColor = .systemGreen
     }
+
+    // MARK: - Constraints
 
     override func updateViewConstraints() {
 
@@ -177,6 +186,8 @@ class FMPMyPatsViewController: UIViewController {
             super.updateViewConstraints()
     }
 
+    // MARK: - Private Methods
+
     private func setDescriptionToLabelDescription(setId: String) {
         for pat in self.mainData {
             if pat.id == setId {
@@ -204,6 +215,12 @@ class FMPMyPatsViewController: UIViewController {
             self.chipLabelDescription.text = ""
         }
     }
+
+    private func observSelectPat() {
+        NotificationCenter.default.addObserver(self, selector: #selector(selectPatChange), name: Notification.Name("SelectPatChange"), object: nil)
+    }
+
+    // MARK: - Objc Private Methods
 
     @objc private func editButtonTapped() {
         self.navigationController?.pushViewController(FMPAllPatsViewController(), animated: true)
@@ -233,12 +250,14 @@ class FMPMyPatsViewController: UIViewController {
         }
     }
 
-    // доделать если сетайди  == нил и перейти на хоть чтото
-
     @objc private func addButtonTapped() {
         let controller = FMPAddPatViewController()
         controller.delegate = self
         self.navigationController?.present(controller, animated: true)
+    }
+
+    @objc private func selectPatChange() {
+        self.setDescriptionToLabelDescription(setId: FSP.selectPatId)
     }
 
 }

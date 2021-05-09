@@ -10,6 +10,8 @@ import SnapKit
 
 class FMPMainViewController: UIViewController {
 
+    // MARK: - Private Properties
+
     private lazy var nextButton: UIButton = {
         let button = UIButton()
         button.setTitle("Next", for: UIControl.State())
@@ -21,6 +23,8 @@ class FMPMainViewController: UIViewController {
 
         return button
     }()
+
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()

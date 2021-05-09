@@ -13,15 +13,15 @@ class FMPMedicatViewController: FMPViewController {
     // MARK: - gui variables
 
     let realm = FMPRealmManager.safeRealm
-    lazy var mediCatModels: Results<FMPMedicatModel> = {self.realm.objects(FMPMedicatModel.self)}()
+    private lazy var mediCatModels: Results<FMPMedicatModel> = {self.realm.objects(FMPMedicatModel.self)}()
 
-    lazy var models: [FMPMedicatModel] = [] {
+    private lazy var models: [FMPMedicatModel] = [] {
         didSet {
             self.collectionView.reloadData()
         }
     }
 
-    private var isEditButtonTapped: Bool = false
+    private lazy var isEditButtonTapped: Bool = false
 
     private lazy var collectionLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -46,7 +46,7 @@ class FMPMedicatViewController: FMPViewController {
     private lazy var editBarButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(self.editButtonTapped))
     private lazy var addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addButtonTapped))
 
-    // MARK: - initialization
+    // MARK: - Lifecycle
 
     override func initController() {
         super.initController()
@@ -64,9 +64,13 @@ class FMPMedicatViewController: FMPViewController {
         }
         self.mediCatSelectModels()
 
+        self.observSelectPat()
+
         self.navigationItem.setRightBarButtonItems([self.addBarButton, self.editBarButton], animated: true)
 
     }
+
+    // MARK: - Private Methods
 
     private func mediCatSelectModels()  {
         var filtredModels: [FMPMedicatModel] = []
@@ -77,6 +81,12 @@ class FMPMedicatViewController: FMPViewController {
             self.models = filtredModels
         }
     }
+
+    private func observSelectPat() {
+        NotificationCenter.default.addObserver(self, selector: #selector(selectPatChange), name: Notification.Name("SelectPatChange"), object: nil)
+    }
+
+    // MARK: - Objc Private Methods
 
     @objc private func editButtonTapped() {
         self.isEditButtonTapped.toggle()
@@ -92,6 +102,11 @@ class FMPMedicatViewController: FMPViewController {
         let controller = FMPMedicatAddViewController()
         controller.delegate = self
         self.navigationController?.present(controller, animated: true)
+    }
+
+    @objc private func selectPatChange() {
+        self.mediCatSelectModels()
+        self.collectionView.reloadData()
     }
 
 }

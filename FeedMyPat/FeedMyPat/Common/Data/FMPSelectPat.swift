@@ -16,6 +16,7 @@ class FMPSelectPat {
             UserDefaults.standard.string(forKey: "SelectPat") ?? ""
         } set {
             UserDefaults.standard.setValue(newValue, forKey: "SelectPat")
+            NotificationCenter.default.post(name: Notification.Name("SelectPatChange"), object: nil)
         }
     }
 }

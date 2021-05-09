@@ -9,6 +9,10 @@ import UIKit
 
 class FMPDocumentsViewController: UIViewController {
 
+    // TO DO: add functional, model, data
+
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

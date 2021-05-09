@@ -10,6 +10,8 @@ import MapKit
 
 class FMPMapViewController: FMPViewController {
 
+    // MARK TO DO: - add functional
+
     // MARK: - gui variables
 
     private lazy var mapView: MKMapView = {
@@ -18,6 +20,10 @@ class FMPMapViewController: FMPViewController {
 
         return view
     }()
+
+
+
+    // MARK: - Lifecycle
 
     override func initController() {
         super.initController()
