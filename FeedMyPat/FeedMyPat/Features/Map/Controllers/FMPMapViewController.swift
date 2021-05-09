@@ -21,8 +21,6 @@ class FMPMapViewController: FMPViewController {
         return view
     }()
 
-
-
     // MARK: - Lifecycle
 
     override func initController() {

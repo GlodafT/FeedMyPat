@@ -40,7 +40,7 @@ class FMPTabBarViewController: UITabBarController {
     func setTabbarAppereance() {
         self.tabBar.layer.borderColor = .init(gray: 1, alpha: 0.9)
         self.tabBar.layer.borderWidth = 1
-        self.tabBar.itemPositioning = .fill
+        self.tabBar.itemPositioning = .centered
         self.tabBar.tintColor = .systemGreen
         self.tabBar.unselectedItemTintColor = .systemGray
     }

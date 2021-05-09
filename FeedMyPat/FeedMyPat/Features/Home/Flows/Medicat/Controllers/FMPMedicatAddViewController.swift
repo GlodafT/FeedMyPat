@@ -16,7 +16,7 @@ protocol FMPMedicatAddViewControllerDelegate: class {
 class FMPMedicatAddViewController: FMPViewController {
 
     let realm = FMPRealmManager.safeRealm
-    
+
     weak var delegate: FMPMedicatAddViewControllerDelegate?
 
     // MARK: - Private Properties

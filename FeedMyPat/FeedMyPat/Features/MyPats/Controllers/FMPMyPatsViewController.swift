@@ -14,7 +14,7 @@ class FMPMyPatsViewController: UIViewController {
     let realm = FMPRealmManager.safeRealm
 
     // MARK: - Private Properties
-    
+
     private lazy var mainData: Results<FMPPatModel> = { self.realm.objects(FMPPatModel.self)}()
 
     private lazy var patView: UIView = FMPPatView()
@@ -31,6 +31,12 @@ class FMPMyPatsViewController: UIViewController {
         button.setImage(UIImage(named: "tabBarHomeIcon"), for: UIControl.State())
         button.addTarget(self, action: #selector(rightButtonTapped), for: .touchUpInside)
         return button
+    }()
+
+    private lazy var patViewNameLabel: UILabel = {
+        let label = FMPMediumlabelView()
+        label.font = UIFont.systemFont(ofSize: 25)
+        return label
     }()
 
     private lazy var mainScrolView: UIScrollView = FMPScrollView()
@@ -116,8 +122,8 @@ class FMPMyPatsViewController: UIViewController {
         super.viewDidLoad()
 
         self.view.addSubviews([patView, mainScrolView])
-        self.patView.addSubviews([petViewLeftButton, petViewRightButton])
-        self.mainScrolView.addSubviews([rightStackView, leftStackView])
+        self.patView.addSubviews([petViewLeftButton, petViewRightButton, patViewNameLabel])
+        self.mainScrolView.addSubviews([ leftStackView, rightStackView ])
 
         self.leftStackView.addArrangedSubviews([nameLabel,
                                                 dateOfBirthLabel,
@@ -138,7 +144,7 @@ class FMPMyPatsViewController: UIViewController {
                                                  chipLabelDescription])
 
         self.observSelectPat()
-
+        self.navigationItem.title = "My Pat"
         self.view.backgroundColor = .systemRed
         self.setDescriptionToLabelDescription(setId: FSP.selectPatId)
         self.navigationItem.setRightBarButtonItems([self.addButton, self.editButton], animated: true)
@@ -164,6 +170,11 @@ class FMPMyPatsViewController: UIViewController {
             make.width.equalTo(self.view.bounds.width / 6)
         }
 
+        self.patViewNameLabel.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().inset(20)
+        }
+
         self.mainScrolView.snp.makeConstraints { (make) in
             make.top.equalTo(self.patView.snp.bottom)
             make.left.right.equalToSuperview()
@@ -178,7 +189,7 @@ class FMPMyPatsViewController: UIViewController {
 
         self.rightStackView.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(40)
-            make.left.greaterThanOrEqualTo(self.leftStackView.snp.right).offset(5)
+            make.left.greaterThanOrEqualTo(self.leftStackView.snp.right).offset(20)
             make.right.equalToSuperview().inset(30)
             make.bottom.equalToSuperview().inset(30)
         }
@@ -191,6 +202,7 @@ class FMPMyPatsViewController: UIViewController {
     private func setDescriptionToLabelDescription(setId: String) {
         for pat in self.mainData {
             if pat.id == setId {
+                self.patViewNameLabel.text = pat.nameLabelDescription
                 self.nameLabelDescription.text = pat.nameLabelDescription
                 self.dateOfBirthLabelDescription.text = pat.dateOfBirthLabelDescription
                 self.typeLabelDescription.text = pat.typeLabelDescription
@@ -205,6 +217,7 @@ class FMPMyPatsViewController: UIViewController {
 
     private func setNillToDescription() {
         if FSP.selectPatId == "" {
+            self.patViewNameLabel.text = ""
             self.nameLabelDescription.text = ""
             self.dateOfBirthLabelDescription.text = ""
             self.typeLabelDescription.text = ""
@@ -218,6 +231,16 @@ class FMPMyPatsViewController: UIViewController {
 
     private func observSelectPat() {
         NotificationCenter.default.addObserver(self, selector: #selector(selectPatChange), name: Notification.Name("SelectPatChange"), object: nil)
+    }
+
+    private func showHidePetViewButtons() {
+        if self.mainData.count > 1 {
+            self.petViewLeftButton.isHidden = false
+            self.petViewRightButton.isHidden = false
+        } else {
+            self.petViewLeftButton.isHidden = true
+            self.petViewRightButton.isHidden = true
+        }
     }
 
     // MARK: - Objc Private Methods
@@ -258,6 +281,7 @@ class FMPMyPatsViewController: UIViewController {
 
     @objc private func selectPatChange() {
         self.setDescriptionToLabelDescription(setId: FSP.selectPatId)
+        self.showHidePetViewButtons()
     }
 
 }
@@ -265,6 +289,7 @@ class FMPMyPatsViewController: UIViewController {
 extension FMPMyPatsViewController: FMPAddPatViewControllerDelegate {
     func passData() {
         self.setDescriptionToLabelDescription(setId: FSP.selectPatId)
+        self.showHidePetViewButtons()
     }
 
 }

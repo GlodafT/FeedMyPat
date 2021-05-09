@@ -87,7 +87,7 @@ class FMPHomeViewController: UIViewController {
                                          certificateButton])
         self.patView.addSubviews([petViewLeftButton,
                                   petViewRightButton])
-
+        self.navigationItem.title = "Home"
     }
 
     // MARK: - Constraints
