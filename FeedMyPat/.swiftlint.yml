@@ -1,4 +1,4 @@
-whitelist_rules:
+only_rules:
   - comma
   - class_delegate_protocol
   - line_length

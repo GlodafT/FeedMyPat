@@ -166,7 +166,7 @@ class FMPAddPatViewController: FMPViewController {
             self.chipTextFieldDescription
         ])
 
-        addGesture()
+        self.addGesture()
 
     }
 
