@@ -6,23 +6,22 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FMPMedicatViewController: FMPViewController {
 
     // MARK: - gui variables
 
-    lazy var mainData = FMAD()
+    let realm = FMPRealmManager.safeRealm
+    private lazy var mediCatModels: Results<FMPMedicatModel> = {self.realm.objects(FMPMedicatModel.self)}()
 
-    // консультация по поводу изменения
-    var mainDataControl: FMAD?
-
-    lazy var models: [FMPMedicatModel] = [] {
+    private lazy var models: [FMPMedicatModel] = [] {
         didSet {
             self.collectionView.reloadData()
         }
     }
 
-    private var isEditButtonTapped: Bool = false
+    private lazy var isEditButtonTapped: Bool = false
 
     private lazy var collectionLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -47,7 +46,7 @@ class FMPMedicatViewController: FMPViewController {
     private lazy var editBarButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(self.editButtonTapped))
     private lazy var addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addButtonTapped))
 
-    // MARK: - initialization
+    // MARK: - Lifecycle
 
     override func initController() {
         super.initController()
@@ -63,18 +62,31 @@ class FMPMedicatViewController: FMPViewController {
         self.collectionView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+        self.mediCatSelectModels()
+
+        self.observSelectPat()
 
         self.navigationItem.setRightBarButtonItems([self.addBarButton, self.editBarButton], animated: true)
 
     }
 
-    func loadMedicatData(animalId: UUID) {
-        for animal in mainData.animals {
-            if animal.id == animalId {
-                self.models = animal.mediCatModel
+    // MARK: - Private Methods
+
+    private func mediCatSelectModels()  {
+        var filtredModels: [FMPMedicatModel] = []
+        for model in self.mediCatModels {
+            if model.id == FSP.selectPatId {
+                filtredModels.append(model)
             }
+            self.models = filtredModels
         }
     }
+
+    private func observSelectPat() {
+        NotificationCenter.default.addObserver(self, selector: #selector(selectPatChange), name: Notification.Name("SelectPatChange"), object: nil)
+    }
+
+    // MARK: - Objc Private Methods
 
     @objc private func editButtonTapped() {
         self.isEditButtonTapped.toggle()
@@ -92,6 +104,11 @@ class FMPMedicatViewController: FMPViewController {
         self.navigationController?.present(controller, animated: true)
     }
 
+    @objc private func selectPatChange() {
+        self.mediCatSelectModels()
+        self.collectionView.reloadData()
+    }
+
 }
 
 extension FMPMedicatViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -104,25 +121,20 @@ extension FMPMedicatViewController: UICollectionViewDelegate, UICollectionViewDa
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FMPMedicatCell.reuseIdentifier, for: indexPath)
 
         if let cell = cell as? FMPMedicatCell {
-//            let array = Array(self.models)[indexPath.section]
-
             cell.set(medicatModel: self.models[indexPath.row])
         }
-
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.view.backgroundColor = .systemTeal
         guard isEditButtonTapped else { return }
+        let selectItem = self.mediCatModels.index(of: self.models[indexPath.row])
+        guard let Item = selectItem else { return }
+        FMPRealmManager.write(realm: realm, writeClosure: {
+            realm.delete(self.mediCatModels[Item])
+        })
         self.collectionView.deleteItems(at: [indexPath])
         self.models.remove(at: indexPath.row)
-        guard let data = mainDataControl else {return}
-        for animal in data.animals {
-            if animal.id == mainData.selectPatId {
-                animal.mediCatModel.remove(at: indexPath.row)
-            }
-        }
     }
 }
 
@@ -142,7 +154,7 @@ extension FMPMedicatViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension FMPMedicatViewController: FMPMedicatAddViewControllerDelegate {
-    func loadData(model: FMPMedicatModel) {
-        self.models.append(model)
+    func loadData() {
+        self.mediCatSelectModels()
     }
 }

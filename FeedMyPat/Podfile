@@ -9,6 +9,6 @@ target 'FeedMyPat' do
 
 pod 'SnapKit', '~> 5.0.0'
 
-pod 'RealmSwift'
+pod 'RealmSwift', '~> 10.5.2'
 
 end

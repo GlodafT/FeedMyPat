@@ -7,16 +7,19 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 protocol FMPMedicatAddViewControllerDelegate: class {
-    func loadData(model: FMPMedicatModel)
+    func loadData()
 }
 
 class FMPMedicatAddViewController: FMPViewController {
 
-    var mainData: FMAD?
+    let realm = FMPRealmManager.safeRealm
 
     weak var delegate: FMPMedicatAddViewControllerDelegate?
+
+    // MARK: - Private Properties
 
     private lazy var saveButton: UIButton = {
         let button = UIButton()
@@ -110,6 +113,8 @@ class FMPMedicatAddViewController: FMPViewController {
         return toolbar
     }()
 
+    // MARK: - Lifecycle
+
     override func initController() {
         super.initController()
 
@@ -126,6 +131,8 @@ class FMPMedicatAddViewController: FMPViewController {
         ])
         addGesture()
     }
+
+    // MARK: - Constraints
 
     override func updateViewConstraints() {
         self.saveButton.snp.makeConstraints { (make) in
@@ -170,24 +177,31 @@ class FMPMedicatAddViewController: FMPViewController {
         super.updateViewConstraints()
     }
 
-    fileprivate func addGesture() {
+    // MARK: - Private Methods
+
+     private func addNewMedicatData() {
+        FMPRealmManager.write(realm: realm) {
+            let mediCatData = FMPMedicatModel(id: FSP.selectPatId,
+                            type: self.typeTextFieldDescription.text ?? "",
+                            date: self.dateTextFieldDescription.text ?? "")
+            realm.add(mediCatData)
+        }
+    }
+
+    private func addGesture() {
         let recognizer = UITapGestureRecognizer()
         recognizer.addTarget(self, action: #selector(tapRecognizer))
         self.mainView.addGestureRecognizer(recognizer)
     }
 
+    // MARK: - Objc Private Methods
+
     @objc private func saveButtonTapped() {
         guard self.typeTextFieldDescription.text != "",
               self.dateTextFieldDescription.text != "" else { return }
-        let model: FMPMedicatModel = FMPMedicatModel(typeDescriptionLabel: self.typeTextFieldDescription.text ?? "error",
-                                                     dateDescriptionLabel: self.dateTextFieldDescription.text ?? "error")
-        guard let mainData = self.mainData else { return }
-        for animal in mainData.animals {
-            if animal.id == mainData.selectPatId {
-                animal.mediCatModel.append(model)
-            }
-        }
-        delegate?.loadData(model: model)
+
+        self.addNewMedicatData()
+        delegate?.loadData()
         self.dismiss(animated: true, completion: nil)
     }
 

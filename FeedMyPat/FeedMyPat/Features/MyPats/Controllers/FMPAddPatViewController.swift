@@ -7,16 +7,19 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 protocol FMPAddPatViewControllerDelegate: class {
-    func passData(id: UUID, Data: FMPPatModel)
+    func passData()
 }
 
 class FMPAddPatViewController: FMPViewController {
 
+    let realm = FMPRealmManager.safeRealm
+
     weak var delegate: FMPAddPatViewControllerDelegate?
 
-    var mainData: FMPMainAnimalData?
+    // MARK: - Private Properties
 
     private lazy var saveButton: UIButton = {
         let button = UIButton()
@@ -36,17 +39,7 @@ class FMPAddPatViewController: FMPViewController {
         return label
     }()
 
-    private lazy var nameTextFieldDescription: UITextField = {
-        let text = UITextField()
-        text.backgroundColor = .systemGray4
-        text.textColor = .systemGreen
-        text.tintColor = .systemGreen
-        text.font = UIFont.systemFont(ofSize: 18)
-        text.borderStyle = .roundedRect
-        text.translatesAutoresizingMaskIntoConstraints = false
-
-        return text
-    }()
+    private lazy var nameTextFieldDescription = FMPGrayCornerTextField()
 
     private lazy var dateOfBirthLabel: UILabel = {
         let label = FMPMediumlabelView()
@@ -147,6 +140,8 @@ class FMPAddPatViewController: FMPViewController {
         return toolbar
     }()
 
+    // MARK: - Lifecycle
+
     override func initController() {
         super.initController()
         self.setContentScrolling(isEnabled: false)
@@ -171,9 +166,11 @@ class FMPAddPatViewController: FMPViewController {
             self.chipTextFieldDescription
         ])
 
-        addGesture()
+        self.addGesture()
 
     }
+
+    // MARK: - Constraints
 
     override func updateViewConstraints() {
         self.saveButton.snp.makeConstraints { (make) in
@@ -201,7 +198,7 @@ class FMPAddPatViewController: FMPViewController {
             make.top.equalTo(self.nameTextFieldDescription.snp.bottom).offset(5)
             make.left.greaterThanOrEqualTo(self.dateOfBirthLabel.snp.right)
             make.right.equalToSuperview().inset(30)
-            make.width.equalTo(105)
+            make.width.equalTo(110)
         }
 
         self.typeLabel.snp.makeConstraints { (make) in
@@ -273,14 +270,16 @@ class FMPAddPatViewController: FMPViewController {
         super.updateViewConstraints()
     }
 
-    fileprivate func addGesture() {
+    // MARK: - Private Methods
+
+    private func addGesture() {
         let recognizer = UITapGestureRecognizer()
         recognizer.addTarget(self, action: #selector(tapRecognizer))
 
         self.mainView.addGestureRecognizer(recognizer)
     }
 
-    func sterilizationToString(swich: UISwitch) -> String {
+    private func sterilizationToString(swich: UISwitch) -> String {
         if swich.isOn {
             return "Yes"
         } else {
@@ -288,13 +287,15 @@ class FMPAddPatViewController: FMPViewController {
         }
     }
 
-    func selectSegmentDescription(segment: UISegmentedControl) -> String {
+    private func selectSegmentDescription(segment: UISegmentedControl) -> String {
         if segment.selectedSegmentIndex == 0 {
             return "Male"
         } else {
             return "Female"
         }
     }
+
+    // MARK: - Objc Private Methods
 
     @objc private func saveButtonTapped() {
         guard nameTextFieldDescription.text != "",
@@ -306,18 +307,21 @@ class FMPAddPatViewController: FMPViewController {
               chipTextFieldDescription.text != "" else {return}
 
         let patData: FMPPatModel = FMPPatModel.init(
-            nameLabelDescription: nameTextFieldDescription.text ?? "error",
-            dateOfBirthLabelDescription: dateOfBirthTextFieldDescription.text ?? "error",
-            typeLabelDescription: typeTextFieldDescription.text ?? "error",
-            breedLabelDescription: breedTextFieldDescription.text ?? "error",
-            genderLabelDescription: selectSegmentDescription(segment: genderSegmentedControlDescription),
-            colorLabelDescription: colorTextFieldDescription.text ?? "error",
-            sterilizationLabelDescription: sterilizationToString(swich: sterilizationSwitchDescription),
-            chipLabelDescription: chipTextFieldDescription.text ?? "error")
+            name: nameTextFieldDescription.text ?? "error",
+            date: dateOfBirthTextFieldDescription.text ?? "error",
+            type: typeTextFieldDescription.text ?? "error",
+            breed: breedTextFieldDescription.text ?? "error",
+            gender: selectSegmentDescription(segment: genderSegmentedControlDescription),
+            color: colorTextFieldDescription.text ?? "error",
+            sterilization: sterilizationToString(swich: sterilizationSwitchDescription),
+            chip: chipTextFieldDescription.text ?? "error")
 
-        delegate?.passData(id: patData.id, Data: patData)
-        self.mainData?.animals.append(patData)
-        self.mainData?.selectPatId = patData.id
+        FSP.selectPatId = patData.id
+
+        FMPRealmManager.write(realm: realm, writeClosure: {
+            realm.add(patData)
+        })
+        delegate?.passData()
 
         self.dismiss(animated: true, completion: nil)
     }
