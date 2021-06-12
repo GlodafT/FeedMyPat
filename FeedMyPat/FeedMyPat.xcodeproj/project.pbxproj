@@ -1,0 +1,822 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1021EEBF2615DBDF00EB6E9D /* FMPHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1021EEBE2615DBDF00EB6E9D /* FMPHomeViewController.swift */; };
+		1021EEC3261601AC00EB6E9D /* FMPMyPatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1021EEC2261601AC00EB6E9D /* FMPMyPatsViewController.swift */; };
+		1021EEC7261601DA00EB6E9D /* FMPInDevelopingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1021EEC6261601DA00EB6E9D /* FMPInDevelopingViewController.swift */; };
+		1021EECC261601FF00EB6E9D /* FMPMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1021EECB261601FF00EB6E9D /* FMPMapViewController.swift */; };
+		1021EED52616027600EB6E9D /* FMPSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1021EED42616027600EB6E9D /* FMPSettingsViewController.swift */; };
+		1021EED9261617BC00EB6E9D /* FMPTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1021EED8261617BC00EB6E9D /* FMPTabBarViewController.swift */; };
+		1021EEFB261A150500EB6E9D /* FMPMedicatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1021EEFA261A150500EB6E9D /* FMPMedicatViewController.swift */; };
+		105DCA00262CB44400343354 /* FMPDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 105DC9FE262CB44300343354 /* FMPDataModel.xcdatamodeld */; };
+		10610C06262D6D1F00BCAB55 /* FMPPatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C05262D6D1E00BCAB55 /* FMPPatModel.swift */; };
+		10610C10262EE34200BCAB55 /* FMPMainAnimalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C0F262EE34200BCAB55 /* FMPMainAnimalData.swift */; };
+		10610C58262FA40D00BCAB55 /* Medicat+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C52262FA40D00BCAB55 /* Medicat+CoreDataClass.swift */; };
+		10610C59262FA40D00BCAB55 /* Animal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C53262FA40D00BCAB55 /* Animal+CoreDataProperties.swift */; };
+		10610C5A262FA40D00BCAB55 /* SelectAnimal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C54262FA40D00BCAB55 /* SelectAnimal+CoreDataProperties.swift */; };
+		10610C5B262FA40D00BCAB55 /* Animal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C55262FA40D00BCAB55 /* Animal+CoreDataClass.swift */; };
+		10610C5C262FA40D00BCAB55 /* Medicat+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C56262FA40D00BCAB55 /* Medicat+CoreDataProperties.swift */; };
+		10610C5D262FA40D00BCAB55 /* SelectAnimal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C57262FA40D00BCAB55 /* SelectAnimal+CoreDataClass.swift */; };
+		106A951D2631DE4E001B15DE /* FMPMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106A951C2631DE4E001B15DE /* FMPMainButton.swift */; };
+		106A95202631E794001B15DE /* FMPChangeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106A951F2631E794001B15DE /* FMPChangeButton.swift */; };
+		106A952C2631F2DE001B15DE /* FMPMediumlabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106A952B2631F2DE001B15DE /* FMPMediumlabelView.swift */; };
+		106A95302631F456001B15DE /* FMPGrayCornerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106A952F2631F456001B15DE /* FMPGrayCornerTextField.swift */; };
+		106A95332631F7F1001B15DE /* FMPStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106A95322631F7F1001B15DE /* FMPStackView.swift */; };
+		107B5F422630863A0046AC40 /* FMPPatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107B5F412630863A0046AC40 /* FMPPatView.swift */; };
+		10E2E9A72614C773003BBE77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E2E9A62614C773003BBE77 /* AppDelegate.swift */; };
+		10E2E9A92614C773003BBE77 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E2E9A82614C773003BBE77 /* SceneDelegate.swift */; };
+		10E2E9AB2614C773003BBE77 /* FMPMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E2E9AA2614C773003BBE77 /* FMPMainViewController.swift */; };
+		10E2E9B02614C775003BBE77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10E2E9AF2614C775003BBE77 /* Assets.xcassets */; };
+		10E2E9B32614C775003BBE77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10E2E9B12614C775003BBE77 /* LaunchScreen.storyboard */; };
+		10E60FE1261B4201008BF60F /* FMPVaccineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E60FE0261B4201008BF60F /* FMPVaccineViewController.swift */; };
+		10E60FE4261B4217008BF60F /* FMPDocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E60FE3261B4217008BF60F /* FMPDocumentsViewController.swift */; };
+		10E60FE7261B422E008BF60F /* FMPCertificateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E60FE6261B422E008BF60F /* FMPCertificateViewController.swift */; };
+		10E6100A261DF19D008BF60F /* FMPMedicatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E61009261DF19D008BF60F /* FMPMedicatModel.swift */; };
+		10E6100E261DF3BD008BF60F /* FMPMedicatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E6100D261DF3BD008BF60F /* FMPMedicatCell.swift */; };
+		10E61013261DFCB8008BF60F /* UiView+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E61012261DFCB8008BF60F /* UiView+Ex.swift */; };
+		10E61017261E0A2F008BF60F /* Date+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E61016261E0A2F008BF60F /* Date+Ex.swift */; };
+		10E6101B261F14EC008BF60F /* FMPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E6101A261F14EC008BF60F /* FMPViewController.swift */; };
+		10E6102326231F11008BF60F /* FMPMedicatAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E6102226231F11008BF60F /* FMPMedicatAddViewController.swift */; };
+		10E6106426286096008BF60F /* FMPStackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E6106326286096008BF60F /* FMPStackViewModel.swift */; };
+		10E61068262863D9008BF60F /* UiStackView+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E61067262863D9008BF60F /* UiStackView+Ex.swift */; };
+		10E6106B26287423008BF60F /* FMPAddPatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E6106A26287423008BF60F /* FMPAddPatViewController.swift */; };
+		D3BAE7A383F4274AE709CF81 /* Pods_FeedMyPat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 239B607550B8056376122A5D /* Pods_FeedMyPat.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1021EEBE2615DBDF00EB6E9D /* FMPHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPHomeViewController.swift; sourceTree = "<group>"; };
+		1021EEC2261601AC00EB6E9D /* FMPMyPatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPMyPatsViewController.swift; sourceTree = "<group>"; };
+		1021EEC6261601DA00EB6E9D /* FMPInDevelopingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPInDevelopingViewController.swift; sourceTree = "<group>"; };
+		1021EECB261601FF00EB6E9D /* FMPMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPMapViewController.swift; sourceTree = "<group>"; };
+		1021EED42616027600EB6E9D /* FMPSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPSettingsViewController.swift; sourceTree = "<group>"; };
+		1021EED8261617BC00EB6E9D /* FMPTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPTabBarViewController.swift; sourceTree = "<group>"; };
+		1021EEFA261A150500EB6E9D /* FMPMedicatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPMedicatViewController.swift; sourceTree = "<group>"; };
+		105DC9FF262CB44300343354 /* FMPDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FMPDataModel.xcdatamodel; sourceTree = "<group>"; };
+		10610C05262D6D1E00BCAB55 /* FMPPatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPPatModel.swift; sourceTree = "<group>"; };
+		10610C0F262EE34200BCAB55 /* FMPMainAnimalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPMainAnimalData.swift; sourceTree = "<group>"; };
+		10610C52262FA40D00BCAB55 /* Medicat+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Medicat+CoreDataClass.swift"; sourceTree = "<group>"; };
+		10610C53262FA40D00BCAB55 /* Animal+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Animal+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		10610C54262FA40D00BCAB55 /* SelectAnimal+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SelectAnimal+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		10610C55262FA40D00BCAB55 /* Animal+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Animal+CoreDataClass.swift"; sourceTree = "<group>"; };
+		10610C56262FA40D00BCAB55 /* Medicat+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Medicat+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		10610C57262FA40D00BCAB55 /* SelectAnimal+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SelectAnimal+CoreDataClass.swift"; sourceTree = "<group>"; };
+		106A951C2631DE4E001B15DE /* FMPMainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPMainButton.swift; sourceTree = "<group>"; };
+		106A951F2631E794001B15DE /* FMPChangeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPChangeButton.swift; sourceTree = "<group>"; };
+		106A952B2631F2DE001B15DE /* FMPMediumlabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPMediumlabelView.swift; sourceTree = "<group>"; };
+		106A952F2631F456001B15DE /* FMPGrayCornerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPGrayCornerTextField.swift; sourceTree = "<group>"; };
+		106A95322631F7F1001B15DE /* FMPStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPStackView.swift; sourceTree = "<group>"; };
+		107B5F412630863A0046AC40 /* FMPPatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPPatView.swift; sourceTree = "<group>"; };
+		10E2E9A32614C773003BBE77 /* FeedMyPat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedMyPat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		10E2E9A62614C773003BBE77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		10E2E9A82614C773003BBE77 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		10E2E9AA2614C773003BBE77 /* FMPMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPMainViewController.swift; sourceTree = "<group>"; };
+		10E2E9AF2614C775003BBE77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		10E2E9B22614C775003BBE77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		10E2E9B42614C775003BBE77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10E60FE0261B4201008BF60F /* FMPVaccineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPVaccineViewController.swift; sourceTree = "<group>"; };
+		10E60FE3261B4217008BF60F /* FMPDocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPDocumentsViewController.swift; sourceTree = "<group>"; };
+		10E60FE6261B422E008BF60F /* FMPCertificateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPCertificateViewController.swift; sourceTree = "<group>"; };
+		10E61009261DF19D008BF60F /* FMPMedicatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPMedicatModel.swift; sourceTree = "<group>"; };
+		10E6100D261DF3BD008BF60F /* FMPMedicatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPMedicatCell.swift; sourceTree = "<group>"; };
+		10E61012261DFCB8008BF60F /* UiView+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UiView+Ex.swift"; sourceTree = "<group>"; };
+		10E61016261E0A2F008BF60F /* Date+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ex.swift"; sourceTree = "<group>"; };
+		10E6101A261F14EC008BF60F /* FMPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPViewController.swift; sourceTree = "<group>"; };
+		10E6102226231F11008BF60F /* FMPMedicatAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPMedicatAddViewController.swift; sourceTree = "<group>"; };
+		10E6106326286096008BF60F /* FMPStackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPStackViewModel.swift; sourceTree = "<group>"; };
+		10E61067262863D9008BF60F /* UiStackView+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UiStackView+Ex.swift"; sourceTree = "<group>"; };
+		10E6106A26287423008BF60F /* FMPAddPatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPAddPatViewController.swift; sourceTree = "<group>"; };
+		239B607550B8056376122A5D /* Pods_FeedMyPat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedMyPat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BFCC467DF6230B1E8757E19 /* Pods-FeedMyPat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedMyPat.debug.xcconfig"; path = "Target Support Files/Pods-FeedMyPat/Pods-FeedMyPat.debug.xcconfig"; sourceTree = "<group>"; };
+		90F090938816EE33B07F411C /* Pods-FeedMyPat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedMyPat.release.xcconfig"; path = "Target Support Files/Pods-FeedMyPat/Pods-FeedMyPat.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		10E2E9A02614C773003BBE77 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3BAE7A383F4274AE709CF81 /* Pods_FeedMyPat.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1021EEC12616018600EB6E9D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1021EEC2261601AC00EB6E9D /* FMPMyPatsViewController.swift */,
+				10E6106A26287423008BF60F /* FMPAddPatViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1021EEC5261601B600EB6E9D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1021EEC6261601DA00EB6E9D /* FMPInDevelopingViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1021EECA261601E000EB6E9D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1021EECB261601FF00EB6E9D /* FMPMapViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1021EED32616026000EB6E9D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1021EED42616027600EB6E9D /* FMPSettingsViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		105DC9FD262CB41B00343354 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				10610C55262FA40D00BCAB55 /* Animal+CoreDataClass.swift */,
+				10610C53262FA40D00BCAB55 /* Animal+CoreDataProperties.swift */,
+				10610C52262FA40D00BCAB55 /* Medicat+CoreDataClass.swift */,
+				10610C56262FA40D00BCAB55 /* Medicat+CoreDataProperties.swift */,
+				10610C57262FA40D00BCAB55 /* SelectAnimal+CoreDataClass.swift */,
+				10610C54262FA40D00BCAB55 /* SelectAnimal+CoreDataProperties.swift */,
+				105DC9FE262CB44300343354 /* FMPDataModel.xcdatamodeld */,
+				10610C0F262EE34200BCAB55 /* FMPMainAnimalData.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		105DCA03262CBE6E00343354 /* Medicat */ = {
+			isa = PBXGroup;
+			children = (
+				107B5F46263180000046AC40 /* Models */,
+				107B5F4526317FB30046AC40 /* Views */,
+				10E6102126231EDB008BF60F /* Controllers */,
+			);
+			path = Medicat;
+			sourceTree = "<group>";
+		};
+		105DCA04262CBE8800343354 /* Vaccine */ = {
+			isa = PBXGroup;
+			children = (
+				10E60FE0261B4201008BF60F /* FMPVaccineViewController.swift */,
+			);
+			path = Vaccine;
+			sourceTree = "<group>";
+		};
+		105DCA05262CBEB000343354 /* Documents */ = {
+			isa = PBXGroup;
+			children = (
+				10E60FE3261B4217008BF60F /* FMPDocumentsViewController.swift */,
+			);
+			path = Documents;
+			sourceTree = "<group>";
+		};
+		105DCA06262CBEC500343354 /* Certificate */ = {
+			isa = PBXGroup;
+			children = (
+				10E60FE6261B422E008BF60F /* FMPCertificateViewController.swift */,
+			);
+			path = Certificate;
+			sourceTree = "<group>";
+		};
+		106A952A2631F25F001B15DE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				106A952B2631F2DE001B15DE /* FMPMediumlabelView.swift */,
+				106A952F2631F456001B15DE /* FMPGrayCornerTextField.swift */,
+				106A95322631F7F1001B15DE /* FMPStackView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		106A95352631FFE1001B15DE /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				105DCA03262CBE6E00343354 /* Medicat */,
+				105DCA04262CBE8800343354 /* Vaccine */,
+				105DCA05262CBEB000343354 /* Documents */,
+				105DCA06262CBEC500343354 /* Certificate */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		107B5F4526317FB30046AC40 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				10E6100C261DF388008BF60F /* Cell */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		107B5F46263180000046AC40 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				10E61009261DF19D008BF60F /* FMPMedicatModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		10E2E99A2614C773003BBE77 = {
+			isa = PBXGroup;
+			children = (
+				10E2E9A52614C773003BBE77 /* FeedMyPat */,
+				10E2E9A42614C773003BBE77 /* Products */,
+				97FB71B6A222BEFEA661690B /* Pods */,
+				FA2B7264050A4E24B760F1EC /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		10E2E9A42614C773003BBE77 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				10E2E9A32614C773003BBE77 /* FeedMyPat.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		10E2E9A52614C773003BBE77 /* FeedMyPat */ = {
+			isa = PBXGroup;
+			children = (
+				10E2E9A62614C773003BBE77 /* AppDelegate.swift */,
+				10E2E9A82614C773003BBE77 /* SceneDelegate.swift */,
+				10E2E9D326150177003BBE77 /* Common */,
+				10E2E9D42615019A003BBE77 /* Features */,
+				10E2E9D22615012E003BBE77 /* Resources */,
+				10E61011261DFC32008BF60F /* Extensions */,
+				10E2E9B42614C775003BBE77 /* Info.plist */,
+			);
+			path = FeedMyPat;
+			sourceTree = "<group>";
+		};
+		10E2E9CC26150001003BBE77 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				106A95352631FFE1001B15DE /* Flows */,
+				10E2E9D8261502DE003BBE77 /* Models */,
+				10E2E9D7261502D2003BBE77 /* Views */,
+				10E2E9D9261502EE003BBE77 /* Controllers */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		10E2E9CE26150023003BBE77 /* MyPats */ = {
+			isa = PBXGroup;
+			children = (
+				10E610622628605E008BF60F /* Models */,
+				106A952A2631F25F001B15DE /* Views */,
+				1021EEC12616018600EB6E9D /* Controllers */,
+			);
+			path = MyPats;
+			sourceTree = "<group>";
+		};
+		10E2E9CF2615004F003BBE77 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				1021EECA261601E000EB6E9D /* Controllers */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		10E2E9D026150061003BBE77 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				1021EED32616026000EB6E9D /* Controllers */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		10E2E9D126150073003BBE77 /* InDeveloping */ = {
+			isa = PBXGroup;
+			children = (
+				1021EEC5261601B600EB6E9D /* Controllers */,
+			);
+			path = InDeveloping;
+			sourceTree = "<group>";
+		};
+		10E2E9D22615012E003BBE77 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				10E2E9AF2614C775003BBE77 /* Assets.xcassets */,
+				10E2E9B12614C775003BBE77 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		10E2E9D326150177003BBE77 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				105DC9FD262CB41B00343354 /* CoreData */,
+				10E61019261F14BF008BF60F /* Controllers */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		10E2E9D42615019A003BBE77 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				10E2E9D526150234003BBE77 /* Initialization */,
+				10E2E9CC26150001003BBE77 /* Home */,
+				10E2E9CE26150023003BBE77 /* MyPats */,
+				10E2E9D126150073003BBE77 /* InDeveloping */,
+				10E2E9CF2615004F003BBE77 /* Map */,
+				10E2E9D026150061003BBE77 /* Settings */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		10E2E9D526150234003BBE77 /* Initialization */ = {
+			isa = PBXGroup;
+			children = (
+				10E2E9D626150258003BBE77 /* Controllers */,
+			);
+			path = Initialization;
+			sourceTree = "<group>";
+		};
+		10E2E9D626150258003BBE77 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				10E2E9AA2614C773003BBE77 /* FMPMainViewController.swift */,
+				1021EED8261617BC00EB6E9D /* FMPTabBarViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		10E2E9D7261502D2003BBE77 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				107B5F412630863A0046AC40 /* FMPPatView.swift */,
+				106A951C2631DE4E001B15DE /* FMPMainButton.swift */,
+				106A951F2631E794001B15DE /* FMPChangeButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		10E2E9D8261502DE003BBE77 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		10E2E9D9261502EE003BBE77 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1021EEBE2615DBDF00EB6E9D /* FMPHomeViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		10E6100C261DF388008BF60F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				10E6100D261DF3BD008BF60F /* FMPMedicatCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		10E61011261DFC32008BF60F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				10E61012261DFCB8008BF60F /* UiView+Ex.swift */,
+				10E61067262863D9008BF60F /* UiStackView+Ex.swift */,
+				10E61016261E0A2F008BF60F /* Date+Ex.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		10E61019261F14BF008BF60F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				10E6101A261F14EC008BF60F /* FMPViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		10E6102126231EDB008BF60F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1021EEFA261A150500EB6E9D /* FMPMedicatViewController.swift */,
+				10E6102226231F11008BF60F /* FMPMedicatAddViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		10E610622628605E008BF60F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				10E6106326286096008BF60F /* FMPStackViewModel.swift */,
+				10610C05262D6D1E00BCAB55 /* FMPPatModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		97FB71B6A222BEFEA661690B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6BFCC467DF6230B1E8757E19 /* Pods-FeedMyPat.debug.xcconfig */,
+				90F090938816EE33B07F411C /* Pods-FeedMyPat.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		FA2B7264050A4E24B760F1EC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				239B607550B8056376122A5D /* Pods_FeedMyPat.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		10E2E9A22614C773003BBE77 /* FeedMyPat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10E2E9B72614C775003BBE77 /* Build configuration list for PBXNativeTarget "FeedMyPat" */;
+			buildPhases = (
+				17E1689D682C0074BA49A59B /* [CP] Check Pods Manifest.lock */,
+				10E2E99F2614C773003BBE77 /* Sources */,
+				10E2E9A02614C773003BBE77 /* Frameworks */,
+				10E2E9A12614C773003BBE77 /* Resources */,
+				10E2E9BB2614C8B6003BBE77 /* SwiftLint */,
+				AF3C27FBDFED348F03FD14F4 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FeedMyPat;
+			productName = FeedMyPat;
+			productReference = 10E2E9A32614C773003BBE77 /* FeedMyPat.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		10E2E99B2614C773003BBE77 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					10E2E9A22614C773003BBE77 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+				};
+			};
+			buildConfigurationList = 10E2E99E2614C773003BBE77 /* Build configuration list for PBXProject "FeedMyPat" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 10E2E99A2614C773003BBE77;
+			productRefGroup = 10E2E9A42614C773003BBE77 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				10E2E9A22614C773003BBE77 /* FeedMyPat */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		10E2E9A12614C773003BBE77 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10E2E9B32614C775003BBE77 /* LaunchScreen.storyboard in Resources */,
+				10E2E9B02614C775003BBE77 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		10E2E9BB2614C8B6003BBE77 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		17E1689D682C0074BA49A59B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FeedMyPat-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF3C27FBDFED348F03FD14F4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FeedMyPat/Pods-FeedMyPat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FeedMyPat/Pods-FeedMyPat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FeedMyPat/Pods-FeedMyPat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		10E2E99F2614C773003BBE77 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10E6100E261DF3BD008BF60F /* FMPMedicatCell.swift in Sources */,
+				10E6102326231F11008BF60F /* FMPMedicatAddViewController.swift in Sources */,
+				10610C5B262FA40D00BCAB55 /* Animal+CoreDataClass.swift in Sources */,
+				1021EEC3261601AC00EB6E9D /* FMPMyPatsViewController.swift in Sources */,
+				10E6106426286096008BF60F /* FMPStackViewModel.swift in Sources */,
+				10E6106B26287423008BF60F /* FMPAddPatViewController.swift in Sources */,
+				105DCA00262CB44400343354 /* FMPDataModel.xcdatamodeld in Sources */,
+				106A95332631F7F1001B15DE /* FMPStackView.swift in Sources */,
+				10E61017261E0A2F008BF60F /* Date+Ex.swift in Sources */,
+				10E2E9AB2614C773003BBE77 /* FMPMainViewController.swift in Sources */,
+				10E2E9A72614C773003BBE77 /* AppDelegate.swift in Sources */,
+				10610C5A262FA40D00BCAB55 /* SelectAnimal+CoreDataProperties.swift in Sources */,
+				106A95202631E794001B15DE /* FMPChangeButton.swift in Sources */,
+				10E2E9A92614C773003BBE77 /* SceneDelegate.swift in Sources */,
+				10E6101B261F14EC008BF60F /* FMPViewController.swift in Sources */,
+				10610C58262FA40D00BCAB55 /* Medicat+CoreDataClass.swift in Sources */,
+				106A95302631F456001B15DE /* FMPGrayCornerTextField.swift in Sources */,
+				107B5F422630863A0046AC40 /* FMPPatView.swift in Sources */,
+				1021EEC7261601DA00EB6E9D /* FMPInDevelopingViewController.swift in Sources */,
+				106A952C2631F2DE001B15DE /* FMPMediumlabelView.swift in Sources */,
+				1021EED52616027600EB6E9D /* FMPSettingsViewController.swift in Sources */,
+				10E60FE4261B4217008BF60F /* FMPDocumentsViewController.swift in Sources */,
+				10E6100A261DF19D008BF60F /* FMPMedicatModel.swift in Sources */,
+				10E61068262863D9008BF60F /* UiStackView+Ex.swift in Sources */,
+				1021EEBF2615DBDF00EB6E9D /* FMPHomeViewController.swift in Sources */,
+				10610C59262FA40D00BCAB55 /* Animal+CoreDataProperties.swift in Sources */,
+				10E60FE7261B422E008BF60F /* FMPCertificateViewController.swift in Sources */,
+				10610C5D262FA40D00BCAB55 /* SelectAnimal+CoreDataClass.swift in Sources */,
+				106A951D2631DE4E001B15DE /* FMPMainButton.swift in Sources */,
+				10E61013261DFCB8008BF60F /* UiView+Ex.swift in Sources */,
+				10E60FE1261B4201008BF60F /* FMPVaccineViewController.swift in Sources */,
+				10610C5C262FA40D00BCAB55 /* Medicat+CoreDataProperties.swift in Sources */,
+				1021EED9261617BC00EB6E9D /* FMPTabBarViewController.swift in Sources */,
+				10610C06262D6D1F00BCAB55 /* FMPPatModel.swift in Sources */,
+				10610C10262EE34200BCAB55 /* FMPMainAnimalData.swift in Sources */,
+				1021EEFB261A150500EB6E9D /* FMPMedicatViewController.swift in Sources */,
+				1021EECC261601FF00EB6E9D /* FMPMapViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		10E2E9B12614C775003BBE77 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				10E2E9B22614C775003BBE77 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		10E2E9B52614C775003BBE77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		10E2E9B62614C775003BBE77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		10E2E9B82614C775003BBE77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6BFCC467DF6230B1E8757E19 /* Pods-FeedMyPat.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XDCZYGXBGA;
+				INFOPLIST_FILE = FeedMyPat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = by.Igonin.FeedMyPat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		10E2E9B92614C775003BBE77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90F090938816EE33B07F411C /* Pods-FeedMyPat.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XDCZYGXBGA;
+				INFOPLIST_FILE = FeedMyPat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = by.Igonin.FeedMyPat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		10E2E99E2614C773003BBE77 /* Build configuration list for PBXProject "FeedMyPat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10E2E9B52614C775003BBE77 /* Debug */,
+				10E2E9B62614C775003BBE77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		10E2E9B72614C775003BBE77 /* Build configuration list for PBXNativeTarget "FeedMyPat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10E2E9B82614C775003BBE77 /* Debug */,
+				10E2E9B92614C775003BBE77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		105DC9FE262CB44300343354 /* FMPDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				105DC9FF262CB44300343354 /* FMPDataModel.xcdatamodel */,
+			);
+			currentVersion = 105DC9FF262CB44300343354 /* FMPDataModel.xcdatamodel */;
+			path = FMPDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 10E2E99B2614C773003BBE77 /* Project object */;
+}
