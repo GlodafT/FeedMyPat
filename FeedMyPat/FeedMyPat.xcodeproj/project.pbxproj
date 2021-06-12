@@ -14,15 +14,8 @@
 		1021EED52616027600EB6E9D /* FMPSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1021EED42616027600EB6E9D /* FMPSettingsViewController.swift */; };
 		1021EED9261617BC00EB6E9D /* FMPTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1021EED8261617BC00EB6E9D /* FMPTabBarViewController.swift */; };
 		1021EEFB261A150500EB6E9D /* FMPMedicatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1021EEFA261A150500EB6E9D /* FMPMedicatViewController.swift */; };
-		105DCA00262CB44400343354 /* FMPDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 105DC9FE262CB44300343354 /* FMPDataModel.xcdatamodeld */; };
 		10610C06262D6D1F00BCAB55 /* FMPPatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C05262D6D1E00BCAB55 /* FMPPatModel.swift */; };
-		10610C10262EE34200BCAB55 /* FMPMainAnimalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C0F262EE34200BCAB55 /* FMPMainAnimalData.swift */; };
-		10610C58262FA40D00BCAB55 /* Medicat+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C52262FA40D00BCAB55 /* Medicat+CoreDataClass.swift */; };
-		10610C59262FA40D00BCAB55 /* Animal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C53262FA40D00BCAB55 /* Animal+CoreDataProperties.swift */; };
-		10610C5A262FA40D00BCAB55 /* SelectAnimal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C54262FA40D00BCAB55 /* SelectAnimal+CoreDataProperties.swift */; };
-		10610C5B262FA40D00BCAB55 /* Animal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C55262FA40D00BCAB55 /* Animal+CoreDataClass.swift */; };
-		10610C5C262FA40D00BCAB55 /* Medicat+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C56262FA40D00BCAB55 /* Medicat+CoreDataProperties.swift */; };
-		10610C5D262FA40D00BCAB55 /* SelectAnimal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C57262FA40D00BCAB55 /* SelectAnimal+CoreDataClass.swift */; };
+		10610C10262EE34200BCAB55 /* FMPSelectPat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10610C0F262EE34200BCAB55 /* FMPSelectPat.swift */; };
 		106A951D2631DE4E001B15DE /* FMPMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106A951C2631DE4E001B15DE /* FMPMainButton.swift */; };
 		106A95202631E794001B15DE /* FMPChangeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106A951F2631E794001B15DE /* FMPChangeButton.swift */; };
 		106A952C2631F2DE001B15DE /* FMPMediumlabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106A952B2631F2DE001B15DE /* FMPMediumlabelView.swift */; };
@@ -34,6 +27,10 @@
 		10E2E9AB2614C773003BBE77 /* FMPMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E2E9AA2614C773003BBE77 /* FMPMainViewController.swift */; };
 		10E2E9B02614C775003BBE77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10E2E9AF2614C775003BBE77 /* Assets.xcassets */; };
 		10E2E9B32614C775003BBE77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10E2E9B12614C775003BBE77 /* LaunchScreen.storyboard */; };
+		10E4C4BA264051FD001ECF76 /* FMPScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E4C4B9264051FD001ECF76 /* FMPScrollView.swift */; };
+		10E4C4BD26431FAC001ECF76 /* FMPRealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E4C4BC26431FAC001ECF76 /* FMPRealmManager.swift */; };
+		10E4C4C126432C58001ECF76 /* FMPAllPatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E4C4C026432C58001ECF76 /* FMPAllPatsViewController.swift */; };
+		10E4C4C826432D5E001ECF76 /* FMPMyPatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E4C4C726432D5E001ECF76 /* FMPMyPatCell.swift */; };
 		10E60FE1261B4201008BF60F /* FMPVaccineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E60FE0261B4201008BF60F /* FMPVaccineViewController.swift */; };
 		10E60FE4261B4217008BF60F /* FMPDocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E60FE3261B4217008BF60F /* FMPDocumentsViewController.swift */; };
 		10E60FE7261B422E008BF60F /* FMPCertificateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E60FE6261B422E008BF60F /* FMPCertificateViewController.swift */; };
@@ -46,7 +43,7 @@
 		10E6106426286096008BF60F /* FMPStackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E6106326286096008BF60F /* FMPStackViewModel.swift */; };
 		10E61068262863D9008BF60F /* UiStackView+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E61067262863D9008BF60F /* UiStackView+Ex.swift */; };
 		10E6106B26287423008BF60F /* FMPAddPatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E6106A26287423008BF60F /* FMPAddPatViewController.swift */; };
-		D3BAE7A383F4274AE709CF81 /* Pods_FeedMyPat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 239B607550B8056376122A5D /* Pods_FeedMyPat.framework */; };
+		FF5FE17FC9B356219FB13FB3 /* Pods_FeedMyPat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D4399F65DB00ADDE9C59EFA /* Pods_FeedMyPat.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,15 +54,8 @@
 		1021EED42616027600EB6E9D /* FMPSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPSettingsViewController.swift; sourceTree = "<group>"; };
 		1021EED8261617BC00EB6E9D /* FMPTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPTabBarViewController.swift; sourceTree = "<group>"; };
 		1021EEFA261A150500EB6E9D /* FMPMedicatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPMedicatViewController.swift; sourceTree = "<group>"; };
-		105DC9FF262CB44300343354 /* FMPDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FMPDataModel.xcdatamodel; sourceTree = "<group>"; };
 		10610C05262D6D1E00BCAB55 /* FMPPatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPPatModel.swift; sourceTree = "<group>"; };
-		10610C0F262EE34200BCAB55 /* FMPMainAnimalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPMainAnimalData.swift; sourceTree = "<group>"; };
-		10610C52262FA40D00BCAB55 /* Medicat+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Medicat+CoreDataClass.swift"; sourceTree = "<group>"; };
-		10610C53262FA40D00BCAB55 /* Animal+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Animal+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		10610C54262FA40D00BCAB55 /* SelectAnimal+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SelectAnimal+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		10610C55262FA40D00BCAB55 /* Animal+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Animal+CoreDataClass.swift"; sourceTree = "<group>"; };
-		10610C56262FA40D00BCAB55 /* Medicat+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Medicat+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		10610C57262FA40D00BCAB55 /* SelectAnimal+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SelectAnimal+CoreDataClass.swift"; sourceTree = "<group>"; };
+		10610C0F262EE34200BCAB55 /* FMPSelectPat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPSelectPat.swift; sourceTree = "<group>"; };
 		106A951C2631DE4E001B15DE /* FMPMainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPMainButton.swift; sourceTree = "<group>"; };
 		106A951F2631E794001B15DE /* FMPChangeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPChangeButton.swift; sourceTree = "<group>"; };
 		106A952B2631F2DE001B15DE /* FMPMediumlabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPMediumlabelView.swift; sourceTree = "<group>"; };
@@ -79,6 +69,10 @@
 		10E2E9AF2614C775003BBE77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10E2E9B22614C775003BBE77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		10E2E9B42614C775003BBE77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10E4C4B9264051FD001ECF76 /* FMPScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPScrollView.swift; sourceTree = "<group>"; };
+		10E4C4BC26431FAC001ECF76 /* FMPRealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPRealmManager.swift; sourceTree = "<group>"; };
+		10E4C4C026432C58001ECF76 /* FMPAllPatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPAllPatsViewController.swift; sourceTree = "<group>"; };
+		10E4C4C726432D5E001ECF76 /* FMPMyPatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPMyPatCell.swift; sourceTree = "<group>"; };
 		10E60FE0261B4201008BF60F /* FMPVaccineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPVaccineViewController.swift; sourceTree = "<group>"; };
 		10E60FE3261B4217008BF60F /* FMPDocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPDocumentsViewController.swift; sourceTree = "<group>"; };
 		10E60FE6261B422E008BF60F /* FMPCertificateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPCertificateViewController.swift; sourceTree = "<group>"; };
@@ -91,9 +85,9 @@
 		10E6106326286096008BF60F /* FMPStackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPStackViewModel.swift; sourceTree = "<group>"; };
 		10E61067262863D9008BF60F /* UiStackView+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UiStackView+Ex.swift"; sourceTree = "<group>"; };
 		10E6106A26287423008BF60F /* FMPAddPatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPAddPatViewController.swift; sourceTree = "<group>"; };
-		239B607550B8056376122A5D /* Pods_FeedMyPat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedMyPat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6BFCC467DF6230B1E8757E19 /* Pods-FeedMyPat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedMyPat.debug.xcconfig"; path = "Target Support Files/Pods-FeedMyPat/Pods-FeedMyPat.debug.xcconfig"; sourceTree = "<group>"; };
-		90F090938816EE33B07F411C /* Pods-FeedMyPat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedMyPat.release.xcconfig"; path = "Target Support Files/Pods-FeedMyPat/Pods-FeedMyPat.release.xcconfig"; sourceTree = "<group>"; };
+		7CBC0DD02F13A7F4BD4E93A1 /* Pods-FeedMyPat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedMyPat.release.xcconfig"; path = "Target Support Files/Pods-FeedMyPat/Pods-FeedMyPat.release.xcconfig"; sourceTree = "<group>"; };
+		7D4399F65DB00ADDE9C59EFA /* Pods_FeedMyPat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedMyPat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BE042C68B53673A7C3E4353 /* Pods-FeedMyPat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedMyPat.debug.xcconfig"; path = "Target Support Files/Pods-FeedMyPat/Pods-FeedMyPat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3BAE7A383F4274AE709CF81 /* Pods_FeedMyPat.framework in Frameworks */,
+				FF5FE17FC9B356219FB13FB3 /* Pods_FeedMyPat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				1021EEC2261601AC00EB6E9D /* FMPMyPatsViewController.swift */,
+				10E4C4C026432C58001ECF76 /* FMPAllPatsViewController.swift */,
 				10E6106A26287423008BF60F /* FMPAddPatViewController.swift */,
 			);
 			path = Controllers;
@@ -141,19 +136,13 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		105DC9FD262CB41B00343354 /* CoreData */ = {
+		105DC9FD262CB41B00343354 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				10610C55262FA40D00BCAB55 /* Animal+CoreDataClass.swift */,
-				10610C53262FA40D00BCAB55 /* Animal+CoreDataProperties.swift */,
-				10610C52262FA40D00BCAB55 /* Medicat+CoreDataClass.swift */,
-				10610C56262FA40D00BCAB55 /* Medicat+CoreDataProperties.swift */,
-				10610C57262FA40D00BCAB55 /* SelectAnimal+CoreDataClass.swift */,
-				10610C54262FA40D00BCAB55 /* SelectAnimal+CoreDataProperties.swift */,
-				105DC9FE262CB44300343354 /* FMPDataModel.xcdatamodeld */,
-				10610C0F262EE34200BCAB55 /* FMPMainAnimalData.swift */,
+				10610C0F262EE34200BCAB55 /* FMPSelectPat.swift */,
+				10E4C4BC26431FAC001ECF76 /* FMPRealmManager.swift */,
 			);
-			path = CoreData;
+			path = Data;
 			sourceTree = "<group>";
 		};
 		105DCA03262CBE6E00343354 /* Medicat */ = {
@@ -195,6 +184,7 @@
 			children = (
 				106A952B2631F2DE001B15DE /* FMPMediumlabelView.swift */,
 				106A952F2631F456001B15DE /* FMPGrayCornerTextField.swift */,
+				10E4C4CA2643FCC2001ECF76 /* Cell */,
 				106A95322631F7F1001B15DE /* FMPStackView.swift */,
 			);
 			path = Views;
@@ -233,7 +223,7 @@
 				10E2E9A52614C773003BBE77 /* FeedMyPat */,
 				10E2E9A42614C773003BBE77 /* Products */,
 				97FB71B6A222BEFEA661690B /* Pods */,
-				FA2B7264050A4E24B760F1EC /* Frameworks */,
+				CAFA6DBFEF9F59197DD39AB0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -316,7 +306,8 @@
 		10E2E9D326150177003BBE77 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				105DC9FD262CB41B00343354 /* CoreData */,
+				105DC9FD262CB41B00343354 /* Data */,
+				10E4C4B8264051B3001ECF76 /* Views */,
 				10E61019261F14BF008BF60F /* Controllers */,
 			);
 			path = Common;
@@ -377,6 +368,22 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		10E4C4B8264051B3001ECF76 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				10E4C4B9264051FD001ECF76 /* FMPScrollView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		10E4C4CA2643FCC2001ECF76 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				10E4C4C726432D5E001ECF76 /* FMPMyPatCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		10E6100C261DF388008BF60F /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -424,16 +431,16 @@
 		97FB71B6A222BEFEA661690B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6BFCC467DF6230B1E8757E19 /* Pods-FeedMyPat.debug.xcconfig */,
-				90F090938816EE33B07F411C /* Pods-FeedMyPat.release.xcconfig */,
+				9BE042C68B53673A7C3E4353 /* Pods-FeedMyPat.debug.xcconfig */,
+				7CBC0DD02F13A7F4BD4E93A1 /* Pods-FeedMyPat.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		FA2B7264050A4E24B760F1EC /* Frameworks */ = {
+		CAFA6DBFEF9F59197DD39AB0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				239B607550B8056376122A5D /* Pods_FeedMyPat.framework */,
+				7D4399F65DB00ADDE9C59EFA /* Pods_FeedMyPat.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -445,12 +452,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 10E2E9B72614C775003BBE77 /* Build configuration list for PBXNativeTarget "FeedMyPat" */;
 			buildPhases = (
-				17E1689D682C0074BA49A59B /* [CP] Check Pods Manifest.lock */,
+				CFA7581F656B95E58C190CAB /* [CP] Check Pods Manifest.lock */,
 				10E2E99F2614C773003BBE77 /* Sources */,
 				10E2E9A02614C773003BBE77 /* Frameworks */,
 				10E2E9A12614C773003BBE77 /* Resources */,
 				10E2E9BB2614C8B6003BBE77 /* SwiftLint */,
-				AF3C27FBDFED348F03FD14F4 /* [CP] Embed Pods Frameworks */,
+				1F856D002592FB9AFACD67DD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -524,7 +531,24 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
-		17E1689D682C0074BA49A59B /* [CP] Check Pods Manifest.lock */ = {
+		1F856D002592FB9AFACD67DD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FeedMyPat/Pods-FeedMyPat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FeedMyPat/Pods-FeedMyPat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FeedMyPat/Pods-FeedMyPat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CFA7581F656B95E58C190CAB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -546,23 +570,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AF3C27FBDFED348F03FD14F4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FeedMyPat/Pods-FeedMyPat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FeedMyPat/Pods-FeedMyPat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FeedMyPat/Pods-FeedMyPat-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -572,41 +579,38 @@
 			files = (
 				10E6100E261DF3BD008BF60F /* FMPMedicatCell.swift in Sources */,
 				10E6102326231F11008BF60F /* FMPMedicatAddViewController.swift in Sources */,
-				10610C5B262FA40D00BCAB55 /* Animal+CoreDataClass.swift in Sources */,
 				1021EEC3261601AC00EB6E9D /* FMPMyPatsViewController.swift in Sources */,
 				10E6106426286096008BF60F /* FMPStackViewModel.swift in Sources */,
 				10E6106B26287423008BF60F /* FMPAddPatViewController.swift in Sources */,
-				105DCA00262CB44400343354 /* FMPDataModel.xcdatamodeld in Sources */,
 				106A95332631F7F1001B15DE /* FMPStackView.swift in Sources */,
 				10E61017261E0A2F008BF60F /* Date+Ex.swift in Sources */,
 				10E2E9AB2614C773003BBE77 /* FMPMainViewController.swift in Sources */,
 				10E2E9A72614C773003BBE77 /* AppDelegate.swift in Sources */,
-				10610C5A262FA40D00BCAB55 /* SelectAnimal+CoreDataProperties.swift in Sources */,
 				106A95202631E794001B15DE /* FMPChangeButton.swift in Sources */,
 				10E2E9A92614C773003BBE77 /* SceneDelegate.swift in Sources */,
 				10E6101B261F14EC008BF60F /* FMPViewController.swift in Sources */,
-				10610C58262FA40D00BCAB55 /* Medicat+CoreDataClass.swift in Sources */,
 				106A95302631F456001B15DE /* FMPGrayCornerTextField.swift in Sources */,
 				107B5F422630863A0046AC40 /* FMPPatView.swift in Sources */,
+				10E4C4C126432C58001ECF76 /* FMPAllPatsViewController.swift in Sources */,
 				1021EEC7261601DA00EB6E9D /* FMPInDevelopingViewController.swift in Sources */,
 				106A952C2631F2DE001B15DE /* FMPMediumlabelView.swift in Sources */,
 				1021EED52616027600EB6E9D /* FMPSettingsViewController.swift in Sources */,
 				10E60FE4261B4217008BF60F /* FMPDocumentsViewController.swift in Sources */,
 				10E6100A261DF19D008BF60F /* FMPMedicatModel.swift in Sources */,
 				10E61068262863D9008BF60F /* UiStackView+Ex.swift in Sources */,
+				10E4C4BA264051FD001ECF76 /* FMPScrollView.swift in Sources */,
 				1021EEBF2615DBDF00EB6E9D /* FMPHomeViewController.swift in Sources */,
-				10610C59262FA40D00BCAB55 /* Animal+CoreDataProperties.swift in Sources */,
 				10E60FE7261B422E008BF60F /* FMPCertificateViewController.swift in Sources */,
-				10610C5D262FA40D00BCAB55 /* SelectAnimal+CoreDataClass.swift in Sources */,
 				106A951D2631DE4E001B15DE /* FMPMainButton.swift in Sources */,
 				10E61013261DFCB8008BF60F /* UiView+Ex.swift in Sources */,
 				10E60FE1261B4201008BF60F /* FMPVaccineViewController.swift in Sources */,
-				10610C5C262FA40D00BCAB55 /* Medicat+CoreDataProperties.swift in Sources */,
+				10E4C4C826432D5E001ECF76 /* FMPMyPatCell.swift in Sources */,
 				1021EED9261617BC00EB6E9D /* FMPTabBarViewController.swift in Sources */,
 				10610C06262D6D1F00BCAB55 /* FMPPatModel.swift in Sources */,
-				10610C10262EE34200BCAB55 /* FMPMainAnimalData.swift in Sources */,
+				10610C10262EE34200BCAB55 /* FMPSelectPat.swift in Sources */,
 				1021EEFB261A150500EB6E9D /* FMPMedicatViewController.swift in Sources */,
 				1021EECC261601FF00EB6E9D /* FMPMapViewController.swift in Sources */,
+				10E4C4BD26431FAC001ECF76 /* FMPRealmManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -742,7 +746,7 @@
 		};
 		10E2E9B82614C775003BBE77 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6BFCC467DF6230B1E8757E19 /* Pods-FeedMyPat.debug.xcconfig */;
+			baseConfigurationReference = 9BE042C68B53673A7C3E4353 /* Pods-FeedMyPat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -763,7 +767,7 @@
 		};
 		10E2E9B92614C775003BBE77 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 90F090938816EE33B07F411C /* Pods-FeedMyPat.release.xcconfig */;
+			baseConfigurationReference = 7CBC0DD02F13A7F4BD4E93A1 /* Pods-FeedMyPat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -804,19 +808,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		105DC9FE262CB44300343354 /* FMPDataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				105DC9FF262CB44300343354 /* FMPDataModel.xcdatamodel */,
-			);
-			currentVersion = 105DC9FF262CB44300343354 /* FMPDataModel.xcdatamodel */;
-			path = FMPDataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 10E2E99B2614C773003BBE77 /* Project object */;
 }

@@ -112,7 +112,6 @@ class FMPMedicatCell: UICollectionViewCell {
     override func updateConstraints() {
         self.cellView.snp.updateConstraints { (make) in
             make.top.left.right.bottom.equalToSuperview()
-//            make.height.equalTo(self.contentView.snp.height)
         }
 
         self.imageView.snp.updateConstraints { (make) in

@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 class FMPHomeViewController: UIViewController {
 
@@ -14,7 +15,10 @@ class FMPHomeViewController: UIViewController {
 
     var flag: Bool = true               /// testing
 
-    lazy var patView: UIView = FMPPatView()
+    let realm = FMPRealmManager.safeRealm
+    private lazy var mainData: Results<FMPPatModel> = { self.realm.objects(FMPPatModel.self)}()
+
+    private lazy var patView: UIView = FMPPatView()
 
     private lazy var petViewLeftButton: UIButton = {
         let button = FMPChangeButton()
@@ -29,6 +33,8 @@ class FMPHomeViewController: UIViewController {
         button.addTarget(self, action: #selector(leftRightButtonTapped), for: .touchUpInside)
         return button
     }()
+
+    private lazy var mainScrollView: UIScrollView = FMPScrollView()
 
     private lazy var medicatButton: FMPMainButton = {
         let button = FMPMainButton()
@@ -66,7 +72,7 @@ class FMPHomeViewController: UIViewController {
         return button
     }()
 
-    private lazy var mainData = FMAD()
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,20 +80,20 @@ class FMPHomeViewController: UIViewController {
         self.view.backgroundColor = .init(white: 0.9, alpha: 1)
 
         self.view.addSubviews([patView,
-                               medicatButton,
-                               vaccineButton,
-                               documentsButton,
-                               certificateButton])
+                               mainScrollView])
+        self.mainScrollView.addSubviews([medicatButton,
+                                         vaccineButton,
+                                         documentsButton,
+                                         certificateButton])
         self.patView.addSubviews([petViewLeftButton,
                                   petViewRightButton])
-
-        self.isExistAnimal()
+        self.navigationItem.title = "Home"
     }
 
     // MARK: - Constraints
 
     override func updateViewConstraints() {
-        let boundsOfButtons = self.view.bounds.width / 5
+        let boundsOfButtons = self.view.bounds.width - 70
 
         self.patView.snp.makeConstraints { (make) in
             make.top.left.right.equalTo(self.view.safeAreaLayoutGuide)
@@ -105,67 +111,46 @@ class FMPHomeViewController: UIViewController {
             make.width.equalTo(self.view.bounds.width / 6)
         }
 
-//        self.medicatButton.snp.makeConstraints { (make) in
-//            make.height.width.equalTo(boundsOfButtons)
-//            make.left.equalToSuperview().inset(35)
-//            make.top.equalTo(self.patView.snp.bottom).offset(50)
-//
-//        }
-//
-//        self.vaccineButton.snp.makeConstraints { (make) in
-//            make.height.width.equalTo(boundsOfButtons)
-//            make.left.equalTo(medicatButton.snp.right).inset(-25)
-//            make.top.equalTo(self.patView.snp.bottom).offset(50)
-//            make.right.equalToSuperview().inset(35)
-//
-//        }
-//
-//        self.DocumentsButton.snp.makeConstraints { (make) in
-//            make.height.width.equalTo(boundsOfButtons)
-//            make.left.equalToSuperview().inset(35)
-//            make.top.equalTo(medicatButton.snp.bottom).inset(-25)
-//        }
-//
-//        self.CertificateButton.snp.makeConstraints { (make) in
-//            make.height.width.equalTo(boundsOfButtons)
-//            make.left.equalTo(DocumentsButton.snp.right).inset(-25)
-//            make.top.equalTo(vaccineButton.snp.bottom).inset(-25)
-//            make.right.equalToSuperview().inset(35)
-//        }
+        self.mainScrollView.snp.makeConstraints { (make) in
+            make.top.equalTo(self.patView.snp.bottom)
+            make.left.right.equalToSuperview()
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+        }
 
         self.medicatButton.snp.makeConstraints { (make) in
-            make.height.width.equalTo(boundsOfButtons)
+            make.width.equalTo(boundsOfButtons)
             make.left.right.equalToSuperview().inset(35)
-            make.top.equalTo(self.patView.snp.bottom).offset(50)
+            make.top.equalToSuperview().offset(50)
 
         }
 
         self.vaccineButton.snp.makeConstraints { (make) in
-            make.height.width.equalTo(boundsOfButtons)
-            make.left.right.equalToSuperview().inset(35)
+            make.width.equalTo(boundsOfButtons)
+            make.left.equalToSuperview().inset(35)
+            make.right.equalToSuperview().inset(35)
             make.top.equalTo(self.medicatButton.snp.bottom).offset(15)
 
         }
 
         self.documentsButton.snp.makeConstraints { (make) in
-            make.height.width.equalTo(boundsOfButtons)
+            make.width.equalTo(boundsOfButtons)
             make.left.right.equalToSuperview().inset(35)
             make.top.equalTo(self.vaccineButton.snp.bottom).offset(15)
         }
 
         self.certificateButton.snp.makeConstraints { (make) in
-            make.height.width.equalTo(boundsOfButtons)
+            make.width.equalTo(boundsOfButtons)
             make.left.right.equalToSuperview().inset(35)
             make.top.equalTo(self.documentsButton.snp.bottom).offset(15)
+            make.bottom.equalToSuperview().inset(50)
         }
 
         super.updateViewConstraints()
     }
 
-    // MARK: - Functions
+    // MARK: - Private Methods
 
     private func isExistAnimal() {
-        if mainData.animals.isEmpty {
             UIButton.animate(withDuration: 2) {
                 self.medicatButton.backgroundColor = .init(white: 1, alpha: 0.4)
                 self.vaccineButton.backgroundColor = .init(white: 1, alpha: 0.4)
@@ -195,12 +180,9 @@ class FMPHomeViewController: UIViewController {
                 return alert
             }
                 self.present(alert, animated: true)
-        } else {
-            return
-        }
     }
 
-    // MARK: - Objc functions
+    // MARK: - Objc Private Methods
 
     @objc private func leftRightButtonTapped() {                    /// testing         |||         change
         if flag {
@@ -213,24 +195,23 @@ class FMPHomeViewController: UIViewController {
     }
 
     @objc private func medicatButtonTapped() {
-        guard !mainData.animals.isEmpty else { isExistAnimal(); return }
+        guard !mainData.isEmpty else { isExistAnimal(); return }
         let controller = FMPMedicatViewController()
-        controller.loadMedicatData(animalId: mainData.selectPatId)
         self.navigationController?.pushViewController(controller, animated: true)
     }
 
     @objc private func vaccineButtonTapped() {
-        guard !mainData.animals.isEmpty else { isExistAnimal(); return }
+        guard !mainData.isEmpty else { isExistAnimal(); return }
         self.navigationController?.pushViewController(FMPVaccineViewController(), animated: true)
     }
 
     @objc private func documentsButtonTapped() {
-        guard !mainData.animals.isEmpty else { isExistAnimal(); return }
+        guard !mainData.isEmpty else { isExistAnimal(); return }
         self.navigationController?.pushViewController(FMPDocumentsViewController(), animated: true)
     }
 
     @objc private func certificateButtonTapped() {
-        guard !mainData.animals.isEmpty else { isExistAnimal(); return }
+        guard !mainData.isEmpty else { isExistAnimal(); return }
         self.navigationController?.pushViewController(FMPCertificateViewController(), animated: true)
     }
 

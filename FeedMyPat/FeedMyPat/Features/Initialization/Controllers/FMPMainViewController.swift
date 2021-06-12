@@ -10,35 +10,49 @@ import SnapKit
 
 class FMPMainViewController: UIViewController {
 
-    private lazy var nextButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Next", for: UIControl.State())
-        button.setTitleColor(.white, for: UIControl.State())
-        button.backgroundColor = .darkGray
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 25)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
+    private lazy var patIcon: UIImageView = {
+        let icon = UIImageView()
+        icon.image = UIImage(named: "tabBarMyPatsIcon")
+        icon.translatesAutoresizingMaskIntoConstraints = false
 
-        return button
+        return icon
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
-        self.view.backgroundColor = .brown
+        self.view.backgroundColor = .white
+        self.view.addSubview(self.patIcon)
 
-        self.view.addSubview(nextButton)
+        self.animatePatIcon()
+    }
 
-        self.nextButton.snp.makeConstraints { (make) in
-            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(50)
-            make.left.right.equalToSuperview().inset(25)
-            make.height.equalTo(60)
+    override func updateViewConstraints() {
+        self.patIcon.snp.updateConstraints { (make) in
+            make.height.width.equalTo(100)
+            make.centerX.centerY.equalToSuperview()
+        }
+        super.updateViewConstraints()
+    }
+
+    private func animatePatIcon() {
+        UIView.animate(withDuration: 1.5, delay: 0,
+                       usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7,
+                       options: .showHideTransitionViews) {
+            self.patIcon.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+
+            UIView.animate(withDuration: 1.0, delay: 1.0,
+                           usingSpringWithDamping: 0.2, initialSpringVelocity: 1,
+                           options: .curveEaseInOut) {
+                self.patIcon.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+
+            }
+                       }
+        Timer.scheduledTimer(withTimeInterval: 1.9, repeats: false) { (_) in
+            if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+                sceneDelegate.changeRootViewController(FMPTabBarViewController())
         }
     }
-    @objc func nextButtonTapped() {
 
-        if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
-            sceneDelegate.changeRootViewController(FMPTabBarViewController())
-        }
-    }
+}
 }
